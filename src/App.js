@@ -1,10 +1,12 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Homechallenge from './Homepage/Homechallenge';
+
 
 function App() {
   return (
     <>
-    <h1>  hello</h1>
+   <Homechallenge />
     </>
   );
 }

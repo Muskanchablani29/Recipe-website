@@ -1,16 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
-import Funone from './Components/Funone'
-import Navbar from './Components/Navbar';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./Components/Navbar";
+import Home from "./Components/Home/Home";
+import About from "./Components/About/About";
+import Contact from "./Components/Contact/Contact";
+import FunFusion from "./Components/Fun-Fusion/Fun";
+import Profile from "./Components/Profile/Profile";
+import "./App.css";
 
 function App() {
   return (
-    <>
-
-    <Navbar />
-    {/* <Funone/> */}
-    </>
-    
+    <Router>
+      <div className="app-container">
+        <Navbar />
+        <main className="main-content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/fun" element={<FunFusion />} />
+            <Route path="/profile" element={<Profile />} />
+          </Routes>
+        </main>
+      </div>
+    </Router>
   );
 }
 

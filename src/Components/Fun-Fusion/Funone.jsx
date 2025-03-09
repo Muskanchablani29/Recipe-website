@@ -1,32 +1,32 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import "./Funone.css";
 
 const KheloKhaoSection = () => {
+  const navigate = useNavigate();
   const challenges = [
-    { name: "Dot Spinner Game", path: "/dot-spinner", icon: "🎯" },
-    { name: "Mystery Challenge", path: "/mystery-challenge", icon: "🕵️" },
-    { name: "Cooking Challenge", path: "/cooking-challenge", icon: "🍳" },
+    { name: "Dot Game", path: "/dot-game", icon: "🎯", description: "Sharpen your reflexes and accuracy in the dot game challenge!" },
+    { name: "Mystery Box", path: "/mystery-box", icon: "🕵️", description: "Uncover the secrets hidden within the mystery box!" },
+    { name: "Cooking Challenge", path: "/cooking-challenge", icon: "🍳", description: "Test your culinary skills with exciting cooking tasks!" },
   ];
 
   return (
     <div className="khelo-khao-container">
       <div className="khelo-khao-content">
-        <h2 className="khelo-khao-title">Khelo Khao Challenges</h2>
         <div className="khelo-khao-grid">
           {challenges.map((challenge, index) => (
             <motion.div
               key={index}
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               className="khelo-khao-card"
+              onClick={() => navigate(challenge.path)}
             >
               <div className="khelo-khao-icon">{challenge.icon}</div>
               <h3 className="khelo-khao-name">{challenge.name}</h3>
-              <Link to={challenge.path} className="khelo-khao-button">
-                Play Now
-              </Link>
+              <p className="khelo-khao-description">{challenge.description}</p>
+              <div className="khelo-khao-arrow">➡️</div>
             </motion.div>
           ))}
         </div>

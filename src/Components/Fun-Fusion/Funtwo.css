@@ -1,60 +1,179 @@
-/* FunFusionHeader.css */
-
 .fun-fusion-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 40px;
-    background: linear-gradient(to right, #ffecd2, #fcb69f);
-    border-radius: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  padding: 4rem 2rem;
+  gap: 2rem;
+  background-color: #FDF5E6; /* Old Lace background */
+  min-height: 50vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Text Section Styles */
+.text-section {
+  flex: 1;
+  min-width: 300px;
+  padding: 2rem;
+  z-index: 2;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(145deg, #8B4513, #A0522D);
+  color: #FDF5E6;
+  border-radius: 25px;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
+}
+
+.title {
+  font-size: 3.5rem;
+  color: #5C3317; /* Dark Brown */
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  font-family: 'Playfair Display', serif;
+}
+
+.description {
+  font-size: 1.2rem;
+  color: #8B4513; /* Saddle Brown */
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.cta-button {
+  padding: 1.2rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #FDF5E6;
+  background: linear-gradient(145deg, #8B4513, #A0522D);
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(139, 69, 19, 0.4);
+  background: linear-gradient(145deg, #A0522D, #8B4513);
+}
+
+/* Game Section Styles */
+.game-section {
+  flex: 1;
+  min-width: 300px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Curved Ribbon Styles */
+.curved-ribbon {
+  position: absolute;
+  right: -50px;
+  height: 120vh;
+  width: 400px;
+  z-index: 1;
+  overflow: visible;
+}
+
+.ribbon-path {
+  stroke: url(#ribbonGradient);
+  stroke-width: 65;
+  fill: none;
+  filter: drop-shadow(0 4px 10px rgba(139, 69, 19, 0.3));
+  animation: glowEffect 3s infinite alternate ease-in-out;
+}
+
+@keyframes glowEffect {
+  from {
+    filter: drop-shadow(0 4px 10px rgba(139, 69, 19, 0.3));
+    stroke-width: 65;
+  }
+  to {
+    filter: drop-shadow(0 4px 15px rgba(139, 69, 19, 0.5));
+    stroke-width: 68;
+  }
+}
+
+.ribbon-text {
+  fill: #FDF5E6;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+  font-family: 'Playfair Display', serif;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .curved-ribbon {
+    width: 350px;
+    right: -40px;
   }
   
-  .fun-fusion-title {
+  .ribbon-text {
+    font-size: 16px;
+  }
+
+  .title {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .fun-fusion-container {
+    padding: 2rem 1rem;
+  }
+
+  .curved-ribbon {
+    width: 300px;
+    right: -30px;
+  }
+
+  .ribbon-text {
+    font-size: 14px;
+  }
+
+  .title {
     font-size: 2.5rem;
-    font-weight: bold;
-    color: #d35400;
   }
-  
-  .fun-fusion-subtitle {
-    font-size: 1.2rem;
-    color: #6d4c41;
-    max-width: 600px;
-    margin-top: 10px;
+
+  .ribbon-path {
+    stroke-width: 50;
   }
-  
-  .fun-fusion-content {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
+}
+
+@media (max-width: 480px) {
+  .curved-ribbon {
+    width: 250px;
+    right: -20px;
   }
-  
-  .fun-fusion-box {
-    background: white;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    max-width: 500px;
-    text-align: left;
+
+  .ribbon-text {
+    font-size: 12px;
   }
-  
-  .fun-fusion-section-title {
-    font-size: 1.5rem;
-    color: #e67e22;
-    font-weight: bold;
+
+  .title {
+    font-size: 2rem;
   }
-  
-  .fun-fusion-text {
-    font-size: 1rem;
-    color: #555;
+
+  .ribbon-path {
+    stroke-width: 40;
   }
-  
-  .fun-fusion-list {
-    list-style-type: disc;
-    padding-left: 20px;
-    color: #444;
-  }
-  
+}
+
+/* Performance Optimizations */
+.curved-ribbon {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Add this in your HTML head for the Playfair Display font */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap');

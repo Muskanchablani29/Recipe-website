@@ -5,6 +5,7 @@ import About from "./Components/About/About";
 import Contact from "./Components/Contact/Contact";
 import FunFusion from "./Components/Fun-Fusion/Fun";
 import Profile from "./Components/Profile/Profile";
+import Dotspinner from "./Components/Fun-Fusion/Games/DotGame";
 import "./App.css";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/fun" element={<FunFusion />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/dotspinner" element={<Dotspinner />} />
           </Routes>
         </main>
       </div>

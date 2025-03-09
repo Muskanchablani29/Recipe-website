@@ -21,7 +21,7 @@ const FunFusionWelcome = () => {
       {/* Right Section */}
       <div className="game-section">
         {/* Enhanced Snake-like Curved Ribbon */}
-        <svg className="curved-ribbon" viewBox="0 0 300 800" xmlns="http://www.w3.org/2000/svg">
+        <svg className="curved-ribbon" viewBox="0 20 300 800" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <linearGradient id="ribbonGradient" x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" style={{ stopColor: '#8B4513', stopOpacity: 1 }} />

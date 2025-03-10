@@ -1,179 +1,399 @@
+/* Base Container */
 .fun-fusion-container {
   display: flex;
-  flex-wrap: wrap;
-  padding: 4rem 2rem;
-  gap: 2rem;
-  background-color: #FDF5E6; /* Old Lace background */
-  min-height: 50vh;
-  position: relative;
+  justify-content: space-between;
+  padding: 2rem;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
   overflow: hidden;
+  position: relative;
 }
 
-/* Text Section Styles */
+/* Left Section Styles */
 .text-section {
   flex: 1;
-  min-width: 300px;
-  padding: 2rem;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 600px;
+  position: relative;
   z-index: 2;
+  animation: slideIn 0.8s ease-out forwards;
 }
 
 .tag {
-  display: inline-block;
+  background: #f0e6dd;
+  color: #8B4513;
   padding: 0.5rem 1rem;
-  background: linear-gradient(145deg, #8B4513, #A0522D);
-  color: #FDF5E6;
-  border-radius: 25px;
-  font-weight: 600;
+  border-radius: 20px;
+  display: inline-block;
   margin-bottom: 1rem;
-  box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
+  font-weight: 500;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 4px rgba(139, 69, 19, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tag:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(139, 69, 19, 0.15);
 }
 
 .title {
   font-size: 3.5rem;
-  color: #5C3317; /* Dark Brown */
+  color: #2d2d2d;
   margin-bottom: 1.5rem;
   line-height: 1.2;
-  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  background: linear-gradient(45deg, #8B4513, #A0522D);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .description {
-  font-size: 1.2rem;
-  color: #8B4513; /* Saddle Brown */
+  font-size: 1.1rem;
   line-height: 1.8;
-  margin-bottom: 2rem;
+  color: #555;
+  margin-bottom: 2.5rem;
+  max-width: 90%;
 }
 
 .cta-button {
-  padding: 1.2rem 2.5rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #FDF5E6;
-  background: linear-gradient(145deg, #8B4513, #A0522D);
+  background: linear-gradient(45deg, #8B4513, #A0522D);
+  color: white;
   border: none;
+  padding: 1.2rem 2.5rem;
   border-radius: 30px;
+  font-size: 1.1rem;
   cursor: pointer;
-  transition: all 0.4s ease;
-  box-shadow: 0 4px 15px rgba(139, 69, 19, 0.3);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(139, 69, 19, 0.2);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  align-self: flex-start;
 }
 
 .cta-button:hover {
+  background: linear-gradient(45deg, #A0522D, #8B4513);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(139, 69, 19, 0.4);
-  background: linear-gradient(145deg, #A0522D, #8B4513);
+  box-shadow: 0 6px 20px rgba(139, 69, 19, 0.3);
 }
 
-/* Game Section Styles */
+.cta-button:active {
+  transform: translateY(1px);
+}
+
+.cta-button:focus {
+  outline: 3px solid rgba(139, 69, 19, 0.5);
+  outline-offset: 2px;
+}
+
+/* Right Section Styles */
 .game-section {
   flex: 1;
-  min-width: 300px;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-/* Curved Ribbon Styles */
-.curved-ribbon {
-  position: absolute;
-  right: -50px;
-  height: 120vh;
-  width: 400px;
-  z-index: 1;
+  min-height: 600px;
   overflow: visible;
 }
 
-.ribbon-path {
-  stroke: url(#ribbonGradient);
-  stroke-width: 65;
-  fill: none;
-  filter: drop-shadow(0 4px 10px rgba(139, 69, 19, 0.3));
-  animation: glowEffect 3s infinite alternate ease-in-out;
+.curved-ribbon {
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  top: -10%;
+  right: -10%;
+  z-index: 1;
+  pointer-events: none;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+  transform: rotate(-5deg);
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
-@keyframes glowEffect {
-  from {
-    filter: drop-shadow(0 4px 10px rgba(139, 69, 19, 0.3));
-    stroke-width: 65;
-  }
-  to {
-    filter: drop-shadow(0 4px 15px rgba(139, 69, 19, 0.5));
-    stroke-width: 68;
-  }
+.ribbon-group {
+  transform-origin: center;
+  animation: floatRibbon 12s ease-in-out infinite;
+}
+
+.ribbon-path {
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15));
+  transition: all 0.3s ease;
 }
 
 .ribbon-text {
-  fill: #FDF5E6;
-  font-size: 18px;
+  fill: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.moving-text {
+  font-family: 'Arial', sans-serif;
   font-weight: 600;
-  letter-spacing: 2px;
-  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
-  font-family: 'Playfair Display', serif;
+}
+
+.overlay-image {
+  max-width: 75%;
+  height: auto;
+  border-radius: 20px;
+  top: 33px;
+  /* box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15); */
+  z-index: 2;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  object-fit: cover;
+  position: relative;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.overlay-image:hover {
+  transform: scale(1.02);
+}
+
+/* Animations */
+@keyframes floatRibbon {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-8px) scale(1.01);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Text Section Animations */
+.text-section > * {
+  animation: fadeIn 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+.text-section > *:nth-child(1) { animation-delay: 0.2s; }
+.text-section > *:nth-child(2) { animation-delay: 0.4s; }
+.text-section > *:nth-child(3) { animation-delay: 0.6s; }
+.text-section > *:nth-child(4) { animation-delay: 0.8s; }
+
+/* Hover Effects */
+.game-section:hover .ribbon-path {
+  filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.2));
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #8B4513;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #A0522D;
 }
 
 /* Responsive Design */
 @media (max-width: 1200px) {
-  .curved-ribbon {
-    width: 350px;
-    right: -40px;
-  }
-  
-  .ribbon-text {
-    font-size: 16px;
-  }
-
   .title {
     font-size: 3rem;
+  }
+  
+  .description {
+    font-size: 1rem;
+  }
+
+  .curved-ribbon {
+    width: 115%;
+    height: 115%;
+    top: -8%;
+    right: -8%;
+  }
+}
+
+@media (max-width: 992px) {
+  .fun-fusion-container {
+    padding: 1rem;
+  }
+
+  .text-section {
+    padding: 3rem 1.5rem;
+  }
+
+  .curved-ribbon {
+    width: 110%;
+    height: 110%;
+    top: -6%;
+    right: -6%;
   }
 }
 
 @media (max-width: 768px) {
   .fun-fusion-container {
+    flex-direction: column;
+  }
+  
+  .text-section {
     padding: 2rem 1rem;
+    align-items: center;
+    text-align: center;
   }
-
-  .curved-ribbon {
-    width: 300px;
-    right: -30px;
-  }
-
-  .ribbon-text {
-    font-size: 14px;
-  }
-
+  
   .title {
     font-size: 2.5rem;
   }
+  
+  .description {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .cta-button {
+    align-self: center;
+  }
+  
+  .game-section {
+    margin-top: 2rem;
+    min-height: 400px;
+  }
 
-  .ribbon-path {
-    stroke-width: 50;
+  .curved-ribbon {
+    width: 105%;
+    height: 105%;
+    top: -4%;
+    right: -4%;
+    transform: rotate(-3deg);
+  }
+  
+  .ribbon-text {
+    font-size: 10px;
+  }
+
+  .overlay-image {
+    max-width: 90%;
   }
 }
 
 @media (max-width: 480px) {
-  .curved-ribbon {
-    width: 250px;
-    right: -20px;
-  }
-
-  .ribbon-text {
-    font-size: 12px;
-  }
-
   .title {
     font-size: 2rem;
   }
+  
+  .tag {
+    font-size: 0.8rem;
+  }
+  
+  .description {
+    font-size: 0.9rem;
+  }
+  
+  .cta-button {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
 
-  .ribbon-path {
-    stroke-width: 40;
+  .curved-ribbon {
+    width: 102%;
+    height: 102%;
+    top: -2%;
+    right: -2%;
+    transform: rotate(-2deg);
+  }
+  
+  .ribbon-text {
+    font-size: 9px;
+  }
+  
+  .overlay-image {
+    max-width: 85%;
   }
 }
 
-/* Performance Optimizations */
-.curved-ribbon {
-  will-change: transform;
-  transform: translateZ(0);
-  backface-visibility: hidden;
+
+/* Prevent text selection on interactive elements */
+.cta-button,
+.tag {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
-/* Add this in your HTML head for the Playfair Display font */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap');
+/* Focus visible styles */
+:focus-visible {
+  outline: 3px solid rgba(139, 69, 19, 0.5);
+  outline-offset: 2px;
+}
+
+/* Optional: Add loading state */
+.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Optional: Improve image rendering */
+img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Enhanced hover states */
+.tag:hover,
+.cta-button:hover {
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
+}
+
+/* Transition properties */
+.tag,
+.overlay-image,
+.cta-button,
+.ribbon-path {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Performance optimizations */
+.curved-ribbon,
+.overlay-image,
+.text-section {
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}

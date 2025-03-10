@@ -66,47 +66,7 @@ export default function Funthree() {
         <p>Quick & Tasty Recipes for Travelers</p>
       </div>
     </div>
-    <div className="game-section">
-        {/* Enhanced Snake-like Curved Ribbon */}
-        <svg className="curved-ribbon" viewBox="0 20 300 800" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="ribbonGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" style={{ stopColor: '#8B4513', stopOpacity: 1 }} />
-              <stop offset="50%" style={{ stopColor: '#A0522D', stopOpacity: 1 }} />
-              <stop offset="100%" style={{ stopColor: '#8B4513', stopOpacity: 1 }} />
-            </linearGradient>
-            <path
-              id="curve"
-              d="M 150,0 
-                 C 250,100 50,200 150,300
-                 C 250,400 50,500 150,600
-                 C 250,700 50,800 150,800"
-              fill="transparent"
-            />
-          </defs>
-          <path 
-            d="M 150,0 
-               C 250,100 50,200 150,300
-               C 250,400 50,500 150,600
-               C 250,700 50,800 150,800" 
-            className="ribbon-path"
-          />
-          <text className="ribbon-text">
-            <textPath href="#curve" startOffset="50%">
-              <animate
-                attributeName="startOffset"
-                from="100%"
-                to="-100%"
-                dur="20s"
-                repeatCount="indefinite"
-              />
-              Taste the Magic • Cook with Love • Savor the Moments • 
-              Taste the Magic • Cook with Love • Savor the Moments • 
-              Taste the Magic • Cook with Love • Savor the Moments
-            </textPath>
-          </text>
-        </svg>
-      </div>
+    
     </>
   );
 }

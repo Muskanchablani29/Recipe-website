@@ -1,0 +1,72 @@
+
+/* Updated CSS */
+.khelo-khao-container {
+  min-height: vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background: none;
+}
+
+.khelo-khao-content {
+  max-width: 1000px;
+  width: 100%;
+  text-align: center;
+}
+
+.khelo-khao-grid {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.khelo-khao-card {
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  width: 320px;
+  color: #4e342e;
+  font-family: 'Poppins', sans-serif;
+  position: relative;
+  border: 3px solid #4e342e;
+  background: linear-gradient(135deg, #f9f1e7, #f4d8c7);
+  cursor: pointer;
+}
+
+.khelo-khao-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.khelo-khao-icon {
+  font-size: 3.5rem;
+  margin-bottom: 15px;
+}
+
+.khelo-khao-name {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.khelo-khao-description {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  color: #5d4037;
+}
+
+.khelo-khao-arrow {
+  font-size: 2rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.khelo-khao-card:hover .khelo-khao-arrow {
+  opacity: 1;
+}

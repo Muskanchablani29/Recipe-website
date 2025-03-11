@@ -8,15 +8,16 @@ const FunFusionWelcome = () => {
     <div className="fun-fusion-container">
       {/* Left Section */}
       <div className="text-section">
-        <span className="tag">Explore & Innovate</span>
-        <h1 className="title">Unleash Creativity with Fusion</h1>
+        <span className="tag">Quick & Delicious</span>
+        <h1 className="title">Quick Recipe Adventures</h1>
         <p className="description">
-          Step into a world where creativity knows no bounds. Discover innovative 
-          blends of art, music, and technology that inspire and excite. Join us 
-          in redefining the boundaries of fun and fusion!
+        Discover a world of quick and easy recipes that bring joy to your kitchen. 
+          From 15-minute meals to instant pot wonders, explore our collection of 
+          time-saving recipes that don't compromise on taste. Perfect for busy 
+          food lovers!
         </p>
         <button className="cta-button">
-          Begin Your Creative Journey
+          Explore Quick Recipes
         </button>
       </div>
 
@@ -59,15 +60,28 @@ const FunFusionWelcome = () => {
               fill="transparent"
             />
             <text className="ribbon-text">
-              <textPath href="#curve" startOffset="50%" className="moving-text">
+              <textPath 
+                href="#curve" 
+                startOffset="0%" 
+                dy="-10"
+                className="moving-text"
+                style={{ 
+                  fontSize: "32px",
+                  fontWeight: "bold",
+                  fill: "#ffffff",
+                  textAnchor: "middle",
+                  dominantBaseline: "middle",
+                  letterSpacing: "2px"
+                }}
+              >
                 <animate
                   attributeName="startOffset"
-                  from="0%"
-                  to="100%"
-                  dur="20s"
+                  from="100%"
+                  to="-100%"
+                  dur="30s"
                   repeatCount="indefinite"
                 />
-                Tu Chesse Badi hain Mast Mast • Badi Badi Baatein Aur Vada Pav Khaate • Pizza Abhi Baaki Hain Mere Dost • mere Sapno ki Biryani Kab Aayegi Tu  
+                • Badi Badi Baatein Aur Vada Pav Khaate • Mere Sapno ki Biryani Kab Aayegi Tu • Tu Chesse Badi Hain Mast Mast • Pizza Abhi Baaki Hain Mere Dost • Jaa Simran Jaa Kha Le Apna Tandoori Paneer Tikka • Dhokhe Khane Se Accha Hain Dkokhle Khao •  Badi Badi Baatein Aur Vada Pav Khaate • Mere Sapno ki Biryani Kab Aayegi Tu 
               </textPath>
             </text>
           </g>

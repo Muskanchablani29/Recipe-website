@@ -8,29 +8,41 @@
     min-height: 100vh;
 }
 
-/* Curved background container */
-.curved-background {
-    position: absolute;
-    top: 30%;
-    left: 0;
-    width: 100%;
-    height: 200px;
-    z-index: -1; /* Sends it behind the images */
-}
-
-/* Styling the SVG wave */
-.wavy-line {
+/* Background Wave */
+.background-wave {
     position: absolute;
     width: 100%;
     height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 0;
+    overflow: hidden;
 }
 
-/* Flowing text along the path */
-.flowing-text {
-    font-size: 1.2rem;
-    fill: #F4A261;
+.background-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+}
+
+.curved-text {
+    fill: rgba(244, 162, 97, 0.2);
+    font-size: 24px;
+    font-family: Arial, sans-serif;
     font-weight: bold;
-    letter-spacing: 2px;
+}
+
+.flowing-text {
+    animation: flow 20s linear infinite;
+}
+
+@keyframes flow {
+    0% {
+        startOffset: 0%;
+    }
+    100% {
+        startOffset: -100%;
+    }
 }
 
 /* Image container */
@@ -54,7 +66,7 @@
     opacity: 0.7;
 }
 
-/* Image positioning */
+/* Image positioning - keeping original positions */
 .image1 { top: 100%; left: 0%; }
 .image2 { top: 20%; left: 10%; }
 .image3 { top: 70%; right: 2%; }
@@ -75,7 +87,7 @@
                 0 0 35px rgba(255, 255, 255, 0.3);
 }
 
-/* Animations */
+/* Glow Animation */
 @keyframes glowPulse {
     0% {
         box-shadow: 0 0 15px rgba(255, 255, 255, 0.7),
@@ -101,29 +113,32 @@
     align-items: center;
     flex-direction: column;
     margin-top: 20px;
+    position: relative;
+    z-index: 2;
 }
+
+.curved-text {
+    fill: #EB7A5A; /* Soft orange for readability */
+    font-size: 22px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+.flowing-text {
+    animation: flow 20s linear infinite;
+}
+
 
 .jhatpat-recipe-text h2 {
     font-size: 2rem;
     font-weight: bold;
+    color: #2A9D8F;
+    margin-bottom: 10px;
 }
 
 .jhatpat-recipe-text p {
     font-size: 1.2rem;
     color: #666;
-}
-
-/* Curved text container */
-.curved-jhatpat {
-    position: relative;
-    width: 100%;
-    height: 100px;
-    overflow: hidden;
-}
-
-.curved-text {
-    width: 100%;
-    height: auto;
 }
 
 /* Recipe info box */
@@ -148,6 +163,17 @@
     opacity: 1;
 }
 
+/* Container styles */
+.jhatpat-recipe-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .image {
@@ -161,5 +187,46 @@
 
     .jhatpat-recipe-text p {
         font-size: 1rem;
+    }
+
+    .curved-text {
+        font-size: 18px;
+    }
+
+    .background-wave {
+        height: 150px;
+    }
+}
+
+/* Additional responsive adjustments for smaller screens */
+@media (max-width: 480px) {
+    .image {
+        width: 60px;
+        height: 60px;
+    }
+
+    .curved-text {
+        font-size: 16px;
+    }
+
+    .background-wave {
+        height: 100px;
+    }
+
+    /* Adjust image positions for mobile */
+    .image1 { top: 80%; left: 5%; }
+    .image2 { top: 25%; left: 8%; }
+    .image3 { top: 60%; right: 5%; }
+    .image4 { top: 20%; right: 25%; }
+    .image5 { top: 120%; left: 12%; }
+    .image6 { bottom: -10%; right: 12%; }
+    .image7 { left: 40%; bottom: 28%; }
+    .image8 { bottom: -5%; right: 60%; }
+}
+
+/* Animation for text path */
+@keyframes textPathAnimation {
+    to {
+        stroke-dashoffset: 0;
     }
 }

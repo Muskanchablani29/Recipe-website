@@ -1,0 +1,192 @@
+/* CSS Reset */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #ff6b6b;
+  --text-primary: #333;
+  --text-secondary: #666;
+  --bg-light: #f8f8f8;
+  --animation-timing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Base styles */
+.challenge {
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem;
+  animation: fadeIn 1s var(--animation-timing);
+}
+
+.challenge__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  animation: slideUp 1s var(--animation-timing) forwards;
+}
+
+.challenge__container__left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+/* Animated heading */
+.challenge__container__left h1 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  color: var(--text-primary);
+  text-align: center;
+  animation: slideDown 1s var(--animation-timing);
+}
+
+/* Animated paragraph */
+.challenge__container__left p {
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  color: var(--text-secondary);
+  max-width: 60ch;
+  margin: 0 auto;
+  text-align: center;
+  animation: slideIn 1s var(--animation-timing);
+}
+
+/* Challenge grid */
+.challenge-contain {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  animation: fadeIn 1.5s var(--animation-timing);
+}
+
+/* Challenge cards */
+.challenge-contain__left,
+.challenge-contain__right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+  border-radius: 10px;
+  background-color: var(--bg-light);
+  transition: all 0.3s var(--animation-timing);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.challenge-contain__left:hover,
+.challenge-contain__right:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.challenge-contain__left img,
+.challenge-contain__right img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s var(--animation-timing);
+}
+
+.challenge-contain__left:hover img,
+.challenge-contain__right:hover img {
+  transform: scale(1.05);
+}
+
+.challenge-contain__left p,
+.challenge-contain__right p {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--text-primary);
+  margin: 1rem 0 0 0;
+  word-break: break-word;
+}
+
+/* Animation keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Card entrance animations */
+.challenge-contain__left,
+.challenge-contain__right {
+  opacity: 0;
+  animation: cardEntrance 0.8s var(--animation-timing) forwards;
+}
+
+.challenge-contain__left:nth-child(1) {
+  animation-delay: 0.3s;
+}
+
+.challenge-contain__left:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.challenge-contain__left:nth-child(3) {
+  animation-delay: 0.7s;
+}
+
+@keyframes cardEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

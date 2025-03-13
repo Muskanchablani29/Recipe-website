@@ -1,6 +1,6 @@
 // Navbar.jsx
 import { useState, useRef, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router";
 import { Home, Utensils, BookOpen, ShoppingCart, User } from "lucide-react";
 import "./Navbar.css";
 import logo from "./Images/logo.png";

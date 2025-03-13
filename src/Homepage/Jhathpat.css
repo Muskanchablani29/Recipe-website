@@ -1,0 +1,466 @@
+.jhathpat {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5rem 10%;
+    background-color: #f3f6ed;
+    position: relative;
+    height: 100vh; /* Full screen height */
+    overflow: hidden;
+  }
+  
+  .jhathpat__content {
+    max-width: 40%;
+  }
+  
+  .jhathpat__title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #1a2b1f;
+  }
+  
+  .highlight {
+    color: #d4a045;
+  }
+  
+  .jhathpat__desc {
+    font-size: 1rem;
+    color: #555;
+    margin: 1rem 0;
+  }
+  
+  /* Right Side - Images */
+  .jhathpat__images {
+    display: flex;
+    position: relative;
+    gap: 10px;
+  }
+  
+  .jhathpat__img {
+    width: 200px;
+    height: auto;
+    border-radius: 40px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+  }
+  
+  .img1 {
+    transform: rotate(-10deg);
+  }
+  
+  .img2 {
+    transform: rotate(5deg);
+  }
+  
+  .img3 {
+    transform: rotate(10deg);
+  }
+  
+  /* Simple Wavy Line */
+  .curve-line {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    width: 80%;
+    height: 5px;
+    background: linear-gradient(to right, #d4a045, transparent);
+    border-radius: 50%;
+    transform: translateX(-50%);
+    animation: waveAnimation 3s infinite ease-in-out;
+  }
+  
+  /* Subtle Wave Animation */
+  @keyframes waveAnimation {
+    0% {
+      transform: translateX(-50%) translateY(0);
+    }
+    50% {
+      transform: translateX(-50%) translateY(5px);
+    }
+    100% {
+      transform: translateX(-50%) translateY(0);
+    }
+  }
+  /* Jhathpat.css */
+.jhathpat {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5rem 10%;
+    background-color: #f3f6ed;
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .jhathpat__content {
+    max-width: 40%;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .jhathpat__title {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #1a2b1f;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+  
+  .highlight {
+    color: #d4a045;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .highlight::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #d4a045;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+  }
+  
+  .jhathpat__title:hover .highlight::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  
+  .jhathpat__desc {
+    font-size: 1.1rem;
+    color: #555;
+    margin: 1rem 0;
+    line-height: 1.6;
+  }
+  
+  /* Right Side - Images */
+  .jhathpat__images {
+    position: relative;
+    display: flex;
+    gap: 20px;
+    perspective: 1000px;
+    z-index: 2;
+  }
+  
+  .jhathpat__img {
+    width: 250px;
+    height: 350px;
+    border-radius: 40px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+    transition: all 0.5s ease-in-out;
+  }
+  
+  .img1 {
+    transform: rotate(-15deg) translateY(20px);
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .img2 {
+    transform: rotate(5deg);
+    animation: float 6s ease-in-out infinite 1s;
+  }
+  
+  .img3 {
+    transform: rotate(15deg) translateY(-20px);
+    animation: float 6s ease-in-out infinite 2s;
+  }
+  
+  .jhathpat__images:hover .img1 {
+    transform: rotate(-10deg) translateY(0) scale(1.05);
+  }
+  
+  .jhathpat__images:hover .img2 {
+    transform: rotate(0) scale(1.05);
+  }
+  
+  .jhathpat__images:hover .img3 {
+    transform: rotate(10deg) translateY(0) scale(1.05);
+  }
+  
+  /* Animations */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0) rotate(var(--rotation));
+    }
+    50% {
+      transform: translateY(-15px) rotate(var(--rotation));
+    }
+  }
+  
+  /* Curve Line */
+  .curve-line {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    width: 80%;
+    height: 5px;
+    background: linear-gradient(to right, #d4a045, transparent);
+    border-radius: 50%;
+    transform: translateX(-50%);
+    animation: waveAnimation 3s infinite ease-in-out;
+  }
+  
+  @keyframes waveAnimation {
+    0%, 100% {
+      transform: translateX(-50%) translateY(0);
+    }
+    50% {
+      transform: translateX(-50%) translateY(5px);
+    }
+  }
+  
+  /* Floating Dots */
+  .floating-dots {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(#d4a045 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.1;
+    animation: moveBackground 15s linear infinite;
+  }
+  
+  @keyframes moveBackground {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 50px 50px;
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 1200px) {
+    .jhathpat__title {
+      font-size: 3rem;
+    }
+    
+    .jhathpat__img {
+      width: 200px;
+      height: 300px;
+    }
+  }
+  
+  @media (max-width: 968px) {
+    .jhathpat {
+      flex-direction: column;
+      height: auto;
+      padding: 3rem 5%;
+      gap: 3rem;
+    }
+  
+    .jhathpat__content {
+      max-width: 100%;
+      text-align: center;
+    }
+  
+    .jhathpat__images {
+      transform: scale(0.8);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .jhathpat__images {
+      transform: scale(0.7);
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  
+    .jhathpat__title {
+      font-size: 2.5rem;
+    }
+  }
+  /* Jhathpat.css */
+.jhathpat {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5rem 10%;
+    background-color: #f3f6ed;
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .jhathpat__content {
+    max-width: 40%;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .jhathpat__title {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #1a2b1f;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+  
+  .highlight {
+    color: #d4a045;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .highlight::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #d4a045;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+  }
+  
+  .jhathpat__title:hover .highlight::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  
+  .jhathpat__desc {
+    font-size: 1.1rem;
+    color: #555;
+    margin: 1rem 0;
+    line-height: 1.6;
+  }
+  
+  /* Right Side - Images */
+  .jhathpat__images {
+    position: relative;
+    width: 500px;
+    height: 400px;
+    perspective: 1000px;
+    z-index: 2;
+  }
+  
+  .jhathpat__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 40px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
+    opacity: 0;
+    transform: scale(1.1) rotate(-5deg);
+    transition: all 0.5s ease-in-out;
+    pointer-events: none;
+  }
+  
+  .jhathpat__img.previous {
+    opacity: 0.3;
+    transform: scale(0.95) rotate(-8deg) translateX(-30px);
+    filter: blur(2px);
+    z-index: 1;
+  }
+  
+  .jhathpat__img.active {
+    opacity: 1;
+    transform: scale(1) rotate(-5deg);
+    pointer-events: auto;
+    z-index: 2;
+  }
+  
+  .jhathpat__images:hover .jhathpat__img.active {
+    transform: scale(1.05) rotate(0deg);
+  }
+  
+  /* Curve Line */
+  .curve-line {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    width: 80%;
+    height: 5px;
+    background: linear-gradient(to right, #d4a045, transparent);
+    border-radius: 50%;
+    transform: translateX(-50%);
+    animation: waveAnimation 3s infinite ease-in-out;
+  }
+  
+  /* Floating Dots */
+  .floating-dots {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(#d4a045 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.1;
+    animation: moveBackground 15s linear infinite;
+  }
+  
+  /* Animations */
+  @keyframes waveAnimation {
+    0%, 100% {
+      transform: translateX(-50%) translateY(0);
+    }
+    50% {
+      transform: translateX(-50%) translateY(5px);
+    }
+  }
+  
+  @keyframes moveBackground {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 50px 50px;
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 1200px) {
+    .jhathpat__title {
+      font-size: 3rem;
+    }
+    
+    .jhathpat__images {
+      width: 400px;
+      height: 320px;
+    }
+  }
+  
+  @media (max-width: 968px) {
+    .jhathpat {
+      flex-direction: column;
+      height: auto;
+      padding: 3rem 5%;
+      gap: 3rem;
+    }
+  
+    .jhathpat__content {
+      max-width: 100%;
+      text-align: center;
+    }
+  
+    .jhathpat__images {
+      width: 350px;
+      height: 280px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .jhathpat__title {
+      font-size: 2.5rem;
+    }
+  
+    .jhathpat__images {
+      width: 300px;
+      height: 240px;
+    }
+  }
+  

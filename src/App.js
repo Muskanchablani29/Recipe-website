@@ -6,6 +6,7 @@ import Contact from "./Components/Contact/Contact";
 import FunFusion from "./Components/Fun-Fusion/Fun";
 import Profile from "./Components/Profile/Profile";
 import Dotspinner from "./Components/Fun-Fusion/Games/DotGame";
+import Recipe from './Components/Recipes/Recipe'
 import "./App.css";
 
 
@@ -28,6 +29,7 @@ function App() {
             <Route path="/profile" element={<Profile />} />
         
             <Route path="/dotspinner" element={<Dotspinner />} />
+            <Route path="/recipe" element={<Recipe />} />
           </Routes>
         </main>
       </div>

@@ -13,6 +13,7 @@ import Finalimage from "../ImageHome/Finalimage.png";
 import Finalimage2 from "../ImageHome/Finalimage2.webp";
 import Food1 from "../ImageHome/food1.jpg";
 import Food2 from "../ImageHome/food2.jpg";
+import { NavLink } from "react-router";
 
 const ingredients = [
   { name: "Plate", src: Plate, direction: "top" },
@@ -115,9 +116,9 @@ export default function Home() {
           <p className="subheading">
             Explore our collection of mouthwatering dishes from around the world
           </p>
-          <button className="cta-button">
+          <NavLink to='/Recipe'><button className="cta-button">
             Browse Recipes
-          </button>
+          </button></NavLink>
         </motion.div>
       </div>
 

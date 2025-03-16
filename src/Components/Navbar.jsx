@@ -1,4 +1,3 @@
-// Navbar.jsx
 import { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router";
 import { Home, Utensils, BookOpen, ShoppingCart, User } from "lucide-react";
@@ -10,14 +9,23 @@ const menuItems = [
   { name: "About", icon: <Utensils size={24} />, link: "/about" },
   { name: "Contact", icon: <BookOpen size={24} />, link: "/contact" },
   { name: "Fun Fusion", icon: <ShoppingCart size={24} />, link: "/fun" },
-  { name: "Profile", icon: <User size={24} />, link: "/profile" },
 ];
 
 export default function Navbar() {
   const [expanded, setExpanded] = useState(false);
   const [isScrolling, setIsScrolling] = useState(false);
+  const [username, setUsername] = useState(""); // Add state for username
   const menuRef = useRef(null);
   const location = useLocation();
+
+  useEffect(() => {
+    // Check if user is logged in and get username from localStorage
+    const loggedInUser = localStorage.getItem("user");
+    if (loggedInUser) {
+      const user = JSON.parse(loggedInUser);
+      setUsername(user.username);
+    }
+  }, []);
 
   useEffect(() => {
     const handleScroll = (e) => {
@@ -48,6 +56,31 @@ export default function Navbar() {
     return location.pathname === path;
   };
 
+  // Profile icon component with first letter
+  const ProfileIcon = ({ username }) => {
+    if (!username) {
+      return <User size={24} />;
+    }
+    return (
+      <div
+        style={{
+          width: "24px",
+          height: "24px",
+          backgroundColor: "#FAEBD7",
+          borderRadius: "50%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "#8B4513",
+          fontWeight: "bold",
+          fontSize: "14px",
+        }}
+      >
+        {username.charAt(0).toUpperCase()}
+      </div>
+    );
+  };
+
   return (
     <div className="navbar-container">
       <nav
@@ -75,6 +108,20 @@ export default function Navbar() {
                 </Link>
               </li>
             ))}
+            {/* Profile/Username menu item */}
+            <li className="menu-item-container">
+              <Link
+                to="/profile"
+                className={`menu-item ${isActive("/profile") ? "active" : ""}`}
+              >
+                <span className="menu-icon">
+                  <ProfileIcon username={username} />
+                </span>
+                <span className="menu-label">
+                  {username || "Profile"}
+                </span>
+              </Link>
+            </li>
           </ul>
         </div>
       </nav>

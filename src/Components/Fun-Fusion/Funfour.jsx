@@ -5,7 +5,7 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
-import { EffectCoverflow, Pagination, Autoplay } from "swiper/modules";
+import { EffectCoverflow, Pagination, Autoplay, Navigation } from "swiper/modules";
 import "./Funfour.css";
 
 import image1 from './Jhatpat-recipes/image1.png'
@@ -16,8 +16,8 @@ import image5 from './Jhatpat-recipes/image5.png'
 import image6 from './Jhatpat-recipes/image6.png'
 import image7 from './Jhatpat-recipes/image7.png'
 import image8 from './Jhatpat-recipes/image8.png'
-import image9 from './Jhatpat-recipes/image2.png'
-import image10 from './Jhatpat-recipes/image2.png'
+import image9 from './Jhatpat-recipes/image5.png'
+import image10 from './Jhatpat-recipes/image1.png'
 
 const allRecipes = [
   { image: image1, title: "Chocolate Cookies", desc: "Crispy outside, gooey inside, perfect for dessert!" },
@@ -35,22 +35,25 @@ const allRecipes = [
 const RecipeSlider = () => {
   return (
     <div className="recipe-slider">
-      <h2 className="title">Shared <span className="highlight">Jhatpat Recipes</span></h2>
-      <p className="subtitle">Explore quick and delicious recipes for your everyday cravings!</p>
+      <h2 className="title">Explore <span className="text-highlight">JhatPat Recipes</span></h2>
+      <p className="subtitle">Welcome to Jhatpat Recipes, where we serve up dishes that are fast, flavorful, and fuss-free! From 10-minute snacks to hearty meals ready in no time, we've got you covered.</p>
       <Swiper
-        modules={[EffectCoverflow, Pagination, Autoplay]}
+        modules={[EffectCoverflow, Pagination, Autoplay, Navigation]}
         effect="coverflow"
         grabCursor={true}
         centeredSlides={true}
-        slidesPerView={5}
-        initialSlide={2}
+        slidesPerView={3}
         loop={true}
-        loopedSlides={5}
         speed={1000}
         autoplay={{
           delay: 2000,
           disableOnInteraction: false,
           pauseOnMouseEnter: true,
+        }}
+        navigation={true}
+        pagination={{
+          clickable: true,
+          dynamicBullets: true,
         }}
         coverflowEffect={{
           rotate: 0,
@@ -59,18 +62,12 @@ const RecipeSlider = () => {
           modifier: 2.5,
           slideShadows: true,
         }}
-        pagination={{
-          clickable: true,
-          dynamicBullets: true,
-        }}
         className="swiper-container"
       >
         {allRecipes.map((recipe, index) => (
           <SwiperSlide key={index} className="swiper-slide">
             <div className="slide-card">
-              <div className="slide-image-container">
-                <img src={recipe.image} alt={recipe.title} className="slide-image" />
-              </div>
+              <img src={recipe.image} alt={recipe.title} className="slide-image" />
               <div className="slide-content">
                 <h3 className="slide-title">{recipe.title}</h3>
                 <p className="slide-desc">{recipe.desc}</p>
@@ -79,6 +76,7 @@ const RecipeSlider = () => {
           </SwiperSlide>
         ))}
       </Swiper>
+      <button className="see-all">See All</button>
     </div>
   );
 };

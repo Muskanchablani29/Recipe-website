@@ -236,3 +236,29 @@
 .menu-item.active::before {
   transform: scaleY(1);
 }
+
+/* Add these styles to your existing Navbar.css */
+.profile-icon {
+  width: 24px;
+  height: 24px;
+  background-color: #FAEBD7;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8B4513;
+  font-weight: bold;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.profile-icon:hover {
+  transform: scale(1.1);
+  background-color: #DEB887;
+}
+
+/* Optional: Add animation for username transition */
+.menu-label {
+  transition: all 0.3s ease;
+}
+

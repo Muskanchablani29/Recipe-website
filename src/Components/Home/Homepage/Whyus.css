@@ -88,17 +88,17 @@
   z-index: 2;
 }
 
-.image-container {
+.image-container-whyus {
   position: relative;
   text-align: center;
   transition: transform 0.3s ease;
 }
 
-.image-container:hover {
+.image-container-whyus:hover {
   transform: translateY(-10px);
 }
 
-.image-container img {
+.image-container-whyus img {
   width: 150px;
   height: 220px;
   object-fit: cover;
@@ -107,7 +107,7 @@
   transition: all 0.3s ease;
 }
 
-.image-container:hover img {
+.image-container-whyus:hover img {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 

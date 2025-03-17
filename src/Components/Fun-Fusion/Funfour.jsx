@@ -18,6 +18,7 @@ import image7 from './Jhatpat-recipes/image7.png'
 import image8 from './Jhatpat-recipes/image8.png'
 import image9 from './Jhatpat-recipes/image5.png'
 import image10 from './Jhatpat-recipes/image1.png'
+import { NavLink } from "react-router";
 
 const allRecipes = [
   { image: image1, title: "Chocolate Cookies", desc: "Crispy outside, gooey inside, perfect for dessert!" },
@@ -76,7 +77,7 @@ const RecipeSlider = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-      <button className="see-all">See All</button>
+      <NavLink to="/Jhatpat"><button className="see-all">See All</button></NavLink>
     </div>
   );
 };

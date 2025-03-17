@@ -7,6 +7,7 @@ import FunFusion from "./Components/Fun-Fusion/Fun";
 import Profile from "./Components/Profile/Profile";
 import Dotspinner from "./Components/Fun-Fusion/Games/DotGame";
 import Recipe from './Components/Recipes/Recipe'
+import Jhatpat from "./Components/JhatPat Recipes/Jhatpat";
 import "./App.css";
 
 
@@ -30,6 +31,7 @@ function App() {
         
             <Route path="/dotspinner" element={<Dotspinner />} />
             <Route path="/recipe" element={<Recipe />} />
+            <Route path="/Jhatpat" element={<Jhatpat />} />
           </Routes>
         </main>
       </div>

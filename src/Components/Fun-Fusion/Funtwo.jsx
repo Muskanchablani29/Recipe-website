@@ -9,16 +9,10 @@ const FunFusionWelcome = () => {
       {/* Left Section */}
       <div className="text-section">
         <span className="tag">Quick & Delicious</span>
-        <h1 className="title">Quick Recipe Adventures</h1>
+        <h1 className="title">Welcome to the Fun and Fusion Zone!</h1>
         <p className="description">
-        Discover a world of quick and easy recipes that bring joy to your kitchen. 
-          From 15-minute meals to instant pot wonders, explore our collection of 
-          time-saving recipes that don't compromise on taste. Perfect for busy 
-          food lovers!
+        Step into a world where flavors collide and creativity knows no bounds. This is your go-to space for exploring the unexpected and embracing the joy of cooking. Whether you're a culinary adventurer or just looking to spice up your routine, we've got something special for everyone!
         </p>
-        <button className="cta-button">
-          Explore Quick Recipes
-        </button>
       </div>
 
       {/* Right Section */}

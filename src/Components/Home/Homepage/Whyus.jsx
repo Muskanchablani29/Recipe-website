@@ -101,7 +101,7 @@ const HeroSection = () => {
       >
         {content.map((item, index) => (
           <motion.div
-            className="image-container"
+            className="image-container-whyus"
             key={index}
             variants={itemVariants}
             whileHover={{ 

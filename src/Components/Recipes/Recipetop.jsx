@@ -68,7 +68,7 @@ export default function RecipeTop() {
           {localImages.map((image, index) => (
             <motion.div
               key={index}
-              className="image-container"
+              className="image-container-Recipetop"
               whileHover={{ scale: 1.1 }}
               onClick={() => setCurrentImageIndex(index)}
             >

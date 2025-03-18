@@ -8,6 +8,7 @@ import Profile from "./Components/Profile/Profile";
 import Dotspinner from "./Components/Fun-Fusion/Games/DotGame";
 import Recipe from './Components/Recipes/Recipe'
 import Jhatpat from "./Components/JhatPat Recipes/Jhatpat";
+import SmartChef from "./Components/SmartChef/Smartchep";
 import "./App.css";
 
 
@@ -34,6 +35,7 @@ function App() {
             <Route path="/Jhatpat" element={<Jhatpat />} />
           </Routes>
         </main>
+        <SmartChef/>
       </div>
     </Router>
   );

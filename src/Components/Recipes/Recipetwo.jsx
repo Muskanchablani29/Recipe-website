@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import "./Recipetwo.css";
 
 const ingredients = [
-  "Tomato", "Chicken", "Paneer", "Mushroom", "Egg", "Spinach", "Carrot", "Beef", "Fish", "Potato", 
-  "Garlic", "Onion", "Peas", "Corn", "Cheese", "Lettuce", "Cabbage", "Cucumber", "Pumpkin", "Lemon", 
-  "Orange", "Apple", "Banana", "Ginger", "Broccoli", "Cauliflower", "Pepper", "Zucchini", "Radish", "Beetroot", 
-  "Yogurt", "Milk", "Butter", "Almonds", "Walnuts", "Peanuts", "Tofu", "Lamb", "Pork", "Turkey", 
+  "Tomato", "Chicken", "Paneer", "Mushroom", "Egg", "Spinach", "Carrot", "Beef", "Fish", "Potato",
+  "Garlic", "Onion", "Peas", "Corn", "Cheese", "Lettuce", "Cabbage", "Cucumber", "Pumpkin", "Lemon",
+  "Orange", "Apple", "Banana", "Ginger", "Broccoli", "Cauliflower", "Pepper", "Zucchini", "Radish", "Beetroot",
+  "Yogurt", "Milk", "Butter", "Almonds", "Walnuts", "Peanuts", "Tofu", "Lamb", "Pork", "Turkey",
   "Shrimp", "Crab", "Lobster", "Clams", "Oats", "Rice", "Quinoa", "Barley", "Chickpeas", "Lentils"
 ];
 
@@ -23,6 +23,7 @@ const IngredientDishSelector = () => {
   const [showDishes, setShowDishes] = useState(false);
   const [showMore, setShowMore] = useState(false);
 
+  // Toggle ingredient selection
   const toggleIngredient = (ingredient) => {
     setSelectedIngredients((prev) =>
       prev.includes(ingredient)
@@ -31,10 +32,12 @@ const IngredientDishSelector = () => {
     );
   };
 
+  // Show dishes when Next button is clicked
   const handleNext = () => {
     setShowDishes(true);
   };
 
+  // Fetch and prioritize dishes based on selection order
   const getDishes = () => {
     let suggestedDishes = [];
     selectedIngredients.forEach((ingredient) => {
@@ -42,7 +45,7 @@ const IngredientDishSelector = () => {
         suggestedDishes = [...suggestedDishes, ...dishes[ingredient]];
       }
     });
-    return [...new Set(suggestedDishes)];
+    return [...new Set(suggestedDishes)]; // Remove duplicates while maintaining order
   };
 
   return (
@@ -53,16 +56,27 @@ const IngredientDishSelector = () => {
           <button
             key={ingredient}
             onClick={() => toggleIngredient(ingredient)}
-            className={`ingredient-button ${selectedIngredients.includes(ingredient) ? "selected" : ""}`}
+            className={`ingredient-button ${
+              selectedIngredients.includes(ingredient) ? "selected" : ""
+            }`}
           >
             {ingredient}
           </button>
         ))}
       </div>
       {!showMore && (
-        <button className="show-more-button" onClick={() => setShowMore(true)}>Show More</button>
+        <button
+          className="show-more-button"
+          onClick={() => setShowMore(true)}
+        >
+          Show More
+        </button>
       )}
-      <button className="next-button" onClick={handleNext} disabled={selectedIngredients.length === 0}>
+      <button
+        className="next-button"
+        onClick={handleNext}
+        disabled={selectedIngredients.length === 0}
+      >
         Next
       </button>
       {showDishes && (
@@ -71,7 +85,11 @@ const IngredientDishSelector = () => {
           <div className="dish-grid full-width">
             {getDishes().map((dish, index) => (
               <div key={index} className="dish-card">
-                <img src={`https://source.unsplash.com/300x200/?${dish}`} alt={dish} className="dish-image" />
+                <img
+                  src={`https://source.unsplash.com/300x200/?${dish}`}
+                  alt={dish}
+                  className="dish-image"
+                />
                 <p className="dish-name">{dish}</p>
               </div>
             ))}

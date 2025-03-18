@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
-import { Link, useLocation } from "react-router";
-import { Home, Utensils, BookOpen, ShoppingCart, User } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Home, Utensils, BookOpen, ShoppingCart, User, LogOut } from "lucide-react";
 import "./Navbar.css";
 import logo from "./Images/logo.png";
 
@@ -14,30 +14,48 @@ const menuItems = [
 export default function Navbar() {
   const [expanded, setExpanded] = useState(false);
   const [isScrolling, setIsScrolling] = useState(false);
-  const [username, setUsername] = useState(""); // Add state for username
+  const [user, setUser] = useState(null);
+  const [showProfileDropdown, setShowProfileDropdown] = useState(false);
   const menuRef = useRef(null);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if user is logged in and get username from localStorage
-    const loggedInUser = localStorage.getItem("user");
-    if (loggedInUser) {
-      const user = JSON.parse(loggedInUser);
-      setUsername(user.username);
-    }
+    const checkUser = () => {
+      const userData = localStorage.getItem("user");
+      console.log("Raw user data from localStorage:", userData); // Debugging
+      if (userData) {
+        try {
+          const parsedUser = JSON.parse(userData);
+          console.log("Parsed user object:", parsedUser); // Debugging
+          setUser(parsedUser);
+        } catch (error) {
+          console.error("Error parsing user data:", error);
+          localStorage.removeItem("user");
+        }
+      } else {
+        setUser(null);
+      }
+    };
+
+    checkUser();
+    window.addEventListener("storage", checkUser);
+    return () => window.removeEventListener("storage", checkUser);
   }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    setUser(null);
+    setShowProfileDropdown(false);
+    navigate("/login");
+  };
 
   useEffect(() => {
     const handleScroll = (e) => {
       const container = e.target;
       const isFullyScrolled =
         Math.abs(container.scrollHeight - container.scrollTop - container.clientHeight) < 1;
-
-      if (isFullyScrolled) {
-        setIsScrolling(false);
-      } else {
-        setIsScrolling(true);
-      }
+      setIsScrolling(!isFullyScrolled);
     };
 
     const menuElement = menuRef.current;
@@ -52,20 +70,29 @@ export default function Navbar() {
     };
   }, []);
 
-  const isActive = (path) => {
-    return location.pathname === path;
-  };
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setShowProfileDropdown(false);
+      }
+    };
 
-  // Profile icon component with first letter
-  const ProfileIcon = ({ username }) => {
-    if (!username) {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const isActive = (path) => location.pathname === path;
+
+  const ProfileIcon = ({ user }) => {
+    if (!user || !user.name) {
       return <User size={24} />;
     }
     return (
       <div
         style={{
-          width: "24px",
-          height: "24px",
+          width: "32px",
+          height: "32px",
           backgroundColor: "#FAEBD7",
           borderRadius: "50%",
           display: "flex",
@@ -73,10 +100,11 @@ export default function Navbar() {
           justifyContent: "center",
           color: "#8B4513",
           fontWeight: "bold",
-          fontSize: "14px",
+          fontSize: "16px",
+          cursor: "pointer",
         }}
       >
-        {username.charAt(0).toUpperCase()}
+        {user.name.charAt(0).toUpperCase()}
       </div>
     );
   };
@@ -108,19 +136,30 @@ export default function Navbar() {
                 </Link>
               </li>
             ))}
-            {/* Profile/Username menu item */}
-            <li className="menu-item-container">
-              <Link
-                to="/profile"
+            <li className="menu-item-container profile-container">
+              <div
                 className={`menu-item ${isActive("/profile") ? "active" : ""}`}
+                onClick={() => setShowProfileDropdown(!showProfileDropdown)}
               >
                 <span className="menu-icon">
-                  <ProfileIcon username={username} />
+                  <ProfileIcon user={user} />
                 </span>
                 <span className="menu-label">
-                  {username || "Profile"}
+                  {user && user.name ? user.name.split(" ")[0] : "Profile"}
                 </span>
-              </Link>
+              </div>
+              {showProfileDropdown && (
+                <div className="profile-dropdown">
+                  <Link to="/profile" className="dropdown-item">
+                    <User size={20} />
+                    <span>Profile</span>
+                  </Link>
+                  <button onClick={handleLogout} className="dropdown-item">
+                    <LogOut size={20} />
+                    <span>Logout</span>
+                  </button>
+                </div>
+              )}
             </li>
           </ul>
         </div>

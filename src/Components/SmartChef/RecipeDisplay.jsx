@@ -1,8 +1,18 @@
 import React from 'react';
 import './SmartChef.css';
 
-const RecipeDisplay = ({ recipe, selectedDish, type, onNextStep, currentStep }) => {
+const RecipeDisplay = ({ recipe, selectedDish, type, onNextStep, currentStep, totalSteps }) => {
+  // Add console.log to debug the incoming data
+  console.log('Recipe Data:', recipe);
+  console.log('Type:', type);
+
   if (type === 'Full Recipe') {
+    if (!recipe?.fullRecipe) {
+      return <div className="recipe-display error">
+        <p>Full recipe details are not available.</p>
+      </div>;
+    }
+
     return (
       <div className="recipe-display">
         <h3>{selectedDish}</h3>
@@ -24,27 +34,30 @@ const RecipeDisplay = ({ recipe, selectedDish, type, onNextStep, currentStep }) 
 
   if (type === 'Step by Step') {
     return (
-      <div className="step-display">
-        <h4>Step {currentStep + 1} of {recipe.steps.length}:</h4>
-        <p>{recipe.steps[currentStep]}</p>
-        {currentStep < recipe.steps.length - 1 && (
-          <button 
-            className="next-step-button" 
-            onClick={onNextStep}
-          >
-            Next Step →
-          </button>
-        )}
-        {currentStep === recipe.steps.length - 1 && (
-          <div className="recipe-complete">
-            <p>🎉 Recipe completed! Enjoy your {selectedDish}!</p>
-          </div>
-        )}
+      <div className="recipe-display">
+        <h4>{selectedDish}</h4>
+        <div className="step-display">
+          <p>Step {currentStep + 1} of {totalSteps}</p>
+          <p>{recipe.steps[currentStep]}</p>
+          {currentStep < totalSteps - 1 && (
+            <button onClick={onNextStep} className="next-step-button">
+              Next Step
+            </button>
+          )}
+        </div>
+      </div>
+    );
+  } else {
+    return (
+      <div className="recipe-display">
+        <h4>{selectedDish}</h4>
+        <div className="full-recipe">
+          {recipe.fullRecipe}
+        </div>
       </div>
     );
   }
-
-  return null;
 };
 
 export default React.memo(RecipeDisplay);
+

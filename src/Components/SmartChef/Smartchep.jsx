@@ -310,82 +310,139 @@ const handleMealTimeSelect = useCallback((mealTime) => {
     setTimeout(scrollToBottom, 100);
   }, [scrollToBottom, returnToMainMenu]);
 
-  // Handle recipe type selection
-  const handleRecipeType = useCallback((type, selectedDish) => {
-    if (!type || !selectedDish) return;
-    setCurrentStep(0);
+// Handle recipe type selection
+const handleRecipeType = useCallback((type, selectedDish) => {
+  if (!type || !selectedDish) return;
+  setCurrentStep(0); // Reset step counter
   
-    const recipe = recipes[selectedDish];
-    if (!recipe) {
+  const recipe = recipes[selectedDish];
+  
+  if (!recipe) {
+    console.error(`Recipe not found for ${selectedDish}`);
+    setMessages(prev => [
+      ...prev,
+      {
+        type: 'assistant',
+        content: `Sorry, the recipe for ${selectedDish} is not available.`
+      }
+    ]);
+    resetChat();
+    return;
+  }
+
+  // For Step by Step
+  if (type === 'Step by Step') {
+    // Check if recipe has steps property and it's not empty
+    if (recipe.steps && recipe.steps.length > 0) {
       setMessages(prev => [
         ...prev,
-        { type: 'user', content: type },
         {
           type: 'assistant',
-          content: "I'm sorry, but I don't have the recipe for this dish yet."
+          content: (
+            <RecipeDisplay 
+              recipe={recipe}
+              selectedDish={selectedDish}
+              type={type}
+              onNextStep={() => showNextStep(recipe, selectedDish)}
+              currentStep={0}
+              totalSteps={recipe.steps.length}
+            />
+          )
+        }
+      ]);
+    } else {
+      setMessages(prev => [
+        ...prev,
+        {
+          type: 'assistant',
+          content: `Sorry, step-by-step instructions are not available for ${selectedDish}.`
         }
       ]);
       resetChat();
-      return;
     }
-  
-    setMessages(prev => [
-      ...prev,
-      { type: 'user', content: type },
-      {
-        type: 'assistant',
-        content: (
-          <RecipeDisplay 
-            recipe={recipe}
-            selectedDish={selectedDish}
-            type={type}
-            onNextStep={() => showNextStep(recipe, selectedDish)}
-            currentStep={currentStep}
-          />
-        )
-      }
-    ]);
-    
-    setTimeout(scrollToBottom, 100);
-    
-    if (type === 'Full Recipe') {
+  } 
+  // For Full Recipe
+  else if (type === 'Full Recipe') {
+    if (recipe.fullRecipe) {
+      setMessages(prev => [
+        ...prev,
+        {
+          type: 'assistant',
+          content: (
+            <RecipeDisplay 
+              recipe={recipe}
+              selectedDish={selectedDish}
+              type={type}
+            />
+          )
+        }
+      ]);
+      
+      setTimeout(() => {
+        resetChat();
+      }, 2000);
+    } else {
+      setMessages(prev => [
+        ...prev,
+        {
+          type: 'assistant',
+          content: `Sorry, the full recipe is not available for ${selectedDish}.`
+        }
+      ]);
       resetChat();
     }
-  }, [currentStep, scrollToBottom, resetChat]);
+  }
+  
+  setTimeout(scrollToBottom, 100);
+}, [currentStep, scrollToBottom, resetChat]);
 
-  // Show next step in recipe
-  const showNextStep = useCallback((recipe, selectedDish) => {
-    setCurrentStep(prevStep => {
-      const nextStep = prevStep + 1;
-      
-      if (nextStep < recipe.steps.length) {
-        setMessages(prev => [
-          ...prev,
-          {
-            type: 'assistant',
-            content: (
-              <RecipeDisplay 
-                recipe={recipe}
-                selectedDish={selectedDish}
-                type="Step by Step"
-                onNextStep={() => showNextStep(recipe, selectedDish)}
-                currentStep={nextStep}
-              />
-            )
-          }
-        ]);
-        setTimeout(scrollToBottom, 100);
-      }
 
-      if (nextStep === recipe.steps.length - 1) {
-        setTimeout(() => {
-          resetChat();
-        }, 2000);
-      }
+// Show next step in recipe
+const showNextStep = useCallback((recipe, selectedDish) => {
+  if (!recipe || !recipe.steps) {
+    console.error('Recipe or steps are undefined');
+    return;
+  }
 
-      return nextStep;
-    });
-  }, [scrollToBottom, resetChat]);
+  setCurrentStep(prevStep => {
+    const nextStep = prevStep + 1;
+    
+    // Check if we still have steps to show
+    if (nextStep < recipe.steps.length) {
+      setMessages(prev => [
+        ...prev,
+        {
+          type: 'assistant',
+          content: (
+            <RecipeDisplay 
+              recipe={recipe}
+              selectedDish={selectedDish}
+              type="Step by Step"
+              onNextStep={() => showNextStep(recipe, selectedDish)}
+              currentStep={nextStep}
+              totalSteps={recipe.steps.length} // Add total steps count
+            />
+          )
+        }
+      ]);
+      setTimeout(scrollToBottom, 100);
+    }
+
+    // If this is the last step, show completion message and reset
+    if (nextStep === recipe.steps.length) {
+      setMessages(prev => [
+        ...prev,
+        {
+          type: 'assistant',
+          content: "That's all the steps! Your dish should be ready. Would you like to try another recipe?"
+        }
+      ]);
+      resetChat();
+    }
+
+    return nextStep;
+  });
+}, [scrollToBottom, resetChat]);
 
   // Handle dish selection
   const handleDishSelection = useCallback((dish) => {

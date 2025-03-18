@@ -6,9 +6,10 @@ export const dishesByCategory = {
       'Pakora', 'Kuttu Pakora', 'Sabudana Vada', 'Aloo Chaat', 'Raj Kachori', 'Chilli Paneer', 'Paneer Tikka',
     ],
     'Junk Food': [
-      'Burger', 'Pizza', 'French Fries', 'Fried Chicken', 'Hot Dog', 'Tacos', 'Nachos', 'Corn Dog',
-      'Onion Rings', 'Mozzarella Sticks', 'Sliders', 'Buffalo Wings', 'Grilled Cheese', 'Stuffed Crust Pizza',
+      'Burger', 'Pizza', 'French Fries', 'Hot Dog', 'Tacos', 'Nachos', 'Sweet Corn',
+      'Onion Rings', 'Mozzarella Sticks', 'Sliders', 'Grilled Cheese', 'Stuffed Crust Pizza',
       'Mac and Cheese Bites', 'Chicken Nuggets', 'Curly Fries', 'Deep-fried Oreos', 'Cheese Balls', 'Quesadilla',
+      'Red Sauce Pasta','White Sauce Pasta'
     ],
     'Healthy': [
       'Grilled Salmon', 'Quinoa Salad', 'Greek Yogurt with Berries', 'Oatmeal with Nuts', 'Chickpea Salad',
@@ -50,14 +51,14 @@ export const dishesByCategory = {
         ]
       },
       steps: [
-        'Mix semolina and all-purpose flour in a bowl. Add water gradually to make firm dough.',
-        'Cover dough and let it rest for 30 minutes.',
-        'Roll the dough thinly and cut small circles using a cookie cutter.',
-        'Heat oil and deep fry the puris until golden brown and crispy.',
-        'Prepare the potato filling by mashing boiled potatoes with spices.',
-        'Blend mint, cilantro, and spices to make the spiced water.',
-        'To serve: Make a hole in puri, add potato filling, and dip in spiced water.',
-        'Finally, add tamarind chutney and enjoy immediately!'
+        'Step 1: Mix semolina and all-purpose flour in a bowl. Add water gradually to make firm dough.',
+        'Step 2: Cover dough and let it rest for 30 minutes.',
+        'Step 3: Roll the dough thinly and cut small circles using a cookie cutter.',
+        'Step 4: Heat oil and deep fry the puris until golden brown and crispy.',
+        'Step 5: Prepare the potato filling by mashing boiled potatoes with spices.',
+        'Step 6: Blend mint, cilantro, and spices to make the spiced water.',
+        'Step 7: To serve: Make a hole in puri, add potato filling, and dip in spiced water.',
+        'Step 8: Finally, add tamarind chutney and enjoy immediately!'
       ]
     },
     'Burger': {
@@ -86,14 +87,14 @@ export const dishesByCategory = {
         ]
       },
       steps: [
-        'Mix ground beef with salt and pepper. Form into equal-sized patties.',
-        'Heat grill or pan to medium-high heat.',
-        'Cook patties for 4-5 minutes each side for medium doneness.',
-        'Add cheese on top of patties in the last minute.',
-        'Toast the burger buns until golden brown.',
-        'Spread mayo, ketchup, and mustard on buns.',
-        'Assemble: bottom bun, lettuce, patty with cheese, tomato, onion, top bun.',
-        'Serve hot with your favorite sides!'
+        'Step 1: Mix ground beef with salt and pepper. Form into equal-sized patties.',
+        'Step 2: Heat grill or pan to medium-high heat.',
+        'Step 3: Cook patties for 4-5 minutes each side for medium doneness.',
+        'Step 4: Add cheese on top of patties in the last minute.',
+        'Step 5: Toast the burger buns until golden brown.',
+        'Step 6: Spread mayo, ketchup, and mustard on buns.',
+        'Step 7: Assemble: bottom bun, lettuce, patty with cheese, tomato, onion, top bun.',
+        'Step 8: Serve hot with your favorite sides!'
       ]
     },
     'Samosa':{
@@ -121,6 +122,17 @@ export const dishesByCategory = {
               'Mix potato filling with spices.',
               'Make a hole in samosa, fill with potato mixture.',
               'Add spiced water and tamarind chutney when serving.'
+          ],
+          steps: [
+              'Step 1: Mix all-purpose flour and water to make a soft dough.',
+              'Step 2: Add ghee and milk to the dough.',
+              'Step 3: Knead the dough into a smooth batter.',
+              'Step 4: Divide the batter into small circles and shape them into samosas.',
+              'Step 5: Heat oil in a pan and fry the samosas until golden brown.',
+              'Step 6: Prepare spiced water by blending mint, cilantro, and spices.',
+              'Step 7: Mix potato filling with spices.',
+              'Step 8: Make a hole in samosa, fill with potato mixture.',
+              'Step 9: Add spiced water and tamarind chutney when serving.'
           ]
       }
     },
@@ -180,10 +192,10 @@ export const dishesByCategory = {
             'Serve hot, garnished with coriander leaves and lemon wedges, alongside toasted pav buns.'
           ],
           steps: [
-            'Boil and mash potatoes, peas, and cauliflower.',
-            'Sauté onions and capsicum in butter.',
-            'Cook tomatoes with spices, then combine with mashed vegetables.',
-            'Simmer and serve with toasted pav buns, garnished with coriander leaves.'
+            'Step 1: Boil and mash potatoes, peas, and cauliflower.',
+            'Step 2: Sauté onions and capsicum in butter.',
+            'Step 3: Cook tomatoes with spices, then combine with mashed vegetables.',
+            'Step 4: Simmer and serve with toasted pav buns, garnished with coriander leaves.'
           ]
         }
       },      
@@ -207,9 +219,9 @@ export const dishesByCategory = {
             'Sprinkle lemon juice and garnish with coriander leaves before serving.'
           ],
           steps: [
-            'Boil and dice potatoes.',
-            'Mix spices and potatoes in a bowl.',
-            'Add chutneys and garnish with coriander leaves before serving.'
+            'Step 1: Boil and dice potatoes.',
+            'Step 2: Mix spices and potatoes in a bowl.',
+            'Step 3: Add chutneys and garnish with coriander leaves before serving.'
           ]
         }
       },
@@ -233,9 +245,9 @@ export const dishesByCategory = {
             'Deep fry until golden and crispy. Serve hot with chutneys.'
           ],
           steps: [
-            'Mix gram flour and spices to create a thick batter.',
-            'Prepare chilies by slitting them and removing seeds if needed.',
-            'Dip chilies in batter and fry until crispy.'
+            'Step 1: Mix gram flour and spices to create a thick batter.',
+            'Step 2: Prepare chilies by slitting them and removing seeds if needed.',
+            'Step 3: Dip chilies in batter and fry until crispy.'
           ]
         }
       },
@@ -258,9 +270,9 @@ export const dishesByCategory = {
             'Deep fry until golden brown and crispy.'
           ],
           steps: [
-            'Prepare onion batter with spices and gram flour.',
-            'Heat oil and deep fry small portions of the batter.',
-            'Serve with chutney or tea.'
+            'Step 1: Prepare onion batter with spices and gram flour.',
+            'Step 2: Heat oil and deep fry small portions of the batter.',
+            'Step 3: Serve with chutney or tea.'
           ]
         }
       },
@@ -282,9 +294,9 @@ export const dishesByCategory = {
             'Garnish with coriander and serve immediately.'
           ],
           steps: [
-            'Prepare puris with mashed potato topping.',
-            'Layer chutneys and chopped veggies.',
-            'Finish with sev and coriander leaves.'
+            'Step 1: Prepare puris with mashed potato topping.',
+            'Step 2: Layer chutneys and chopped veggies.',
+            'Step 3: Finish with sev and coriander leaves.'
           ]
         }
       },
@@ -307,9 +319,9 @@ export const dishesByCategory = {
             'Serve immediately to retain crispiness.'
           ],
           steps: [
-            'Combine puffed rice, sev, and chopped veggies.',
-            'Mix in chutneys and spices.',
-            'Serve garnished with coriander.'
+            'Step 1: Combine puffed rice, sev, and chopped veggies.',
+            'Step 2: Mix in chutneys and spices.',
+            'Step 3: Serve garnished with coriander.'
           ]
         }
       },            
@@ -656,6 +668,62 @@ export const dishesByCategory = {
           ]
         }
       },
-                                                                                      
+        'Pizza':{fullRecipe: {
+          ingredients: [
+            'Pizza dough',
+            'Tomato sauce',
+            'Mozzarella cheese, shredded',
+            'Pepperoni or desired toppings',
+            'Olive oil',
+            'Dried oregano or basil'
+          ],
+          instructions: [
+            'Roll out pizza dough to desired size and thickness',
+            'Spread tomato sauce evenly over the dough',
+            'Sprinkle shredded mozzarella cheese on top',
+            'Add toppings like pepperoni, vegetables, or olives',
+            'Drizzle olive oil and sprinkle oregano or basil',
+            'Bake in a preheated oven at 220°C (425°F) for 15-20 minutes',
+            'Slice and serve hot'
+          ]
+        },
+        steps: [
+          'Preheat the oven to 220°C (425°F).',
+          'Roll out the pizza dough and place it on a baking tray or pizza stone.',
+          'Evenly spread tomato sauce over the dough.',
+          'Top with shredded mozzarella cheese.',
+          'Add your chosen toppings (pepperoni, veggies, etc.).',
+          'Drizzle olive oil and sprinkle dried oregano or basil for extra flavor.',
+          'Bake in the oven for 15-20 minutes until the crust is golden brown.',
+          'Slice into pieces and enjoy!'
+        ]
+        },
+        'French Fries':{fullRecipe: {
+          ingredients: [
+            '4 large potatoes',
+            'Cooking oil for frying',
+            'Salt to taste',
+            'Optional spices (paprika, garlic powder, etc.)'
+          ],
+          instructions: [
+            'Peel and cut potatoes into thin strips',
+            'Soak strips in water to remove excess starch',
+            'Heat oil in a deep fryer or pan',
+            'Dry potato strips and fry in batches until golden and crispy',
+            'Drain on paper towels and season with salt or spices',
+            'Serve warm with ketchup or mayo'
+          ]
+        },
+        steps: [
+          'Peel potatoes and slice them into thin strips.',
+          'Soak the potato strips in water for 20 minutes to remove excess starch.',
+          'Heat cooking oil in a deep fryer or a large pan.',
+          'Dry the soaked potato strips using a clean towel.',
+          'Deep fry the strips in small batches until they turn golden and crispy.',
+          'Remove fries onto paper towels to drain excess oil.',
+          'Season fries with salt and optional spices like paprika.',
+          'Serve immediately with your favorite dips!'
+        ]
+        }                                                                              
   };
   

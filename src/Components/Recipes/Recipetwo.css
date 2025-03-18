@@ -1,173 +1,172 @@
 /* IngredientDishSelector.css */
 
 body {
-    background-color: #f8f1e4;
-    font-family: "Arial", sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .full-width {
-    width: 100%;
-  }
-  
-  .container {
-    text-align: center;
-    padding: 30px;
-    max-width: 1100px;
-    margin: auto;
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-  
-  .title {
-    font-size: 28px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: #5c4033;
-  }
-  
+  background-color: #f8f1e4;
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.container {
+  text-align: center;
+  padding: 30px;
+  max-width: 1100px;
+  margin: auto;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #5c4033;
+}
+
+.ingredient-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  padding: 20px;
+  background: #fdf8f2;
+  border-radius: 10px;
+}
+
+.ingredient-button {
+  background-color: transparent;
+  color: #5c4033;
+  border: 2px solid #5c4033;
+  padding: 12px 18px;
+  font-size: 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  font-weight: bold;
+}
+
+.ingredient-button:hover {
+  background-color: rgba(92, 64, 51, 0.2);
+}
+
+.ingredient-button.selected {
+  background-color: #d4a373;
+  color: white;
+  border: 2px solid #5c4033;
+}
+
+.show-more-button {
+  background-color: #b08968;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  font-size: 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.3s ease-in-out;
+}
+
+.show-more-button:hover {
+  background-color: #7f5539;
+}
+
+.next-button {
+  background-color: #9c6644;
+  color: white;
+  border: none;
+  padding: 14px 24px;
+  font-size: 18px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  margin-top: 20px;
+}
+
+.next-button:hover {
+  background-color: #7f5539;
+}
+
+.next-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.dish-list {
+  margin-top: 30px;
+  padding: 20px;
+  background: #fff7ec;
+  border-radius: 10px;
+}
+
+.dish-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #5c4033;
+  margin-bottom: 15px;
+}
+
+.dish-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.dish-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.dish-card:hover {
+  transform: scale(1.05);
+}
+
+.dish-image {
+  width: 100%;
+  height: 140px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.dish-name {
+  font-size: 16px;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #5c4033;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .ingredient-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
-    padding: 20px;
-    background: #fdf8f2;
-    border-radius: 10px;
+    gap: 8px;
   }
-  
+
   .ingredient-button {
-    background-color: transparent;
-    color: #5c4033;
-    border: 2px solid #5c4033;
-    padding: 12px 18px;
-    font-size: 16px;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-    font-weight: bold;
+    padding: 10px 14px;
+    font-size: 14px;
   }
-  
-  .ingredient-button:hover {
-    background-color: rgba(92, 64, 51, 0.2);
-  }
-  
-  .ingredient-button.selected {
-    background-color: #d4a373;
-    color: white;
-    border: 2px solid #5c4033;
-  }
-  
-  .show-more-button {
-    background-color: #b08968;
-    color: white;
-    border: none;
-    padding: 12px 18px;
-    font-size: 16px;
-    border-radius: 20px;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background 0.3s ease-in-out;
-  }
-  
-  .show-more-button:hover {
-    background-color: #7f5539;
-  }
-  
+
   .next-button {
-    background-color: #9c6644;
-    color: white;
-    border: none;
-    padding: 14px 24px;
-    font-size: 18px;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: background 0.3s ease-in-out;
-    margin-top: 20px;
-  }
-  
-  .next-button:hover {
-    background-color: #7f5539;
-  }
-  
-  .next-button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-  
-  .dish-list {
-    margin-top: 30px;
-    padding: 20px;
-    background: #fff7ec;
-    border-radius: 10px;
-  }
-  
-  .dish-title {
-    font-size: 22px;
-    font-weight: bold;
-    color: #5c4033;
-    margin-bottom: 15px;
-  }
-  
-  .dish-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 15px;
-    justify-content: center;
-    padding: 20px;
-  }
-  
-  .dish-card {
-    background: #fff;
-    border-radius: 12px;
-    padding: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .dish-card:hover {
-    transform: scale(1.05);
-  }
-  
-  .dish-image {
-    width: 100%;
-    height: 140px;
-    border-radius: 8px;
-    object-fit: cover;
-  }
-  
-  .dish-name {
     font-size: 16px;
-    margin-top: 10px;
-    font-weight: bold;
-    color: #5c4033;
+    padding: 12px 20px;
   }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .ingredient-list {
-      gap: 8px;
-    }
-  
-    .ingredient-button {
-      padding: 10px 14px;
-      font-size: 14px;
-    }
-  
-    .next-button {
-      font-size: 16px;
-      padding: 12px 20px;
-    }
-  
-    .dish-grid {
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    }
-  
-    .dish-image {
-      height: 100px;
-    }
+
+  .dish-grid {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   }
-  
+
+  .dish-image {
+    height: 100px;
+  }
+}

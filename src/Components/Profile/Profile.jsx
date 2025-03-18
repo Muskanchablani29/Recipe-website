@@ -1,23 +1,22 @@
-// Profile.jsx
-import React, { useState, useRef, useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { signup, login } from '../Reducers/authReducers';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useRef, useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { signup, login } from "../Reducers/authReducers";
+import { useNavigate } from "react-router-dom";
 import "./Profile.css";
-import culinaryLogo from '../Images/logo.png';
-import image1 from '../Fun-Fusion/Jhatpat-recipes/image1.png';
-import image2 from '../Fun-Fusion/Jhatpat-recipes/image2.png';
-import image3 from '../Fun-Fusion/Jhatpat-recipes/image3.png';
-import image4 from '../Fun-Fusion/Jhatpat-recipes/image4.png';
+import culinaryLogo from "../Images/logo.png";
+import image1 from "../Fun-Fusion/Jhatpat-recipes/image1.png";
+import image2 from "../Fun-Fusion/Jhatpat-recipes/image2.png";
+import image3 from "../Fun-Fusion/Jhatpat-recipes/image3.png";
+import image4 from "../Fun-Fusion/Jhatpat-recipes/image4.png";
 
 const Profile = () => {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [isSignUpMode, setIsSignUpMode] = useState(false);
   const [credentials, setCredentials] = useState({
-    username: '',
-    password: ''
+    username: "",
+    password: "",
   });
 
   const dispatch = useDispatch();
@@ -25,27 +24,59 @@ const Profile = () => {
   const formRef = useRef(null);
   const user = useSelector((state) => state.auth.user);
 
+  // Handle Signup
   const handleSignup = (e) => {
     e.preventDefault();
 
     if (!username || !email || !password) {
-      alert('Please fill in all fields');
+      alert("Please fill in all fields");
       return;
     }
 
     if (/\s/.test(username)) {
-      alert('Username cannot contain spaces');
+      alert("Username cannot contain spaces");
       return;
     }
 
-    dispatch(signup({ username, email, password }));
-    alert('Signup successful! Please login.');
+    const newUser = { name: username, email, password };
+    dispatch(signup(newUser)); // Dispatch user data to Redux
+    localStorage.setItem("user", JSON.stringify(newUser)); // Save user to localStorage
+    alert("Signup successful! Please login.");
 
-    setUsername('');
-    setEmail('');
-    setPassword('');
+    setUsername("");
+    setEmail("");
+    setPassword("");
     setIsSignUpMode(false);
   };
+
+  // Handle Login
+  const handleLogin = useCallback(
+    (e) => {
+      e.preventDefault();
+
+      if (!credentials.username || !credentials.password) {
+        alert("Please fill in all fields");
+        return;
+      }
+
+      const loggedInUser = { name: credentials.username, password: credentials.password };
+      dispatch(login(loggedInUser)); // Dispatch user data to Redux
+      localStorage.setItem("user", JSON.stringify(loggedInUser)); // Save user to localStorage
+      navigate("/");
+    },
+    [credentials, dispatch, navigate]
+  );
+
+  // Toggle between Login and Signup modes
+  const toggleMode = useCallback(() => {
+    setIsSignUpMode((prevMode) => !prevMode);
+  }, []);
+
+  // Handle Input Change
+  const handleInputChange = useCallback((e) => {
+    const { name, value } = e.target;
+    setCredentials((prev) => ({ ...prev, [name]: value }));
+  }, []);
 
   const handleInputFocus = (e) => {
     e.target.classList.add("active");
@@ -56,30 +87,6 @@ const Profile = () => {
       e.target.classList.remove("active");
     }
   };
-
-  const toggleMode = useCallback(() => {
-    setIsSignUpMode(prevMode => !prevMode);
-  }, []);
-
-  const handleInputChange = useCallback((e) => {
-    const { name, value } = e.target;
-    setCredentials(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  }, []);
-
-  const handleLogin = useCallback((e) => {
-    e.preventDefault();
-
-    if (!credentials.username || !credentials.password) {
-      alert('Please fill in all fields');
-      return;
-    }
-
-    dispatch(login(credentials));
-    navigate('/');
-  }, [credentials, dispatch, navigate]);
 
   return (
     <main className={isSignUpMode ? "sign-up-mode" : ""}>
@@ -96,7 +103,9 @@ const Profile = () => {
               <div className="heading">
                 <h2>Welcome Back</h2>
                 <h6>Not registered yet?</h6>
-                <a href="#" className="toggle" onClick={toggleMode}>Sign up</a>
+                <a href="#" className="toggle" onClick={toggleMode}>
+                  Sign up
+                </a>
               </div>
 
               <div className="actual-form">
@@ -130,11 +139,12 @@ const Profile = () => {
                   <label>Password</label>
                 </div>
 
-                <button type="submit" className="sign-btn">Sign In</button>
+                <button type="submit" className="sign-btn">
+                  Sign In
+                </button>
 
                 <p className="text">
-                  Forgotten your password?
-                  <a href="#">Get help</a>
+                  Forgotten your password? <a href="#">Get help</a>
                 </p>
               </div>
             </form>
@@ -149,7 +159,9 @@ const Profile = () => {
               <div className="heading">
                 <h2>Get Started</h2>
                 <h6>Already have an account?</h6>
-                <a href="#" className="toggle" onClick={toggleMode}>Sign in</a>
+                <a href="#" className="toggle" onClick={toggleMode}>
+                  Sign in
+                </a>
               </div>
 
               <div className="actual-form">
@@ -195,11 +207,12 @@ const Profile = () => {
                   <label>Password</label>
                 </div>
 
-                <button type="submit" className="sign-btn">Sign Up</button>
+                <button type="submit" className="sign-btn">
+                  Sign Up
+                </button>
 
                 <p className="text">
-                  By signing up, I agree to the
-                  <a href="#">Terms & Conditions</a>
+                  By signing up, I agree to the <a href="#">Terms & Conditions</a>
                 </p>
               </div>
             </form>
@@ -240,8 +253,6 @@ const Profile = () => {
               </div>
             </div>
           </div>
-
-
         </div>
       </div>
     </main>

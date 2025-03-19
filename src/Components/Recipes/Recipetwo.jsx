@@ -1,5 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "./Recipetwo.css";
+import TomatoSoup from "./Recipestwo/TomatoSoup.jpeg";
+import PaneerButterMasala from "./Recipestwo/PaneerButterMasala.jpeg";
+import TomatoPasta from './Recipestwo/TomatoPasta.jpeg';
+import TomatoCurry from './Recipestwo/TomatoCurry.jpeg';
+import Bruschetta from './Recipestwo/Brushchetta.jpeg';
+import TomatoRice from './Recipestwo/TomatoRice.jpeg';
+import PaneerTikka from './Recipestwo/Paneertikka.jpeg';
+import PalakPaneer from './Recipestwo/PalakPaneer.jpeg';
+import PaneerBhurji from './Recipestwo/PaneerBhurji.jpeg';
+import TomatoChutney from './Recipestwo/TomatoChutney.jpeg';
 
 const ingredients = [
   "Tomato", "Paneer", "Mushroom", "Egg", "Spinach", "Carrot", "Potato",
@@ -9,58 +19,22 @@ const ingredients = [
   "Chickpeas", "Lentils", "Kale", "Basil", "Mint", "Dill", "Coriander", "Celery", "Chia Seeds", "Dates", "Avocado", "Pomegranate", "Fennel"
 ];
 
-// Dish images mapping
-const dishImages = {
-  // Tomato based dishes
-  "Tomato Soup": "https://images.unsplash.com/photo-1547592166-23ac45744acd",
-  "Tomato Pasta": "https://images.unsplash.com/photo-1598866594230-a7c12756260f",
-  "Bruschetta": "https://images.unsplash.com/photo-1572695157366-5e585ab2b69f",
-  "Tomato Rice": "https://images.unsplash.com/photo-1623066798929-946425dbe1fb",
-  
-  // Paneer dishes
-  "Paneer Butter Masala": "https://images.unsplash.com/photo-1631452180519-c014fe946bc7",
-  "Paneer Tikka": "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0",
-  "Palak Paneer": "https://images.unsplash.com/photo-1618449840665-9ed506d73a34",
-  
-  // Breakfast items
-  "Scrambled Eggs": "https://images.unsplash.com/photo-1551460875-ba81073ac9b7",
-  "Omelette": "https://images.unsplash.com/photo-1614777986387-015c2a89b696",
-  
-  // Soups
-  "Mushroom Soup": "https://images.unsplash.com/photo-1547592166-23ac45744acd",
-  "Pumpkin Soup": "https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a",
-  
-  // Salads
-  "Caesar Salad": "https://images.unsplash.com/photo-1550304943-4f24f54ddde9",
-  "Cucumber Salad": "https://images.unsplash.com/photo-1537785713284-0015ce8a145c",
-  
-  // Desserts
-  "Apple Pie": "https://images.unsplash.com/photo-1568571780765-9276235f1e3a",
-  "Carrot Cake": "https://images.unsplash.com/photo-1622926421334-5dbb4f2648f5",
-  
-  // Drinks
-  "Orange Juice": "https://images.unsplash.com/photo-1613478223719-2ab802602423",
-  "Banana Smoothie": "https://images.unsplash.com/photo-1553530666-ba11a7da3888",
-};
-
-const defaultDishImage = "https://images.unsplash.com/photo-1495521821757-a1efb6729352";
-
 const dishes = {
   Tomato: [
-    { name: "Tomato Soup", category: "Lunch"},
-    { name: "Tomato Pasta", category: "Dinner" },
-    { name: "Bruschetta", category: "Snacks" },
-    { name: "Tomato Rice", category: "Lunch" },
-    { name: "Tomato Curry", category: "Dinner" },
-    { name: "Tomato Chutney", category: "Breakfast" },
+    { name: "Tomato Soup", category: "Lunch", imageUrl: TomatoSoup },
+    { name: "Tomato Pasta", category: "Dinner", imageUrl: TomatoPasta },
+    { name: "Bruschetta", category: "Snacks", imageUrl: Bruschetta },
+    { name: "Tomato Rice", category: "Lunch", imageUrl: TomatoRice },
+    { name: "Tomato Curry", category: "Dinner", imageUrl: TomatoCurry },
+    { name: "Tomato Chutney", category: "Breakfast", imageUrl: TomatoChutney },
   ],
   Paneer: [
-    { name: "Paneer Butter Masala", category: "Dinner" },
-    { name: "Paneer Tikka", category: "Snacks" },
-    { name: "Palak Paneer", category: "Lunch" },
-    { name: "Paneer Bhurji", category: "Breakfast" },
-    { name: "Shahi Paneer", category: "Dinner" },
-    { name: "Paneer Sandwich", category: "Snacks" },
+    { name: "Paneer Butter Masala", category: "Dinner" , imageUrl: PaneerButterMasala },
+    { name: "Paneer Tikka", category: "Snacks", imageUrl: PaneerTikka},
+    { name: "Palak Paneer", category: "Lunch", imageUrl: PalakPaneer },
+    { name: "Paneer Bhurji", category: "Breakfast", imageUrl: PaneerBhurji},
+    { name: "Shahi Paneer", category: "Dinner" , imageUrl: PaneerButterMasala },
+    { name: "Paneer Sandwich", category: "Snacks", imageUrl: PaneerTikka},
   ],
   Mushroom: [
     { name: "Mushroom Risotto", category: "Dinner" },
@@ -465,10 +439,10 @@ const IngredientDishSelector = () => {
   const [mealCategory, setMealCategory] = useState("All");
   const [selectedDish, setSelectedDish] = useState(null);
   const [videoUrls, setVideoUrls] = useState([]);
-  const [loading, setLoading] = useState(false);
 
   const API_KEY = process.env.REACT_APP_YOUTUBE_API_KEY;
 
+  // Toggle ingredient selection
   const toggleIngredient = (ingredient) => {
     setSelectedIngredients((prev) =>
       prev.includes(ingredient)
@@ -477,10 +451,12 @@ const IngredientDishSelector = () => {
     );
   };
 
+  // Show dishes when Next button is clicked
   const handleNext = () => {
     setShowDishes(true);
   };
 
+  // Get dishes based on selected ingredients
   const getDishes = () => {
     let suggestedDishes = [];
     selectedIngredients.forEach((ingredient) => {
@@ -489,17 +465,19 @@ const IngredientDishSelector = () => {
       }
     });
 
+    // Remove duplicates and ensure 6 dishes minimum
     const uniqueDishes = Array.from(
       new Map(suggestedDishes.map((dish) => [dish.name, dish])).values()
     );
 
     while (uniqueDishes.length < 6) {
       uniqueDishes.push({
-        name: `Suggested Dish ${uniqueDishes.length + 1}`,
+        name: `Extra Dish ${uniqueDishes.length + 1}`,
         category: "Miscellaneous",
       });
     }
 
+    // Filter by meal category if selected
     if (mealCategory !== "All") {
       return uniqueDishes.filter((dish) => dish.category === mealCategory);
     }
@@ -507,33 +485,35 @@ const IngredientDishSelector = () => {
     return uniqueDishes;
   };
 
+  // Show 10 more ingredients on Show More click
   const handleShowMore = () => {
     setDisplayCount((prev) => Math.min(prev + 10, ingredients.length));
   };
 
+  // Fetch 3 YouTube videos for the selected dish
   const fetchVideos = async (dish) => {
     setSelectedDish(dish);
-    setVideoUrls([]);
-    setLoading(true);
-    
+    setVideoUrls([]); // Reset previous videos
     try {
       const response = await fetch(
         `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${dish.name} recipe&type=video&key=${API_KEY}&maxResults=3`
       );
       const data = await response.json();
-      if (data.items?.length > 0) {
+      if (data.items.length > 0) {
         const videos = data.items.map(
           (item) => `https://www.youtube.com/embed/${item.id.videoId}`
         );
         setVideoUrls(videos);
+      } else {
+        setVideoUrls([]);
       }
     } catch (error) {
       console.error("Error fetching YouTube videos:", error);
-    } finally {
-      setLoading(false);
+      setVideoUrls([]);
     }
   };
 
+  // Filter ingredients based on search query
   const filteredIngredients = ingredients
     .filter((ingredient) =>
       ingredient.toLowerCase().includes(searchQuery.toLowerCase())
@@ -544,6 +524,7 @@ const IngredientDishSelector = () => {
     <div className="container full-screen">
       <h1 className="title">Select Ingredients</h1>
 
+      {/* Search Bar */}
       <input
         type="text"
         className="search-bar"
@@ -552,6 +533,7 @@ const IngredientDishSelector = () => {
         onChange={(e) => setSearchQuery(e.target.value)}
       />
 
+      {/* Ingredient List */}
       <div className="ingredient-list">
         {filteredIngredients.map((ingredient) => (
           <button
@@ -572,6 +554,7 @@ const IngredientDishSelector = () => {
         </button>
       )}
 
+      {/* Next Button */}
       <button
         className="next-button"
         onClick={handleNext}
@@ -584,6 +567,7 @@ const IngredientDishSelector = () => {
         <div className="dish-list">
           <h2 className="dish-title">Suggested Dishes:</h2>
 
+          {/* Meal Category Filter */}
           <div className="filter-group">
             {categories.map((category) => (
               <button
@@ -598,42 +582,37 @@ const IngredientDishSelector = () => {
             ))}
           </div>
 
-          <div className="dish-grid">
-            {getDishes().map((dish, index) => (
-              <div
-                key={index}
-                className="dish-card"
-                onClick={() => fetchVideos(dish)}
-              >
-                <div className="image-container">
-                  <img
-                    src={dishImages[dish.name] || defaultDishImage}
-                    alt={dish.name}
-                    className="dish-image"
-                    onError={(e) => {
-                      e.target.onerror = null;
-                      e.target.src = defaultDishImage;
-                    }}
-                    loading="lazy"
-                  />
-                </div>
-                <div className="dish-info">
-                  <p className="dish-name">{dish.name}</p>
-                  <p className="dish-category">{dish.category}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          {/* Dish Grid */}
+          <div className="dish-grid full-screen">
+  {getDishes().map((dish, index) => (
+    <div
+      key={index}
+      className="dish-card"
+      onClick={() => fetchVideos(dish)}
+    >
+      <img
+        src={dish.imageUrl || `https://source.unsplash.com/300x200/?food`} // Fallback to a generic food image
+        alt={dish.name}
+        className="dish-image"
+        onError={(e) => {
+          e.target.onerror = null; // Prevent infinite loop
+          e.target.src = 'https://via.placeholder.com/300x200?text=Recipe+Image'; // Fallback image if main image fails
+        }}
+      />
+      <p className="dish-name">{dish.name}</p>
+      <p className="dish-category">{dish.category}</p>
+    </div>
+  ))}
+</div>
         </div>
       )}
 
+      {/* Video Section */}
       {selectedDish && (
         <div className="video-section">
           <h2 className="video-title">Recipe Videos for {selectedDish.name}</h2>
           <div className="video-grid">
-            {loading ? (
-              <div className="loading">Loading videos...</div>
-            ) : videoUrls.length > 0 ? (
+            {videoUrls.length > 0 ? (
               videoUrls.map((url, index) => (
                 <iframe
                   key={index}
@@ -642,7 +621,7 @@ const IngredientDishSelector = () => {
                   title={`${selectedDish.name} video ${index + 1}`}
                   frameBorder="0"
                   allowFullScreen
-                />
+                ></iframe>
               ))
             ) : (
               <p className="no-video">No videos found for this recipe.</p>

@@ -1,18 +1,33 @@
 /* RecipeChoice.css */
 .recipe-choice-container {
   text-align: center;
-  padding: 2rem;
-  background: linear-gradient(to right, #fce8b1, #fcd77c);
-  height: 60vh;
+  padding: 3rem 2rem;
+  background: #f9f9f9;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center; */
+  /* align-items: center; */
+  min-height: 70vh;
+  flex-direction: column;
 }
 
+/* Heading */
 .choice-box h2 {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   margin-bottom: 2rem;
   color: #333;
+  font-weight: 700;
+  position: relative;
+}
+
+/* Underline Style for Heading */
+.choice-box h2::after {
+  content: "";
+  display: block;
+  width: 100px;
+  height: 4px;
+  background-color: #ff7f50;
+  margin: 8px auto 0;
+  border-radius: 2px;
 }
 
 /* Options Container */
@@ -25,11 +40,11 @@
 
 /* Abstract Shape for Entire Card */
 .option-card {
-  width: 320px;
-  height: 340px;
-  padding: 2rem;
-  border-radius: 40% 60% 50% 50% / 50% 50% 60% 40%;
-  background: #ffbb1c;
+  width: 300px;
+  height: auto;
+  padding: 2rem 1.5rem;
+  border-radius: 12px;
+  background: #fff;
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
@@ -40,14 +55,14 @@
 
 /* Hover Effect for Cards */
 .option-card:hover {
-  transform: scale(1.07) rotate(5deg);
+  transform: translateY(-10px);
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.15);
 }
 
 /* Option Image */
 .option-image {
-  width: 120px;
-  height: 120px;
+  width: 140px;
+  height: 140px;
   object-fit: contain;
   margin-bottom: 1rem;
   animation: float 3s ease-in-out infinite;
@@ -59,7 +74,7 @@
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-8px);
+    transform: translateY(-5px);
   }
   100% {
     transform: translateY(0px);
@@ -69,39 +84,40 @@
 /* Option Card Text */
 .option-card h3 {
   margin-top: 0.5rem;
-  font-size: 1.7rem;
+  font-size: 1.4rem;
   color: #333;
+  font-weight: 700;
 }
 
 .option-card p {
-  margin-top: 0.5rem;
+  margin-top: 0.3rem;
   font-size: 1rem;
-  color: #4e4e4e;
+  color: #777;
 }
 
 /* Ingredient Section */
 .ingredient-section {
-  padding: 1rem 2rem;
-  background: #fce8b1;
+  padding: 2rem;
+  background: #fff9e8;
   border-radius: 12px;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* Back Button */
 .back-btn {
-  margin-top: 1.5rem;
-  padding: 0.8rem 1.5rem;
-  background-color: #ff6347;
+  margin-top: 1.2rem;
+  padding: 0.7rem 1.3rem;
+  background-color: #ff7f50;
   color: #fff;
   border: none;
-  border-radius: 12px;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 1rem;
   transition: background-color 0.3s ease-in-out;
 }
 
 .back-btn:hover {
-  background-color: #e5533c;
+  background-color: #ff6347;
 }
 
 /* Responsive Design */
@@ -113,5 +129,6 @@
 
   .option-card {
     width: 90%;
+    height: auto;
   }
 }

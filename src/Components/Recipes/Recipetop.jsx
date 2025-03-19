@@ -21,11 +21,20 @@ import Dish17 from './Dishes/Dish17.jpeg';
 import Dish18 from './Dishes/Dish18.jpeg';
 import Dish19 from './Dishes/Dish19.jpg';
 import Dish20 from './Dishes/Dish20.jpeg';
+import Dish21 from './Dishes/Dish21.jpeg';
+import Dish22 from './Dishes/Dish22.jpeg';
+import Dish23 from './Dishes/Dish23.jpeg';
+import Dish24 from './Dishes/Dish24.avif';
+import Dish25 from './Dishes/Dish25.jpeg';
+import Dish26 from './Dishes/Dish26.jpeg';
+import Dish27 from './Dishes/Dish27.jpeg';
+
 
 // Create an array of local images
 const localImages = [
   Dish1, Dish2, Dish3, Dish4, Dish5, Dish6, Dish7, Dish8, Dish9, Dish10,
-  Dish11, Dish12, Dish13, Dish14, Dish15, Dish16, Dish17, Dish18, Dish19, Dish20
+  Dish11, Dish12, Dish13, Dish14, Dish15, Dish16, Dish17, Dish18, Dish19, Dish20,
+  Dish21, Dish22, Dish23, Dish24, Dish25, Dish26, Dish27
 ];
 
 export default function RecipeTop() {
@@ -83,8 +92,8 @@ export default function RecipeTop() {
       </motion.div>
 
       <div className="content-overlay">
-        <h1>Discover Delicious Recipes</h1>
-        <p>Explore our collection of mouth-watering dishes from around the world</p>
+        <h1 className="Recipes-heading">Discover Delicious Recipes</h1>
+        {/* <p className="Recipes-paragraph">Explore our collection of mouth-watering dishes from around the world</p> */}
       </div>
     </div>
   );

@@ -1,123 +1,190 @@
-// SearchDish.jsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import VideoGrid from "./SearchRecipes/VideoGrid";
 import "./SearchDish.css";
+import { FiSearch } from "react-icons/fi";
+import { Sliders, XCircle } from "lucide-react";
 
-export default function SearchDish({ goBack }) {
+export default function SearchDish() {
   const [dishName, setDishName] = useState("");
   const [videos, setVideos] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [filteredVideos, setFilteredVideos] = useState([]);
+  const [selectedVideo, setSelectedVideo] = useState(null);
+  const [activeMeal, setActiveMeal] = useState("");
+  const [showFilters, setShowFilters] = useState(false);
+  const [filters, setFilters] = useState({
+    duration: "",
+    rating: "",
+    views: "",
+  });
 
-  console.log("API Key available:", !!process.env.REACT_APP_YOUTUBE_API_KEY);
-
-  // Make sure you have this in your .env file
   const API_KEY = process.env.REACT_APP_YOUTUBE_API_KEY;
 
-  const handleSearch = async (e) => {
-    e.preventDefault();
-    
-    if (!API_KEY) {
-      setError("YouTube API key is missing. Please check your environment variables.");
-      return;
-    }
-
-    if (dishName.trim() === "") {
-      setError("Please enter a dish name.");
-      return;
-    }
-
-    setLoading(true);
-    setError(null);
-    setVideos([]);
+  // Fetch Videos
+  const handleSearch = async (mealType = "") => {
+    if (!dishName.trim()) return;
 
     try {
-      const searchQuery = encodeURIComponent(`${dishName} recipe cooking`);
+      let query = `${dishName} ${mealType} recipe`;
+
       const response = await fetch(
-        `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=9&q=${searchQuery}&type=video&key=${API_KEY}`
+        `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${query}&type=video&key=${API_KEY}&maxResults=10`
       );
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
       const data = await response.json();
-      
-      if (data.error) {
-        throw new Error(data.error.message || "YouTube API error");
-      }
 
-      if (data.items && data.items.length > 0) {
+      if (data.items?.length > 0) {
         setVideos(data.items);
+        setFilteredVideos(data.items);
       } else {
-        setError("No videos found for this recipe.");
+        setVideos([]);
+        setFilteredVideos([]);
       }
     } catch (error) {
       console.error("Error fetching videos:", error);
-      setError(`Failed to fetch videos: ${error.message}`);
-    } finally {
-      setLoading(false);
     }
   };
 
-  const handleKeyPress = (e) => {
-    if (e.key === 'Enter') {
-      handleSearch(e);
+  // Handle Meal Type Selection
+  const handleMealTypeClick = (type) => {
+    setActiveMeal(type);
+    handleSearch(type);
+  };
+
+  // Toggle Filter Visibility
+  const toggleFilters = () => setShowFilters(!showFilters);
+
+  // Apply Filters
+  const applyFilters = () => {
+    let filtered = [...videos];
+
+    // Filter by duration
+    if (filters.duration) {
+      filtered = filtered.filter((video) => {
+        const duration = parseInt(video.snippet.title.match(/\d+/g)?.[0] || "0");
+        if (filters.duration === "short" && duration <= 10) return true;
+        if (filters.duration === "medium" && duration > 10 && duration <= 30) return true;
+        if (filters.duration === "long" && duration > 30) return true;
+        return false;
+      });
     }
+
+    // Filter by views (mock views here for demo purpose)
+    if (filters.views === "highest") {
+      filtered = filtered.slice().sort(() => Math.random() - 0.5); // Simulate highest views
+    }
+
+    // Filter by rating (mock rating logic here)
+    if (filters.rating === "highest") {
+      filtered = filtered.slice().reverse(); // Simulate rating filter
+    }
+
+    setFilteredVideos(filtered.slice(0, 4)); // Limit to 3 or 4 after filtering
+  };
+
+  // Clear Filters
+  const clearFilters = () => {
+    setFilteredVideos(videos);
+    setFilters({
+      duration: "",
+      rating: "",
+      views: "",
+    });
+  };
+
+  // Handle Video Select to Show on Top
+  const handleVideoSelect = (video) => {
+    setSelectedVideo(video);
   };
 
   return (
     <div className="search-container">
-      <div className="search-wrapper">
-        <h2>Find Your Favorite Recipe Videos</h2>
-        
-        <form onSubmit={handleSearch} className="search-box">
+      {/* Search Bar */}
+      <div className="search-header">
+        <div className="search-box">
+          <FiSearch className="search-icon" />
           <input
             type="text"
-            placeholder="Search for any recipe..."
+            placeholder="Search by food name"
             value={dishName}
             onChange={(e) => setDishName(e.target.value)}
-            onKeyPress={handleKeyPress}
+            onKeyDown={(e) => e.key === "Enter" && handleSearch(activeMeal)}
           />
-          <button type="submit" disabled={loading} className="search-button">
-            {loading ? "Searching..." : "Search"}
-          </button>
-        </form>
-
-        {error && <div className="error-message">{error}</div>}
-        {loading && <div className="loading">Searching for delicious recipes...</div>}
-
-        {videos.length > 0 && (
-          <div className="videos-grid">
-            {videos.map((video) => (
-              <div key={video.id.videoId} className="video-card">
-                <a
-                  href={`https://www.youtube.com/watch?v=${video.id.videoId}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="video-link"
-                >
-                  <div className="thumbnail-container">
-                    <img
-                      src={video.snippet.thumbnails.medium.url}
-                      alt={video.snippet.title}
-                      className="video-thumbnail"
-                    />
-                    <div className="play-icon">▶</div>
-                  </div>
-                  <div className="video-info">
-                    <h3>{video.snippet.title}</h3>
-                    <p className="channel-name">{video.snippet.channelTitle}</p>
-                  </div>
-                </a>
-              </div>
-            ))}
-          </div>
-        )}
-
-        <button onClick={goBack} className="back-button">
-          Back to Home
-        </button>
+        </div>
       </div>
+
+      {/* Meal Type Options */}
+      <div className="meal-type-options">
+        {["Breakfast", "Lunch", "Dinner"].map((meal) => (
+          <button
+            key={meal}
+            className={`meal-btn ${activeMeal === meal ? "active" : ""}`}
+            onClick={() => handleMealTypeClick(meal)}
+          >
+            {meal}
+          </button>
+        ))}
+      </div>
+
+      {/* Filter Button */}
+      <div className="filter-toggle">
+        <button className="filter-btn" onClick={toggleFilters}>
+          <Sliders size={20} /> {showFilters ? "Hide Filters" : "Show Filters"}
+        </button>
+        {filteredVideos.length < videos.length && (
+          <button className="clear-btn" onClick={clearFilters}>
+            <XCircle size={20} /> Remove Filters
+          </button>
+        )}
+      </div>
+
+      {/* Filters */}
+      {showFilters && (
+        <div className="filter-options">
+          <select
+            value={filters.duration}
+            onChange={(e) => setFilters({ ...filters, duration: e.target.value })}
+          >
+            <option value="">Select Duration</option>
+            <option value="short">Short (≤ 10 min)</option>
+            <option value="medium">Medium (10 - 30 min)</option>
+            <option value="long">Long (≥ 30 min)</option>
+          </select>
+
+          <select
+            value={filters.rating}
+            onChange={(e) => setFilters({ ...filters, rating: e.target.value })}
+          >
+            <option value="">Sort by Rating</option>
+            <option value="highest">Highest to Lowest</option>
+          </select>
+
+          <select
+            value={filters.views}
+            onChange={(e) => setFilters({ ...filters, views: e.target.value })}
+          >
+            <option value="">Sort by Views</option>
+            <option value="highest">Most Views</option>
+          </select>
+
+          <button className="apply-btn" onClick={applyFilters}>
+            Apply Filters
+          </button>
+        </div>
+      )}
+
+      {/* Selected Video Embed */}
+      {selectedVideo && (
+        <div className="selected-video-container">
+          <iframe
+            src={`https://www.youtube.com/embed/${selectedVideo.id.videoId}`}
+            title={selectedVideo.snippet.title}
+            className="selected-video"
+            allowFullScreen
+          />
+        </div>
+      )}
+
+      {/* Video Grid */}
+      <VideoGrid videos={filteredVideos} handleVideoSelect={handleVideoSelect} />
     </div>
   );
 }

@@ -1,0 +1,117 @@
+/* Main container */
+.filter-container {
+    width: 100%;
+    background-color: #fff;
+    padding: 1.5rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Top bar */
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Dropdown for Popular */
+  .dropdown-button {
+    background-color: #f5f5f5;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  
+  /* Tab Menu */
+  .tab-menu {
+    display: flex;
+    gap: 1.2rem;
+  }
+  
+  .tab-item {
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 8px;
+    background-color: transparent;
+    transition: background 0.3s;
+  }
+  
+  .tab-item:hover {
+    background-color: #f8f8f8;
+  }
+  
+  .tab-item.active {
+    background-color: #ffedd5;
+    font-weight: bold;
+    border: 1px solid #ffc107;
+  }
+  
+  /* Filter Button */
+  .filter-btn {
+    padding: 0.8rem 1.5rem;
+    background-color: #ff4757;
+    color: #fff;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease;
+  }
+  
+  .filter-btn:hover {
+    background-color: #e84141;
+  }
+  
+  /* Collapsible Filter Section */
+  .filters-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Filter Groups */
+  .filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  
+  .filter-group label {
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+  }
+  
+  .filter-group input,
+  .filter-group select {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.95rem;
+  }
+  
+  /* Reset Button */
+  .reset-btn {
+    grid-column: span 3;
+    background-color: #2f3542;
+    color: white;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease;
+  }
+  
+  .reset-btn:hover {
+    background-color: #1e272e;
+  }
+  

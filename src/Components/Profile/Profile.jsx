@@ -101,7 +101,7 @@ const Profile = () => {
               </div>
 
               <div className="heading">
-                <h2>Welcome Back</h2>
+                <h2>Welcome Back</h2> 
                 <h6>Not registered yet?</h6>
                 <a href="#" className="toggle" onClick={toggleMode}>
                   Sign up

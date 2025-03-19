@@ -48,7 +48,18 @@ const websiteFeatures = {
       'Quick breakfast ideas',
       'Easy dinner solutions'
     ]
-  }
+  },
+  "Recipes Main page":{
+    title: 'Recipes Main page',
+    description: 'Browse and discover a wide range of recipes from different categories and cuisines.',
+    features: [
+      'Select Ingredient',
+      'Search for specific Suggested Dish',
+      'Search for specific recipes',
+      'Filter recipes by cuisine',
+    ]
+  },
+
 };
 
 // Meal suggestions data
@@ -409,6 +420,7 @@ const showNextStep = useCallback((recipe, selectedDish) => {
     
     // Check if we still have steps to show
     if (nextStep < recipe.steps.length) {
+      console.log(`Showing step ${nextStep + 1} of ${recipe.steps.length} for ${selectedDish}`);
       setMessages(prev => [
         ...prev,
         {
@@ -430,6 +442,7 @@ const showNextStep = useCallback((recipe, selectedDish) => {
 
     // If this is the last step, show completion message and reset
     if (nextStep === recipe.steps.length) {
+      console.log(`Completed all steps for ${selectedDish}`);
       setMessages(prev => [
         ...prev,
         {

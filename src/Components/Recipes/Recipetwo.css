@@ -1,26 +1,20 @@
-/* IngredientDishSelector.css */
-
-body {
-  background-color: #f8f1e4;
-  font-family: "Arial", sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-.full-width {
+/* Full Screen */
+.full-screen {
   width: 100%;
 }
 
+/* Main Container */
 .container {
   text-align: center;
   padding: 30px;
-  max-width: 1100px;
+  max-width: 1400px;
   margin: auto;
   background: #ffffff;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+/* Title */
 .title {
   font-size: 28px;
   font-weight: bold;
@@ -28,6 +22,19 @@ body {
   color: #5c4033;
 }
 
+/* Search Bar */
+.search-bar {
+  width: 100%;
+  max-width: 600px;
+  padding: 12px 18px;
+  border: 2px solid #5c4033;
+  border-radius: 20px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  outline: none;
+}
+
+/* Ingredient List */
 .ingredient-list {
   display: flex;
   flex-wrap: wrap;
@@ -38,6 +45,7 @@ body {
   border-radius: 10px;
 }
 
+/* Ingredient Button */
 .ingredient-button {
   background-color: transparent;
   color: #5c4033;
@@ -50,18 +58,15 @@ body {
   font-weight: bold;
 }
 
-.ingredient-button:hover {
-  background-color: rgba(92, 64, 51, 0.2);
-}
-
 .ingredient-button.selected {
   background-color: #d4a373;
   color: white;
-  border: 2px solid #5c4033;
 }
 
-.show-more-button {
-  background-color: #b08968;
+/* Show More and Next Button */
+.show-more-button,
+.next-button {
+  background-color: #9c6644;
   color: white;
   border: none;
   padding: 12px 18px;
@@ -72,22 +77,7 @@ body {
   transition: background 0.3s ease-in-out;
 }
 
-.show-more-button:hover {
-  background-color: #7f5539;
-}
-
-.next-button {
-  background-color: #9c6644;
-  color: white;
-  border: none;
-  padding: 14px 24px;
-  font-size: 18px;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: background 0.3s ease-in-out;
-  margin-top: 20px;
-}
-
+.show-more-button:hover,
 .next-button:hover {
   background-color: #7f5539;
 }
@@ -97,6 +87,7 @@ body {
   cursor: not-allowed;
 }
 
+/* Dish List */
 .dish-list {
   margin-top: 30px;
   padding: 20px;
@@ -104,6 +95,7 @@ body {
   border-radius: 10px;
 }
 
+/* Dish Title */
 .dish-title {
   font-size: 22px;
   font-weight: bold;
@@ -111,6 +103,7 @@ body {
   margin-bottom: 15px;
 }
 
+/* Dish Grid */
 .dish-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -119,12 +112,14 @@ body {
   padding: 20px;
 }
 
+/* Dish Card */
 .dish-card {
   background: #fff;
   border-radius: 12px;
   padding: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
+  cursor: pointer;
   transition: transform 0.3s ease-in-out;
 }
 
@@ -132,6 +127,7 @@ body {
   transform: scale(1.05);
 }
 
+/* Dish Image */
 .dish-image {
   width: 100%;
   height: 140px;
@@ -139,11 +135,89 @@ body {
   object-fit: cover;
 }
 
+/* Dish Name */
 .dish-name {
   font-size: 16px;
   margin-top: 10px;
   font-weight: bold;
   color: #5c4033;
+}
+
+/* Dish Category */
+.dish-category {
+  font-size: 14px;
+  color: #7f5539;
+  margin-top: 5px;
+}
+
+/* Video Section */
+.video-section {
+  margin-top: 30px;
+  padding: 20px;
+  background: #fff7ec;
+  border-radius: 10px;
+  text-align: center;
+}
+
+/* Video Grid */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Video Player */
+.video-player {
+  width: 100%;
+  height: 240px;
+  border-radius: 12px;
+}
+
+/* No Video Message */
+.no-video {
+  color: #b08968;
+}
+
+/* Filter Group - Button Container */
+.filter-group {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* Meal Category Buttons */
+.filter-button {
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  color: #5c4033;
+  border: 2px solid #9c6644;
+  padding: 10px 18px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  outline: none;
+}
+
+/* Hover Effect */
+.filter-button:hover {
+  background: linear-gradient(135deg, #fcb69f 0%, #ffecd2 100%);
+  color: #7f5539;
+  border-color: #7f5539;
+  transform: translateY(-2px);
+}
+
+/* Active Button Style */
+.filter-button.active {
+  background: linear-gradient(135deg, #9c6644, #7f5539);
+  color: white;
+  border-color: #5c4033;
+  transform: scale(1.05);
 }
 
 /* Responsive Design */
@@ -166,7 +240,7 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   }
 
-  .dish-image {
-    height: 100px;
+  .video-player {
+    height: 200px;
   }
 }

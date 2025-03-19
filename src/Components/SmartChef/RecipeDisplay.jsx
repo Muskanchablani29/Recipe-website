@@ -25,7 +25,7 @@ const RecipeDisplay = ({ recipe, selectedDish, type, onNextStep, currentStep, to
         <h4>Instructions:</h4>
         <ol>
           {recipe.fullRecipe.instructions.map((instruction, index) => (
-            <li key={index}>{instruction}</li>
+            <li key={index}>{instruction}</li> 
           ))}
         </ol>
       </div>

@@ -7,7 +7,7 @@ const KheloKhaoSection = () => {
   const navigate = useNavigate();
   const challenges = [
     { name: "Dot Game", path: "/dot-game", icon: "🎯", description: "Sharpen your reflexes and accuracy in the dot game challenge!" },
-    { name: "Mystery Box", path: "/mystery-box", icon: "🕵️", description: "Uncover the secrets hidden within the mystery box!" },
+    { name: "Mystery Box", path: "/mysterybox", icon: "🕵️", description: "Uncover the secrets hidden within the mystery box!" },
     { name: "Cooking Challenge", path: "/cooking-challenge", icon: "🍳", description: "Test your culinary skills with exciting cooking tasks!" },
   ];
 

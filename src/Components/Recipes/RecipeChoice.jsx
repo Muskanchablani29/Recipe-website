@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import "./RecipeChoice.css";
 import SearchDish from "./SearchDish";
 import Ingredients from "./Recipetwo";
+import Dish from './Dishes/Dish28.jpeg'
+import Ingredientsimg from './Dishes/Ingredients.png'
 
 export default function RecipeChoice() {
   const [option, setOption] = useState(null);
@@ -17,24 +19,26 @@ export default function RecipeChoice() {
         <div className="choice-box">
           <h2>How Do You Want to Search for Your Recipe?</h2>
           <div className="options">
+            {/* Option 1 - Search by Ingredient */}
             <div
-              className="option-card abstract-shape"
+              className="option-card"
               onClick={() => handleOptionSelect("ingredient")}
             >
               <img
-                src="/images/ingredient.png"
+                src={Ingredientsimg}
                 alt="Ingredient"
                 className="option-image"
               />
               <h3>By Ingredient</h3>
               <p>Choose a main ingredient to get recipe suggestions.</p>
             </div>
+            {/* Option 2 - Search by Dish Name */}
             <div
-              className="option-card abstract-shape"
+              className="option-card"
               onClick={() => handleOptionSelect("dish")}
             >
               <img
-                src="/images/dish.png"
+                src={Dish}
                 alt="Dish"
                 className="option-image"
               />

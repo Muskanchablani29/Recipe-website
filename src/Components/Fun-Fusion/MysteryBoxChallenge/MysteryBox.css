@@ -1,0 +1,164 @@
+/* MysteryBox.css */
+.mystery-box-container {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(to bottom, #fff8e1, #ffecb3);
+    min-height: 100vh;
+  }
+  
+  /* Welcome Section */
+  .welcome-heading {
+    font-size: 2.8rem;
+    color: #6d4c41;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+  
+  .about-text {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 2rem;
+  }
+  
+  /* Mystery Box Grid */
+  .box-grid-mystery {
+    display: grid;
+    grid-template-columns: repeat(3, 120px);
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+  
+  .box-mystery {
+    width: 120px;
+    height: 120px;
+    background-color: #ffcc80;
+    border: 2px solid #ffb74d;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s;
+  }
+  
+  .box-mystery:hover {
+    transform: scale(1.1);
+  }
+  
+  .box-mystery.selected {
+    background-color: #81c784;
+    border-color: #66bb6a;
+  }
+  
+  /* Mystery Box Image */
+  .box-img {
+    width: 60%;
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  /* Ingredient Container */
+  .ingredient-container {
+    position: relative;
+  }
+  
+  /* Ingredient Image Styling */
+  .ingredient-img {
+    width: 70%;
+    height: auto;
+    background-color: #fff;
+    padding: 8px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Fade-In for Ingredient Name */
+  .ingredient-name {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    color: #333;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .fade-in {
+    opacity: 1;
+  }
+  
+  /* Ingredient Section */
+  .ingredient-section {
+    margin-top: 2rem;
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .ingredient-section h3 {
+    color: #4caf50;
+    margin-bottom: 1rem;
+  }
+  
+  .ingredient-list {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .ingredient-item {
+    text-align: center;
+    width: 120px;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+  }
+  
+  .ingredient-item:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Upload Section */
+  .upload-section {
+    margin-top: 2rem;
+  }
+  
+  .upload-section h4 {
+    font-size: 1.4rem;
+    color: #6d4c41;
+  }
+  
+  .upload-section input {
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    border: 2px solid #ffb74d;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .preview img {
+    width: 200px;
+    height: auto;
+    margin-top: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Rating Section */
+  .rating-section {
+    margin-top: 2rem;
+    font-size: 1.6rem;
+    color: #ff5722;
+  }
+  
+  .rating-section p {
+    margin-top: 0.5rem;
+    font-size: 1.8rem;
+    color: #ff9800;
+    font-weight: bold;
+  }
+  

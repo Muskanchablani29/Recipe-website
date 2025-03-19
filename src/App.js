@@ -15,9 +15,9 @@ function App() {
   return (
     <>
 
-    <Home/>
+    {/* <Home/> */}
 
-   {/* <Homechallenge /> */}
+   <Homechallenge />
    {/* <Step/> */}
    {/* <Jhathpat/> */}
 

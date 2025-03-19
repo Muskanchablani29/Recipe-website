@@ -17,15 +17,15 @@ function App() {
 
     <Home/>
 
-   <Homechallenge />
-   <Step/>
-   <Jhathpat/>
+   {/* <Homechallenge /> */}
+   {/* <Step/> */}
+   {/* <Jhathpat/> */}
 
-   <Whyus/>  
-    {/* <Contact/> */}
+   {/* <Whyus/>   */}
+    {/* <Contact/> 
     {/* <Tipandhacks/> */}
     {/* <Cooking/> */}
-    <Share/>
+    {/* <Share/> */}
      {/* <Shareas/>  */}
     </>
   );

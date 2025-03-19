@@ -5,7 +5,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 60px 80px;
+  padding: 60px 60px;
   background-color: #f5f8f2;
   min-height: 80vh;
   overflow: hidden;
@@ -98,8 +98,8 @@
 }
 
 .whyus-image {
-  width: 150px;
-  height: 220px;
+  width: 200px;
+  height: 240px;
   object-fit: cover;
   border-radius: 40px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -129,7 +129,7 @@
   }
 
   .whyus-image {
-    width: 130px;
+    width: 150px;
     height: 190px;
   }
 

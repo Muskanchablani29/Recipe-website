@@ -1,7 +1,6 @@
-// HeroSection.jsx
 import React from "react";
 import { motion } from "framer-motion";
-import "./Whyus.css";
+import './Whyus.css';
 import oip from "../Whyusimg/opi.jpeg";
 import Oip2 from "../Whyusimg/OIP2.jpeg";
 import oip4 from "../Whyusimg/oip4.jpg";
@@ -41,12 +40,12 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="hero-section">
+    <section className="whyus-container">
       {/* Diagonal Wave Backgrounds */}
-      <div className="wave-container">
+      <div className="wave-background">
         {/* First Wave */}
         <svg 
-          className="svg-background wave1" 
+          className="svg-animation wave-primary" 
           viewBox="0 0 1440 800" 
           xmlns="http://www.w3.org/2000/svg"
           preserveAspectRatio="none"
@@ -63,7 +62,7 @@ const HeroSection = () => {
         
         {/* Second Wave */}
         <svg 
-          className="svg-background wave2" 
+          className="svg-animation wave-secondary" 
           viewBox="0 0 1440 800" 
           xmlns="http://www.w3.org/2000/svg"
           preserveAspectRatio="none"
@@ -81,7 +80,7 @@ const HeroSection = () => {
 
       {/* Heading with Animation */}
       <motion.h1
-        className="hero-heading"
+        className="whyus-heading"
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ 
@@ -94,14 +93,14 @@ const HeroSection = () => {
 
       {/* Images Grid with Animations */}
       <motion.div 
-        className="hero-images"
+        className="whyus-gallery"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
         {content.map((item, index) => (
           <motion.div
-            className="image-container"
+            className="whyus-card"
             key={index}
             variants={itemVariants}
             whileHover={{ 
@@ -113,14 +112,14 @@ const HeroSection = () => {
             <motion.img
               src={item.image}
               alt={item.title}
-              className="animated-image"
+              className="whyus-image"
               initial={{ borderRadius: "40px" }}
               whileHover={{ 
                 boxShadow: "0 8px 16px rgba(0,0,0,0.3)",
               }}
             />
             <motion.p 
-              className="image-title"
+              className="whyus-title"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 + index * 0.1 }}

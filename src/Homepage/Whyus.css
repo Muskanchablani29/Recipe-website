@@ -1,6 +1,5 @@
-/* Whyus.css */
 /* General Section Styling */
-.hero-section {
+.whyus-container {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -13,8 +12,8 @@
   z-index: 1;
 }
 
-/* Wave Container and Animation */
-.wave-container {
+/* Wave Background and Animation */
+.wave-background {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -24,7 +23,7 @@
   left: 0;
 }
 
-.svg-background {
+.svg-animation {
   position: absolute;
   top: 0;
   right: 0;
@@ -33,12 +32,12 @@
   opacity: 0.2;
 }
 
-.wave1 {
+.wave-primary {
   animation: diagonalWave 20s linear infinite;
   opacity: 0.3;
 }
 
-.wave2 {
+.wave-secondary {
   animation: diagonalWave 15s linear infinite;
   opacity: 0.2;
 }
@@ -53,7 +52,7 @@
 }
 
 /* Gradient Background */
-.hero-section::before {
+.whyus-container::before {
   content: '';
   position: absolute;
   top: 0;
@@ -69,7 +68,7 @@
 }
 
 /* Centered Heading */
-.hero-heading {
+.whyus-heading {
   position: relative;
   font-size: 50px;
   font-weight: bold;
@@ -78,8 +77,8 @@
   z-index: 2;
 }
 
-/* Images Section */
-.hero-images {
+/* Image Grid Section */
+.whyus-gallery {
   position: relative;
   display: flex;
   gap: 20px;
@@ -88,17 +87,17 @@
   z-index: 2;
 }
 
-.image-container {
+.whyus-card {
   position: relative;
   text-align: center;
   transition: transform 0.3s ease;
 }
 
-.image-container:hover {
+.whyus-card:hover {
   transform: translateY(-10px);
 }
 
-.image-container img {
+.whyus-image {
   width: 150px;
   height: 220px;
   object-fit: cover;
@@ -107,12 +106,12 @@
   transition: all 0.3s ease;
 }
 
-.image-container:hover img {
+.whyus-card:hover .whyus-image {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 /* Image Titles */
-.image-title {
+.whyus-title {
   margin-top: 10px;
   font-size: 14px;
   font-weight: bold;
@@ -121,49 +120,49 @@
 
 /* Responsive Design */
 @media screen and (max-width: 768px) {
-  .hero-section {
+  .whyus-container {
     padding: 40px 20px;
   }
 
-  .hero-heading {
+  .whyus-heading {
     font-size: 36px;
   }
 
-  .image-container img {
+  .whyus-image {
     width: 130px;
     height: 190px;
   }
 
-  .hero-images {
+  .whyus-gallery {
     gap: 15px;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .hero-section {
+  .whyus-container {
     padding: 30px 15px;
   }
 
-  .hero-heading {
+  .whyus-heading {
     font-size: 28px;
   }
 
-  .image-container img {
+  .whyus-image {
     width: 110px;
     height: 160px;
   }
 
-  .hero-images {
+  .whyus-gallery {
     gap: 10px;
   }
 
-  .image-title {
+  .whyus-title {
     font-size: 12px;
   }
 }
 
 /* Animation Classes for Framer Motion */
-.animated-image {
+.whyus-image {
   will-change: transform;
 }
 

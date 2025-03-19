@@ -1,16 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import About from './Components/About'
+// import States from './Components/States'
+// import Mainpage from './Components/Mainpage'
+// import Mealcards from  './Components/Mealcards'
+// import Mealinfo from './Components/Mealinfo' 
+// import extra from './Components/extra'
+// import Jhatpat from './Components/Jhatpat/JhatPat';
 
-function App() {
+
+
+
+import ReviewModal  from './Components/Mealinfotwo'; 
+  
+
+
+
+
+
+
+
+
+export default function App() {
+  
   return (
-    <div className="App">
-      <header className="App-header">
-      <h1>My first React App</h1>
-      <p>My first React App</p>
-      
-      </header>
-    </div>
-  );
-}
+    <>
+    <About/> 
+    {/* <States/> */}
+    {/* <Mainpage/> */}
+    {/* <Mealcards/>   */}
+    {/* <Mealinfo/> */}
+   {/* <extra/> */}
+   <ReviewModal/>
+    {/* <Jhatpat/> */}
+    
 
-export default App;
+   
+  
+    </>
+   
+  )
+}
+ 

@@ -1,0 +1,91 @@
+.about-container {
+    min-height: 100vh;
+    background-color: #faf5f0;
+    position: relative;
+  }
+  
+  /* Hero Section */
+  .hero-section {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+    padding: 6rem 2rem;
+    text-align: center;
+    color: white;
+  }
+  
+  .main-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: white;
+  }
+  
+  .subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+  }
+  
+  /* Wave Section */
+  .wave-section {
+    position: relative;
+    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+    padding: 4rem 2rem 6rem;
+  
+  }
+  
+  .wave-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+  }
+  
+  .wave-text {
+    color: white;
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  
+  .wave-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    line-height: 0;
+    transform: translateY(1px);
+  }
+  
+  .wave-svg {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .main-title {
+      font-size: 2rem;
+    }
+  
+    .section-title {
+      font-size: 1.75rem;
+    }
+  
+    .values-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .wave-text {
+      font-size: 1.1rem;
+      padding: 0 1rem;
+    }
+  }
+  
+  /* Accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    .value-card {
+      transition: none;
+    }
+  }
+  

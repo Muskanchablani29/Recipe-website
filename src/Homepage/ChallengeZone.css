@@ -1,192 +1,453 @@
-/* CSS Reset */
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-:root {
-  --primary-color: #ff6b6b;
-  --text-primary: #333;
-  --text-secondary: #666;
-  --bg-light: #f8f8f8;
-  --animation-timing: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Base styles */
-.challenge {
-  width: 100%;
-  min-height: 100vh;
-  padding: 2rem;
-  animation: fadeIn 1s var(--animation-timing);
-}
-
-.challenge__container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1rem;
-  animation: slideUp 1s var(--animation-timing) forwards;
-}
-
-.challenge__container__left {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  width: 100%;
-}
-
-/* Animated heading */
-.challenge__container__left h1 {
-  font-size: clamp(1.8rem, 4vw, 2.5rem);
-  color: var(--text-primary);
-  text-align: center;
-  animation: slideDown 1s var(--animation-timing);
-}
-
-/* Animated paragraph */
-.challenge__container__left p {
-  font-size: clamp(1rem, 2vw, 1.1rem);
-  color: var(--text-secondary);
-  max-width: 60ch;
-  margin: 0 auto;
-  text-align: center;
-  animation: slideIn 1s var(--animation-timing);
-}
-
-/* Challenge grid */
-.challenge-contain {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  width: 100%;
-  animation: fadeIn 1.5s var(--animation-timing);
-}
-
-/* Challenge cards */
-.challenge-contain__left,
-.challenge-contain__right {
+/* Full Page Styling */
+.fun-zone-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1.5rem;
-  border-radius: 10px;
-  background-color: var(--bg-light);
-  transition: all 0.3s var(--animation-timing);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.challenge-contain__left:hover,
-.challenge-contain__right:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-.challenge-contain__left img,
-.challenge-contain__right img {
-  width: 100%;
-  aspect-ratio: 1;
-  object-fit: cover;
-  border-radius: 8px;
-  transition: transform 0.3s var(--animation-timing);
-}
-
-.challenge-contain__left:hover img,
-.challenge-contain__right:hover img {
-  transform: scale(1.05);
-}
-
-.challenge-contain__left p,
-.challenge-contain__right p {
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(45deg, #ff8c00, #ff4500, #ff1493);
+  background-size: 400% 400%;
+  animation: gradientBG 10s ease infinite;
+  color: white;
   text-align: center;
-  font-size: 1rem;
-  color: var(--text-primary);
-  margin: 1rem 0 0 0;
-  word-break: break-word;
 }
 
-/* Animation keyframes */
-@keyframes fadeIn {
-  from {
+/* Background Animation */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Title */
+.title {
+  font-size: 3em;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Spin Wheel */
+.spin-wheel {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.wheel-image {
+  width: 280px;
+  border-radius: 50%;
+  transition: transform 3s ease-in-out;
+}
+
+/* Spinning Animation */
+.spinning {
+  transform: rotate(720deg);
+}
+
+/* Buttons */
+.fun-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.fun-button,
+.spin-button {
+  background: linear-gradient(to right, #ffcc00, #ff5733);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.2em;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.fun-button:hover,
+.spin-button:hover {
+  background: linear-gradient(to right, #ff5733, #ffcc00);
+  transform: scale(1.1);
+}
+
+/* Fun Tagline */
+.fun-tagline {
+  font-size: 1.4em;
+  font-style: italic;
+  margin-top: 20px;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+}
+/* Confetti Container - Restricted to Fun Zone */
+.fun-zone-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; /* Prevents confetti from affecting other pages */
+}
+
+/* Confetti Animation */
+.confetti-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Confetti Squares */
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  opacity: 0.8;
+  animation: popper linear infinite;
+}
+
+/* Popper Animation */
+@keyframes popper {
+  0% { transform: translateY(-10vh) rotate(0); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+/* General Container */
+.fun-zone-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(45deg, #ff8c00, #ff4500, #ff1493);
+  background-size: 400% 400%;
+  animation: gradientBG 10s ease infinite;
+}
+
+
+
+/* Confetti Animation */
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  opacity: 0.8;
+  animation: popper linear infinite;
+}
+
+@keyframes popper {
+  0% { transform: translateY(-10vh) rotate(0); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+
+/* Fireworks */
+.firework {
+  position: absolute;
+  background: radial-gradient(circle, yellow, orange, red);
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: explode 1s linear infinite;
+}
+
+@keyframes explode {
+  0% { transform: scale(0); opacity: 1; }
+  100% { transform: scale(3); opacity: 0; }
+}
+
+/* Balloons */
+.balloon {
+  position: absolute;
+  width: 25px;
+  height: 35px;
+  border-radius: 50%;
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(100vh); opacity: 1; }
+  100% { transform: translateY(-10vh); opacity: 0; }
+}
+/* Full Page Styling */
+.fun-zone-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+ 
+  background-size: 400% 400%;
+  animation: gradientBG 10s ease infinite;
+  color: white;
+  text-align: center;
+}
+
+/* Background Animation */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Title */
+.title {
+  font-size: 3em;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Spin Wheel */
+.spin-wheel {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.wheel-image {
+  width: 280px;
+  border-radius: 50%;
+  transition: transform 3s ease-in-out;
+}
+
+/* Spinning Animation */
+.spinning {
+  transform: rotate(720deg);
+}
+
+/* Buttons */
+.fun-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.fun-button,
+.spin-button {
+  background: linear-gradient(to right, #ffcc00, #ff5733);
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.2em;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.fun-button:hover,
+.spin-button:hover {
+  background: linear-gradient(to right, #ff5733, #ffcc00);
+  transform: scale(1.1);
+}
+
+/* Fun Tagline */
+.fun-tagline {
+  font-size: 1.4em;
+  font-style: italic;
+  margin-top: 20px;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+}
+/* Confetti Container - Restricted to Fun Zone */
+.fun-zone-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; /* Prevents confetti from affecting other pages */
+}
+
+/* Confetti Animation */
+.confetti-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Confetti Squares */
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  opacity: 0.8;
+  animation: popper linear infinite;
+}
+
+/* Popper Animation */
+@keyframes popper {
+  0% { transform: translateY(-10vh) rotate(0); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+/* General Container */
+.fun-zone-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(45deg, #ff8c00, #ff4500, #ff1493);
+  background-size: 400% 400%;
+  animation: gradientBG 10s ease infinite;
+}
+
+/* Background Animation */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Confetti Animation */
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  opacity: 0.8;
+  animation: popper linear infinite;
+}
+
+@keyframes popper {
+  0% { transform: translateY(-10vh) rotate(0); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+
+/* Fireworks */
+.firework {
+  position: absolute;
+  background: radial-gradient(circle, yellow, orange, red);
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: explode 1s linear infinite;
+}
+
+@keyframes explode {
+  0% { transform: scale(0); opacity: 1; }
+  100% { transform: scale(3); opacity: 0; }
+}
+
+/* Balloons */
+.balloon {
+  position: absolute;
+  width: 25px;
+  height: 35px;
+  border-radius: 50%;
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(100vh); opacity: 1; }
+  100% { transform: translateY(-10vh); opacity: 0; }
+}
+/* Enhanced Background Animations */
+.fun-zone-container {
+  position: relative;
+  overflow: hidden;
+ 
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+/* Add overlay for depth */
+.fun-zone-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  pointer-events: none;
+  animation: overlay 10s ease infinite;
+}
+
+/* Floating Particles Background */
+.particle-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Animated Light Beams */
+.light-beams {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+.beam {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, 
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.03) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  animation: rotateLightBeam 20s linear infinite;
+}
+
+/* Animated Bubbles */
+.bubble-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.bubble {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  backdrop-filter: blur(1px);
+  animation: float-bubble 15s linear infinite;
+}
+
+
+
+@keyframes overlay {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 0.9; }
+}
+
+
+@keyframes float-bubble {
+  0% {
+    transform: translateY(100%) translateX(-50%);
     opacity: 0;
   }
-  to {
-    opacity: 1;
+  50% {
+    opacity: 0.5;
   }
-}
-
-@keyframes slideUp {
-  from {
+  100% {
+    transform: translateY(-100%) translateX(50%);
     opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }
 
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+.fun-zone-container {
+  position: relative;
+  width: 100vw;
+  height: 120vh;
+  overflow: hidden;
+  background: url("../Image/nightlight.webp") no-repeat center center/cover;
 
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* Card entrance animations */
-.challenge-contain__left,
-.challenge-contain__right {
-  opacity: 0;
-  animation: cardEntrance 0.8s var(--animation-timing) forwards;
-}
-
-.challenge-contain__left:nth-child(1) {
-  animation-delay: 0.3s;
-}
-
-.challenge-contain__left:nth-child(2) {
-  animation-delay: 0.5s;
-}
-
-.challenge-contain__left:nth-child(3) {
-  animation-delay: 0.7s;
-}
-
-@keyframes cardEntrance {
-  from {
-    opacity: 0;
-    transform: translateY(60px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Accessibility */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
 }

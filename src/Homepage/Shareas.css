@@ -1,0 +1,655 @@
+.form-group {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  .form-row {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .select-field {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: white;
+  }
+  
+  .textarea-field {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    min-height: 100px;
+    font-size: 16px;
+    resize: vertical;
+  }
+  
+  .ingredients-section,
+  .instructions-section {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .add-button {
+    margin-top: 10px;
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .add-button:hover {
+    background-color: #0056b3;
+  }
+  
+  h3 {
+    margin-bottom: 10px;
+    color: #333;
+  }
+ /* Container styles */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Form group and row styles */
+  .form-group {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  .form-row {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  /* Input field styles */
+  .input-field {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .input-field:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+  }
+  
+  /* Select field styles */
+  .select-field {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: white;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+  }
+  
+  .select-field:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+  }
+  
+  /* Textarea field styles */
+  .textarea-field {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    min-height: 100px;
+    font-size: 16px;
+    resize: vertical;
+    font-family: inherit;
+    line-height: 1.5;
+  }
+  
+  .textarea-field:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+  }
+  
+  /* Image upload section styles */
+  .image-upload {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .file-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .uploaded-image {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 8px;
+    margin-top: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Ingredients and Instructions section styles */
+  .ingredients-section,
+  .instructions-section {
+    width: 100%;
+    margin-bottom: 30px;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  /* Heading styles */
+  h3 {
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  /* Button styles */
+  .add-button {
+    margin-top: 10px;
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .submit-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+  }
+  
+  .submit-button:hover {
+    background-color: #218838;
+  }
+  
+  /* Error message styles */
+  .error-message {
+    color: #dc3545;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .container {
+      padding: 15px;
+    }
+  
+    .form-row {
+      flex-direction: column;
+      gap: 15px;
+    }
+  
+    .input-field,
+    .select-field,
+    .textarea-field {
+      font-size: 14px;
+      padding: 10px;
+    }
+  
+    h3 {
+      font-size: 1.2rem;
+    }
+  }
+  
+  /* Animation for button hover */
+  .add-button,
+  .submit-button {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .add-button::after,
+  .submit-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease;
+  }
+  
+  .add-button:hover::after,
+  .submit-button:hover::after {
+    width: 200%;
+    height: 200%;
+  }
+  
+  /* Disabled state styles */
+  .input-field:disabled,
+  .select-field:disabled,
+  .textarea-field:disabled,
+  .add-button:disabled,
+  .submit-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+  
+  /* Focus visible outline for accessibility */
+  .input-field:focus-visible,
+  .select-field:focus-visible,
+  .textarea-field:focus-visible,
+  .add-button:focus-visible,
+  .submit-button:focus-visible {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+  }
+  
+  /* Placeholder styles */
+  ::placeholder {
+    color: #6c757d;
+    opacity: 0.8;
+  }
+  
+  /* Custom scrollbar for textarea */
+  .textarea-field::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .textarea-field::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+  }
+  
+  .textarea-field::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+  }
+  
+  .textarea-field::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  .breadcrumbs {
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .breadcrumbs .separator {
+    margin: 0 10px;
+    color: #999;
+  }
+  
+  .breadcrumbs .current {
+    color: #007bff;
+    font-weight: 500;
+  }
+  
+  .breadcrumbs span:hover {
+    color: #0056b3;
+    cursor: pointer;
+  }
+  
+  .breadcrumbs .current:hover {
+    cursor: default;
+    color: #007bff;
+  }
+  /* Main Container and Layout */
+.heading-container {
+    text-align: center;
+    padding: 40px 20px;
+    margin-bottom: 30px;
+    background: linear-gradient(to right, #f8f9fa, #ffffff, #f8f9fa);
+  }
+  
+  .main-heading {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: capitalize;
+    font-family: 'Playfair Display', serif;
+  }
+  
+  .sub-heading {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 25px;
+    font-weight: 400;
+    line-height: 1.6;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .heading-decoration {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .decoration-line {
+    height: 2px;
+    width: 60px;
+    background: linear-gradient(to right, transparent, #007bff, transparent);
+  }
+  
+  .decoration-icon {
+    font-size: 24px;
+    animation: bounce 2s infinite;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Form Elements */
+  .form-group {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  .form-row {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .input-field:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+  }
+  
+  .select-field {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: white;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+  }
+  
+  .textarea-field {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    min-height: 100px;
+    font-size: 16px;
+    resize: vertical;
+    font-family: inherit;
+    line-height: 1.5;
+  }
+  
+  /* Image Upload Section */
+  .image-upload {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .file-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .uploaded-image {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 8px;
+    margin-top: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Ingredients and Instructions Sections */
+  .ingredients-section,
+  .instructions-section {
+    width: 100%;
+    margin-bottom: 30px;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  h3 {
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  /* Buttons */
+  .add-button {
+    margin-top: 10px;
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .submit-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+  }
+  
+  .submit-button:hover {
+    background-color: #218838;
+  }
+  
+  /* Error Message */
+  .error-message {
+    color: #dc3545;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  /* Animations */
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  /* Hover Effects */
+  .input-field:hover,
+  .select-field:hover,
+  .textarea-field:hover {
+    border-color: #80bdff;
+  }
+  
+  .main-heading:hover {
+    background: linear-gradient(45deg, #2c3e50, #3498db);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease;
+  }
+  
+  /* Custom Scrollbar */
+  .textarea-field::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .textarea-field::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+  }
+  
+  .textarea-field::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+  }
+  
+  .textarea-field::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .heading-container {
+      padding: 30px 15px;
+    }
+  
+    .main-heading {
+      font-size: 2rem;
+    }
+  
+    .sub-heading {
+      font-size: 1rem;
+      padding: 0 15px;
+    }
+  
+    .decoration-line {
+      width: 40px;
+    }
+  
+    .container {
+      padding: 15px;
+    }
+  
+    .form-row {
+      flex-direction: column;
+      gap: 15px;
+    }
+  
+    .input-field,
+    .select-field,
+    .textarea-field {
+      font-size: 14px;
+      padding: 10px;
+    }
+  
+    h3 {
+      font-size: 1.2rem;
+    }
+  }
+  
+  /* Disabled States */
+  .input-field:disabled,
+  .select-field:disabled,
+  .textarea-field:disabled,
+  .add-button:disabled,
+  .submit-button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+  
+  /* Focus States */
+  .input-field:focus-visible,
+  .select-field:focus-visible,
+  .textarea-field:focus-visible,
+  .add-button:focus-visible,
+  .submit-button:focus-visible {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+  }
+  
+  /* Placeholder Styles */
+  ::placeholder {
+    color: #6c757d;
+    opacity: 0.8;
+  }
+  
+  /* Font Import */
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+  

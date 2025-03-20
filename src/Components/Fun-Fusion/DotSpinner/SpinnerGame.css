@@ -1,0 +1,132 @@
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f8f9fa;
+  padding: 20px;
+}
+
+.spinner-header {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.spinner-wrapper {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  margin-bottom: 20px;
+}
+
+.spinner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 10px solid #ccc;
+  position: relative;
+  overflow: hidden;
+  background: conic-gradient(
+    #ff6347 0% 5%,
+    #ffd700 5% 10%,
+    #ff6347 10% 15%,
+    #ffd700 15% 20%,
+    #ff6347 20% 25%,
+    #ffd700 25% 30%,
+    #ff6347 30% 35%,
+    #ffd700 35% 40%,
+    #ff6347 40% 45%,
+    #ffd700 45% 50%,
+    #ff6347 50% 55%,
+    #ffd700 55% 60%,
+    #ff6347 60% 65%,
+    #ffd700 65% 70%,
+    #ff6347 70% 75%,
+    #ffd700 75% 80%,
+    #ff6347 80% 85%,
+    #ffd700 85% 90%,
+    #ff6347 90% 95%,
+    #ffd700 95% 100%
+  );
+}
+
+.dish {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  top: 0;
+  left: 50%;
+  gap: 10px;
+  transform-origin: 0% 100%;
+  overflow: visible;
+}
+
+/* Properly align text to each division */
+.dish-label {
+  position: absolute;
+  width: 90px;
+  height: 20px;
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 8px;
+  border-radius: 5px;
+  top: 70%;
+  margin: 30px 0px;
+  left: 50%;
+  transform: translate(-50%, -100%);
+}
+
+/* Center pointer */
+.spin-pointer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 20px solid #fff;
+  transform: translate(-50%, -50%);
+}
+
+/* Spin button styling */
+.spin-btn-container {
+  margin-top: 20px;
+}
+
+.spin-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #ff6347;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.spin-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.spin-btn:hover:not(:disabled) {
+  background-color: #ff4500;
+}
+
+.selected-dish {
+  margin-top: 20px;
+  font-size: 1.5em;
+  color: #ff6347; /* Tomato color */
+  font-weight: bold;
+  text-align: center;
+  background-color: #fff3e0; /* Light orange background */
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}

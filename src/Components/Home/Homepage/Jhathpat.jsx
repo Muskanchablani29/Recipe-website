@@ -32,7 +32,7 @@ export default function Jhathpat() {
           {content[currentIndex].title.split('BANGER').map((part, index) => 
             index === 0 ? (
               <React.Fragment key={index}>
-                {part}<span className="highlight">BANGER</span>
+                {part}<span className="highlight-banger">BANGER</span>
               </React.Fragment>
             ) : part
           )}

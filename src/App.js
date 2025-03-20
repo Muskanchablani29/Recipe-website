@@ -10,6 +10,9 @@ import Recipe from './Components/Recipes/Recipe'
 import Jhatpat from "./Components/JhatPat Recipes/Jhatpat";
 import SmartChef from "./Components/SmartChef/Smartchep";
 import Mysterbox from "./Components/Fun-Fusion/MysteryBoxChallenge/MysteryBox";
+import Cooking from "./Components/Fun-Fusion/CookingChallenge/Cooking";
+import Spinner from './Components/Fun-Fusion/DotSpinner/Spinnergame';
+import Hacks from './Components/KitchenHacks/Kitchenhacks'
 import "./App.css";
 
 
@@ -35,6 +38,9 @@ function App() {
             <Route path="/recipe" element={<Recipe />} />
             <Route path="/Jhatpat" element={<Jhatpat />} />
             <Route path="/mysterybox" element={<Mysterbox />} />
+            <Route path="/Cooking" element={<Cooking />} />
+            <Route path="/Spinner" element={<Spinner />} />
+            <Route path="/Hacks" element={<Hacks />} />
           </Routes>
         </main>
         <SmartChef/>

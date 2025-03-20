@@ -81,7 +81,7 @@ const HeroSection = () => {
 
       {/* Heading with Animation */}
       <motion.h1
-        className="hero-heading"
+        className="hero-heading-choose"
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ 

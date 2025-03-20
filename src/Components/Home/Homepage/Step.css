@@ -1,0 +1,380 @@
+/* Container Styles */
+.step-container {
+    text-align: center;
+    padding: 50px;
+}
+
+/* Title Styles */
+.step-title {
+    font-size: 28px;
+    font-weight: bold;
+    padding: 50px;
+}
+
+.underline {
+    width: 80px;
+    height: 6px;
+
+    background-color: orange;
+    margin: 2px auto;
+}
+
+/* Layout Styles */
+.steps-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 80px;
+    flex-wrap: nowrap;
+    margin: 30px auto 0;
+    width: 90%;
+}
+
+.step-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    min-height: 200px;
+}
+
+/* Arc Styles - Base */
+.arc {
+    width: 140px;
+    height: 70px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    border: 6px solid #ddd;
+}
+
+/* Top Arc Styles */
+.top .arc {
+    border-radius: 70px 70px 0 0;
+    top: -70px;
+    border-top: none;
+    border-bottom: none;
+}
+
+/* Bottom Arc Styles */
+.bottom .arc {
+    border-radius: 0 0 70px 70px;
+    bottom: 5px;
+    border-top: none;
+}
+
+/* Step Number Styles */
+.step-number {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ddd;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+    z-index: 1;
+}
+
+.top .step-number {
+    top: -12px;
+}
+
+.bottom .step-number {
+    bottom: -12px;
+}
+
+/* Connecting Lines */
+.step-box:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -40px;
+    width: 80px;
+    height: 6px;
+    background: #ddd;
+    transform: translateY(-50%);
+    z-index: -1;
+}
+
+/* Image Styles */
+.step-image img {
+    width: 120px;
+    height: 120px;
+    border-radius: 20%;
+    object-fit: cover;
+    border: 3px solid #f1f1f1;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Text Styles */
+.step-text {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    width: 150px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #666;
+}
+
+.bottom .step-text {
+    top: -55px;
+}
+
+.top .step-text {
+    bottom: 5px;
+}
+
+/* Animations */
+@keyframes fillArc {
+    from {
+        background: white;
+        border-color: #ddd;
+    }
+    to {
+        background: rgba(255, 165, 0, 0.1);
+        border-color: orange;
+    }
+}
+
+@keyframes fillNumber {
+    to {
+        background: orange;
+    }
+}
+
+@keyframes fillLine {
+    to {
+        background: orange;
+    }
+}
+
+/* Step 1 Animation */
+.step-box:nth-child(1) .arc {
+    animation: fillArc 0.9s forwards;
+}
+
+.step-box:nth-child(1) .step-number {
+    animation: fillNumber 0.9s forwards;
+}
+
+.step-box:nth-child(1)::after {
+    animation: fillLine 0.9s 0.9s forwards;
+}
+
+/* Step 2 Animation */
+.step-box:nth-child(2) .arc {
+    animation: fillArc 0.9s 1s forwards;
+}
+
+.step-box:nth-child(2) .step-number {
+    animation: fillNumber 0.9s 1s forwards;
+}
+
+.step-box:nth-child(2)::after {
+    animation: fillLine 0.9s 1.5s forwards;
+}
+
+/* Step 3 Animation */
+.step-box:nth-child(3) .arc {
+    animation: fillArc 0.9s 2s forwards;
+}
+
+.step-box:nth-child(3) .step-number {
+    animation: fillNumber 0.9s 2s forwards;
+}
+
+.step-box:nth-child(3)::after {
+    animation: fillLine 0.9s 2.5s forwards;
+}
+
+/* Step 4 Animation */
+.step-box:nth-child(4) .arc {
+    animation: fillArc 0.9s 3s forwards;
+}
+
+.step-box:nth-child(4) .step-number {
+    animation: fillNumber 0.9s 3s forwards;
+}
+
+/* Active Text Color */
+.step-box .step-text {
+    transition: color 0.3s;
+}
+
+.step-box:nth-child(1) .step-text {
+    color: #333;
+}
+
+.step-box:nth-child(2) .step-text {
+    animation: textDarken 0.3s 1s forwards;
+}
+
+.step-box:nth-child(3) .step-text {
+    animation: textDarken 0.3s 2s forwards;
+}
+
+.step-box:nth-child(4) .step-text {
+    animation: textDarken 0.3s 3s forwards;
+}
+
+@keyframes textDarken {
+    to {
+        color: #333;
+    }
+}
+
+/* Media Query for Responsiveness */
+@media (max-width: 768px) {
+    .steps-wrapper {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .step-box {
+        min-height: 150px;
+    }
+
+    .arc {
+        width: 100px;
+        height: 50px;
+    }
+
+    .step-box::after {
+        display: none;
+    }
+}
+/* [Previous styles remain the same until animations] */
+
+/* Animations */
+@keyframes fillArc {
+    0% {
+        background: white;
+        border-color: #ddd;
+    }
+    20%, 100% {
+        background: rgba(255, 165, 0, 0.1);
+        border-color: orange;
+    }
+}
+
+@keyframes fillNumber {
+    0% {
+        background: #ddd;
+    }
+    20%, 100% {
+        background: orange;
+    }
+}
+
+@keyframes fillLine {
+    0% {
+        background: #ddd;
+    }
+    20%, 100% {
+        background: orange;
+    }
+}
+
+@keyframes textDarken {
+    0% {
+        color: #666;
+    }
+    20%, 100% {
+        color: #333;
+    }
+}
+
+/* Step 1 Animation */
+.step-box:nth-child(1) .arc {
+    animation: fillArc 20s infinite;
+}
+
+.step-box:nth-child(1) .step-number {
+    animation: fillNumber 20s infinite;
+}
+
+.step-box:nth-child(1)::after {
+    animation: fillLine 20s infinite;
+}
+
+.step-box:nth-child(1) .step-text {
+    animation: textDarken 20s infinite;
+}
+
+/* Step 2 Animation */
+.step-box:nth-child(2) .arc {
+    animation: fillArc 20s infinite 2s;
+}
+
+.step-box:nth-child(2) .step-number {
+    animation: fillNumber 20s infinite 2s;
+}
+
+.step-box:nth-child(2)::after {
+    animation: fillLine 20s infinite 2s;
+}
+
+.step-box:nth-child(2) .step-text {
+    animation: textDarken 20s infinite 2s;
+}
+
+/* Step 3 Animation */
+.step-box:nth-child(3) .arc {
+    animation: fillArc 20s infinite 4s;
+}
+
+.step-box:nth-child(3) .step-number {
+    animation: fillNumber 20s infinite 4s;
+}
+
+.step-box:nth-child(3)::after {
+    animation: fillLine 20s infinite 4s;
+}
+
+.step-box:nth-child(3) .step-text {
+    animation: textDarken 20s infinite 4s;
+}
+
+/* Step 4 Animation */
+.step-box:nth-child(4) .arc {
+    animation: fillArc 20s infinite 6s;
+}
+
+.step-box:nth-child(4) .step-number {
+    animation: fillNumber 20s infinite 6s;
+}
+
+.step-box:nth-child(4) .step-text {
+    animation: textDarken 20s infinite 6s;
+}
+
+/* Media Query for Responsiveness */
+@media (max-width: 768px) {
+    .steps-wrapper {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .step-box {
+        min-height: 150px;
+    }
+
+    .arc {
+        width: 100px;
+        height: 50px;
+    }
+
+    .step-box::after {
+        display: none;
+    }
+}

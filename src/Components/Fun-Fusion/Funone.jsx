@@ -6,13 +6,14 @@ import "./Funone.css";
 const KheloKhaoSection = () => {
   const navigate = useNavigate();
   const challenges = [
-    { name: "Dot Game", path: "/dot-game", icon: "🎯", description: "Sharpen your reflexes and accuracy in the dot game challenge!" },
+    { name: "Dot Game", path: "/Spinner", icon: "🎯", description: "Sharpen your reflexes and accuracy in the dot game challenge!" },
     { name: "Mystery Box", path: "/mysterybox", icon: "🕵️", description: "Uncover the secrets hidden within the mystery box!" },
-    { name: "Cooking Challenge", path: "/cooking-challenge", icon: "🍳", description: "Test your culinary skills with exciting cooking tasks!" },
+    { name: "Cooking Challenge", path: "/Cooking", icon: "🍳", description: "Test your culinary skills with exciting cooking tasks!" },
   ];
 
   return (
     <div className="khelo-khao-container">
+      <h1 className="khelo-khao-title">Khelo Khao - Fun Zone</h1>
       <div className="khelo-khao-content">
         <div className="khelo-khao-grid">
           {challenges.map((challenge, index) => (

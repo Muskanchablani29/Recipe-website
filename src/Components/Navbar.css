@@ -1,10 +1,10 @@
 :root {
-  --primary-brown: #FEBC1D;
-  --secondary-brown: #FFD577;
-  --cream-color: #FFDF99;
-  --text-color: #FFEBB9;
-  --danger-color: #FEDE91;
-  --danger-hover: #c82333;
+  --primary-brown: #FEBC1D;    /* Golden yellow */
+  --secondary-brown: #FFD577;  /* Light golden */
+  --cream-color: #FFDF99;     /* Soft cream */
+  --text-color: #FFEBB9;      /* Very light cream */
+  --danger-color: #FEDE91;    /* Light golden peach */
+  --danger-hover: #c82333;    /* Keeping this for contrast in danger states */
 }
 
 /* Main navbar container */
@@ -48,7 +48,7 @@
 }
 
 .logo {
-  max-width: 40px;
+  max-width: 280px;
   transition: max-width 0.3s ease;
 }
 
@@ -86,12 +86,11 @@
   position: relative;
 }
 
-/* Menu items */
 .menu-item {
   display: flex;
   align-items: center;
   gap: 15px;
-  color: white;
+  color: var(--text-color); /* Updated to use text color variable */
   text-decoration: none;
   padding: 12px;
   border-radius: 8px;
@@ -107,6 +106,7 @@
 }
 
 .menu-icon {
+  color: var(--text-color); /* Updated icon color */
   font-size: 20px;
   min-width: 24px;
   height: 24px;
@@ -133,14 +133,13 @@
   opacity: 1;
 }
 
-/* Active menu item */
 .menu-item.active {
   background-color: var(--secondary-brown);
-  color: var(--cream-color);
+  color: var(--text-color);
 }
 
 .menu-item.active .menu-icon {
-  color: var(--cream-color);
+  color: var(--text-color);
 }
 
 /* Profile section */
@@ -155,16 +154,16 @@
 }
 
 .profile-icon {
-  width: 24px;
-  height: 24px;
-  background-color: var(--cream-color);
+  width: 32px;
+  height: 32px;
+  background-color: var(--text-color);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--primary-brown);
   font-weight: bold;
-  font-size: 14px;
+  font-size: 16px;
   transition: all 0.3s ease;
 }
 
@@ -174,11 +173,11 @@
 }
 
 /* Dropdown Menu */
-.dropdown-menu {
+.profile-dropdown {
   position: absolute;
   top: 100%;
   right: 0;
-  background-color: white;
+  background-color: var(--text-color);
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 8px;
@@ -207,7 +206,7 @@
   border: none;
   background: none;
   text-align: left;
-  color: var(--text-color);
+  color: var(--primary-brown);
   font-size: 14px;
   cursor: pointer;
   border-radius: 4px;
@@ -217,6 +216,7 @@
 
 .dropdown-item:hover {
   background-color: var(--cream-color);
+  color: var(--primary-brown);
 }
 
 .dropdown-item.delete {
@@ -228,7 +228,6 @@
   color: white;
 }
 
-/* Scrollbar styling */
 .menu-wrapper::-webkit-scrollbar {
   width: 5px;
 }
@@ -279,7 +278,7 @@
     font-size: 14px;
   }
 
-  .dropdown-menu {
+  .profile-dropdown {
     min-width: 150px;
   }
 
@@ -310,7 +309,7 @@
     padding: 10px;
   }
 
-  .dropdown-menu {
+  .profile-dropdown {
     min-width: 130px;
   }
 
@@ -331,12 +330,11 @@
   }
 }
 
-/* High contrast mode */
 @media (prefers-contrast: high) {
   :root {
-    --primary-brown: #6b4423;
-    --secondary-brown: #8b5e3c;
-    --text-color: #000000;
+    --primary-brown: #FEBC1D;
+    --secondary-brown: #FFD577;
+    --text-color: #FFEBB9;
   }
 }
 
@@ -344,7 +342,7 @@
 @media (prefers-reduced-motion: reduce) {
   .navbar,
   .menu-item,
-  .dropdown-menu,
+  .profile-dropdown,
   .profile-icon {
     transition: none;
   }

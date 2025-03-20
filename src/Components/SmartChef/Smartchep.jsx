@@ -5,7 +5,7 @@ import RecipeDisplay from './RecipeDisplay';
 import CategorySelection from './CategorySelection';
 import DishSelection from './DishSelection';
 import Message from './Message';
-import chef from './chefs.gif'
+import chef from '../Chef/robotChef.gif'
 
 // Website features information
 const websiteFeatures = {

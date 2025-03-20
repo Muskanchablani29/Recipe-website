@@ -1,6 +1,10 @@
 // Funfive.jsx
 import React, { useState, useEffect } from 'react';
 import './Funfive.css';
+import { NavLink } from 'react-router';
+import Hacks from './KitchenJughad/burnt.jpeg'
+import Fix from './KitchenJughad/Salt.jpeg'
+import Tipsimg from './KitchenJughad/Tips.jpeg'
 
 const Funfive = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -8,19 +12,19 @@ const Funfive = () => {
 
   const kitchenImages = [
     {
-      url: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f",
-      title: "Modern Kitchen",
-      description: "Sleek and contemporary design"
+      url: Hacks,
+      title: "Kitchen Hacks",
+      description: "Innovative Ideas"
     },
     {
-      url: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136",
-      title: "Classic Kitchen",
-      description: "Traditional elegance"
+      url: Tipsimg,
+      title: "Kitchen tips",
+      description: "tips for kitchen"
     },
     {
-      url: "https://images.unsplash.com/photo-1556909172-54557c7e4fb7",
-      title: "Rustic Kitchen",
-      description: "Warm and inviting space"
+      url: Fix,
+      title: "Quick Fix",
+      description: "Fix your Messed Food"
     }
   ];
 
@@ -50,53 +54,53 @@ const Funfive = () => {
   }, [currentImageIndex]);
 
   return (
-    <div className="kitchen-container">
-      <div className="left-image">
-        <div className="main-container">
+    <div className="kitchen-container-muskan">
+      <div className="left-image-muskan">
+        <div className="main-container-muskan">
           <img
             src={kitchenImages[currentImageIndex].url}
             alt="Kitchen Design"
-            className={`main-image-kitchen ${isSliding ? 'sliding-image' : ''}`}
+            className={`main-image-kitchen-muskan ${isSliding ? 'sliding-image-muskan' : ''}`}
           />
-          <div className="main-image-content">
+          <div className="main-image-content-muskan">
             <h2>{kitchenImages[currentImageIndex].title}</h2>
             <p>{kitchenImages[currentImageIndex].description}</p>
           </div>
-          <div className="slide-indicators">
+          <div className="slide-indicators-muskan">
             {kitchenImages.map((_, index) => (
               <span
                 key={index}
-                className={`indicator ${currentImageIndex === index ? 'active' : ''}`}
+                className={`indicator-muskan ${currentImageIndex === index ? 'active' : ''}`}
               />
             ))}
           </div>
         </div>
       </div>
 
-      <div className="right-content">
-        <div className="content-section">
-          <h1 className="title">
+      <div className="right-content-muskan">
+        <div className="content-section-muskan">
+          <h1 className="title-muskan">
             Discover Kitchen Hacks
           </h1>
-          <p className="description">
+          <p className="description-muskan">
             This page is all about clever kitchen hacks, innovative ideas, and resourceful ways to make the most of what you have. Missing an ingredient? We've got you covered. This is the space where creativity turns kitchen challenges into opportunities!
           </p>
-          <button className="book-now">
+          <NavLink to="/Hacks"><button className="book-now-muskan">
             Explore More Hacks
-          </button>
+          </button></NavLink>
         </div>
 
-        <div className="info-boxes">
+        <div className="info-boxes-muskan">
           {kitchenImages.map((image, index) => (
             <div
               key={index}
-              className={`info-box ${currentImageIndex === index ? 'active' : ''}`}
+              className={`info-box-muskan ${currentImageIndex === index ? 'active' : ''}`}
               style={{ backgroundImage: `url(${image.url})` }}
             >
-              <div className={`content-wrapper ${
+              <div className={`content-wrapper-muskan ${
                 currentImageIndex === index ? 'content-active' : ''
               }`}>
-                <div className="icon">🏠</div>
+                <div className="icon-muskan">🏠</div>
                 <h3>{image.title}</h3>
                 <p>{image.description}</p>
               </div>

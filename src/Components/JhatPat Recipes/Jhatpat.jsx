@@ -1,10 +1,13 @@
 import React from 'react'
-import Jhatpatone from './Jhatpatone'
+import JhatPattop from './JhatPatTop'
 
 export default function Jhatpat() {
   return (
     <>
-    <Jhatpatone/>
+    <JhatPattop/>
+    {/* <Hacks/>
+    <Quick/>
+    <Tips/> */}
     </>
   )
 }

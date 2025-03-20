@@ -1,0 +1,167 @@
+.testimonials-container-kirti {
+  padding: 40px 20px;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.testimonials-title-kirti {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.testimonials-subtitle-kirti {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+.testimonials-slider-kirti {
+  position: relative;
+  margin: 20px 0;
+  overflow: hidden;
+  padding: 20px 0;
+}
+
+.testimonials-slides-container-kirti {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  gap: 15px;
+}
+
+.testimonials-slide-kirti {
+  flex: 0 0 calc(33.333% - 14px);
+  min-width: calc(33.333% - 14px);
+}
+
+.testimonial-card-kirti {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.5s ease;
+  opacity: 0.5;
+  transform: scale(0.9);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-card-kirti.active {
+  opacity: 1;
+  transform: scale(1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  border: 2px solid #007bff;
+  background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+}
+
+.testimonial-image-kirti {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 15px;
+  position: relative;
+}
+
+.testimonial-image-kirti::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #007bff, #00ff88);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.active .testimonial-image-kirti::after {
+  opacity: 1;
+}
+
+.testimonial-image-kirti img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #fff;
+}
+
+.testimonial-content-kirti {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial-text-kirti {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  flex-grow: 1;
+}
+
+.testimonial-name-kirti {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.testimonial-role-kirti {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.active .testimonial-name-kirti {
+  color: #007bff;
+}
+
+.active .testimonial-role-kirti {
+  color: #28a745;
+}
+
+/* Animation for active cards */
+@keyframes highlight {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.testimonial-card-kirti.active {
+  animation: highlight 0.5s ease forwards;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .testimonials-slide-kirti {
+    flex: 0 0 calc(50% - 10px);
+    min-width: calc(50% - 10px);
+  }
+}
+
+@media (max-width: 768px) {
+  .testimonials-slide-kirti {
+    flex: 0 0 100%;
+    min-width: 100%;
+  }
+  
+  .testimonials-title-kirti {
+    font-size: 2rem;
+  }
+  
+  .testimonials-subtitle-kirti {
+    font-size: 1rem;
+  }
+  
+  .testimonial-card-kirti {
+    padding: 15px;
+  }
+}

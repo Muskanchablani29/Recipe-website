@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Home, Utensils, BookOpen, ShoppingCart, User, LogOut } from "lucide-react";
 import "./Navbar.css";
-import logo from "./Images/logo.png";
+import logo from "./Images/Logo-bg.png";
 
 const menuItems = [
   { name: "Home", icon: <Home size={24} />, link: "/" },

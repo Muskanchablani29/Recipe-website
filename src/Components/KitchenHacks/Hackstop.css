@@ -1,0 +1,244 @@
+.tips-hacks-container-lavina {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    height: auto;
+  }
+  
+  .left-section-lavina {
+    margin-bottom: 20px;
+  }
+  
+  .subheading-lavina {
+    font-size: 32px;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .heading-lavina {
+    font-size: 18px;
+  
+    color: #666;
+  }
+  
+  .green-section-lavina {
+    background-color:   #FEDE91;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .image-container-lavina {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .section-wrapper-lavina {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .image-box-lavina {
+    width: 220px;
+    cursor: pointer;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .image-box-lavina img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+  
+  .image-box-lavina p {
+    margin-top: 8px;
+    font-weight: bold;
+  }
+  
+  .image-box-lavina.active {
+    transform: scale(1.1);
+  
+  }
+  
+  /* Now the full-width content appears SEPARATELY below the green section */
+  .full-width-content-lavina {
+    width: 90%;
+    padding: 20px;
+    background-color: #fff;
+    margin-top: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .chef-image-lavina {
+    position: absolute;
+    right: -50px;
+    
+    bottom: -30px;
+    width: 440px;
+    z-index: 2;
+  }
+  
+  @media (max-width: 768px) {
+    .image-container-lavina {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .chef-image-lavina {
+      position: static;
+      width: 120px;
+      margin-top: 20px;
+    }
+  }
+  
+  
+  /* Floating animation for chef */
+  @keyframes floatAnimation {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+  
+  .chef-image-lavina {
+    position: absolute;
+    right: -50px;
+    bottom: -30px;
+    width: 440px;
+    z-index: 2;
+    animation: floatAnimation 3s infinite ease-in-out;
+  }
+  
+  /* Fade-in effect */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @media (max-width: 768px) {
+    .image-container-lavina {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .chef-image-lavina {
+      position: static;
+      width: 120px;
+      margin-top: 20px;
+    }
+  }/* Hover effect for images */
+  .image-container-lavina {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .section-wrapper-lavina {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .image-box-lavina {
+    width: 220px;
+    cursor: pointer;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+  }
+  
+  .image-box-lavina img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s;
+  }
+  
+  .image-box-lavina p {
+    margin-top: 8px;
+    font-weight: bold;
+  }
+  
+  .image-box-lavina:hover {
+    transform: scale(1.1) rotate(2deg);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .image-box-lavina.active {
+    transform: scale(1.1);
+    border: 2px solid #4caf50;
+  }
+  /* Heading and Subheading Animations */
+  .left-section-lavina {
+    opacity: 0;
+    animation: slideInLeft 0.8s ease forwards;
+  }
+  
+  .subheading-lavina {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUpIn 0.6s ease forwards;
+    animation-delay: 0.3s;
+    color: #666;
+  
+  }
+  
+  .heading-lavina {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUpIn 0.6s ease forwards;
+    animation-delay: 0.6s;
+   
+    margin-top: 1rem;
+  }
+  
+  
+  
+  
+  /* Keyframes for animations */
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes fadeUpIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }

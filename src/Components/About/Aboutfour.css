@@ -1,0 +1,197 @@
+/* Aboutfour.css */
+.why-choose-us-kirti {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding: 0px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 60vh;
+  }
+  
+  /* Image Section Styles */
+  .image-section-kirti {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 20px;
+  }
+  
+  .main-image-kirti {
+    width: 80%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .floating-image-kirti {
+    position: absolute;
+    right: 0;
+    bottom: -30px;
+    width: 45%;
+    z-index: 2;
+  }
+  
+  .floating-image-kirti img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    border: 8px solid white;
+    transition: transform 0.3s ease;
+  }
+  
+  /* Content Section Styles */
+  .content-section-kirti {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .subtitle-aboutfour-kirti {
+    color: #FEDE91;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+  }
+  
+  .title-kirti {
+    font-size: 2.5rem;
+    color: #FEBC1D;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  .description-kirti {
+    color: #FEBC1D;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    font-size: 1.1rem;
+  }
+  
+  /* Features Grid */
+  .features-kirti {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-top: 30px;
+  }
+  
+  .feature-item-kirti {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+  }
+  
+  .feature-item-kirti:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .feature-icon-kirti {
+    font-size: 28px;
+    color: #ff6b6b;
+    background-color: #fff8f8;
+    padding: 12px;
+    border-radius: 50%;
+  }
+  
+  .feature-title-kirti {
+    font-size: 1.1rem;
+    color: #FEBC1D;
+    margin: 0;
+    font-weight: 600;
+  }
+  
+  /* Animations */
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+  
+  .floating-image-kirti {
+    animation: float 4s ease-in-out infinite;
+  }
+  
+  /* Hover Effects */
+  .main-image-kirti:hover {
+    transform: scale(1.02);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .features-kirti {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .why-choose-us-kirti {
+      flex-direction: column;
+      padding: 20px;
+    }
+  
+    .image-section-kirti {
+      width: 100%;
+      margin: 20px 0;
+    }
+  
+    .main-image-kirti {
+      width: 90%;
+    }
+  
+    .floating-image-kirti {
+      width: 50%;
+      bottom: -20px;
+    }
+  
+    .title-kirti {
+      font-size: 2rem;
+    }
+  
+    .features-kirti {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+    }
+  
+    .feature-item-kirti {
+      padding: 10px;
+    }
+  
+    .feature-icon-kirti {
+      font-size: 24px;
+      padding: 8px;
+    }
+  
+    .feature-title-kirti {
+      font-size: 1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .features-kirti {
+      grid-template-columns: 1fr;
+    }
+  
+    .title-kirti {
+      font-size: 1.8rem;
+    }
+  
+    .description-kirti {
+      font-size: 1rem;
+    }
+  }
+  

@@ -1,56 +1,34 @@
-// HeroSection.jsx
-import React from "react";
-import "./Chef.css";
-import chefImage from "../../../Chef/chef.webp"; // Update with your actual image path
+import React from 'react';
+import animation from '../ImageHome/Ani.gif';
+import './Chef.css';
 
-const HeroSection = () => {
+export default function ShareRecipe() {
   return (
-    <section className="chef-section">
-      {/* Left Content */}
-      <div className="content-left">
-        <h1>
-          Enjoy Your <span className="highlight1">Delicious</span> Food{" "}
-          <span className="emoji">🎁</span>
-        </h1>
-        <p>
-        Delicious Discoveries Await!" Unleash your inner chef with recipes designed to inspire and delight. From simple everyday meals to creative culinary adventures, every dish is a journey of flavor and fun
-        </p>
-      
-      </div>
-
-      {/* Right Image with Floating Labels */}
-      <div className="content-right">
-        {/* Background Shape */}
-        <div className="background-shape"></div>
-        <div className="outer-circle"></div>
-        <div className="chef-background"></div>
-        <div className="decorative-line line-1"></div>
-        <div className="decorative-line line-2"></div>
-        {/* Chef Image */}
-        <img src={chefImage} alt="Chef" className="chef-image" />
-
-        {/* Floating Labels */}
-        <div className="info-badge discount-badge">
-          <p>
-          Your Culinary Companion
-          </p>
+    <div className="share-page bg-yellow-100 text-yellow-900 flex justify-center items-center min-h-screen p-6">
+      <div className="share-main flex flex-col md:flex-row items-center bg-yellow-50 p-6 rounded-lg shadow-lg max-w-4xl w-full">
+        {/* Left Section - Image */}
+        <div className="left-section flex-1 flex justify-center">
+          <img 
+            src={animation} 
+            alt="Cooking Animation" 
+            className="main-animation w-64 h-64"
+          />
         </div>
 
-        <div className="info-badge delivery-badge">
-          <p>
-          Quick, Easy, and Smart</p>
-        </div>
-
-        <div className="info-badge review-badge">
-          <p>
-            <strong>Happy Customer</strong>
-            <br />
-            ⭐ 4.9 (5095 reviews)
-          </p>
+        {/* Right Section - Text and Button */}
+        <div className="right-section flex-1 flex flex-col items-start p-6">
+          <header className="header-section mb-4">
+            <h1 className="text-3xl font-bold">Share Your Recipe</h1>
+            <p className="subtitle-share text-lg">Inspire others with your culinary creations</p>
+          </header>
+          <div className="action-section">
+            <button className="primary-button bg-yellow-500 text-white py-2 px-4 rounded-lg hover:bg-yellow-600">
+              Start Sharing
+            </button>
+            <p className="action-text mt-2 text-yellow-800">Join our cooking community today!</p>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
   );
-};
-
-export default HeroSection;
+}

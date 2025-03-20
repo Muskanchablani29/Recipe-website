@@ -1,17 +1,17 @@
 /* Funfive.css */
-.kitchen-container {
+.kitchen-container-muskan {
   display: flex;
   min-height: 100vh;
   background-color: #FFEFD5;
 }
 
-.left-image {
+.left-image-muskan {
   flex: 1;
   position: relative;
   padding: 20px;
 }
 
-.main-container {
+.main-container-muskan {
   position: relative;
   width: 100%;
   height: 100%;
@@ -20,18 +20,18 @@
   box-shadow: 0 4px 8px rgba(139, 69, 19, 0.2);
 }
 
-.main-image-kitchen {
+.main-image-kitchen-muskan {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s ease-in-out;
 }
 
-.sliding-image {
+.sliding-image-muskan {
   transform: scale(1.05);
 }
 
-.main-image-content {
+.main-image-content-muskan {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -42,18 +42,18 @@
   animation: fadeIn 0.5s ease-in-out;
 }
 
-.main-image-content h2 {
+.main-image-content-muskan h2 {
   margin: 0;
   font-size: 24px;
   font-family: 'Georgia', serif;
 }
 
-.main-image-content p {
+.main-image-content-muskan p {
   margin: 10px 0 0;
   font-size: 16px;
 }
 
-.slide-indicators {
+.slide-indicators-muskan {
   position: absolute;
   bottom: 20px;
   right: 20px;
@@ -61,7 +61,7 @@
   gap: 10px;
 }
 
-.indicator {
+.indicator-muskan {
   width: 12px;
   height: 12px;
   border-radius: 50%;
@@ -69,18 +69,18 @@
   transition: background-color 0.3s ease-in-out;
 }
 
-.indicator.active {
+.indicator.active-muskan {
   background-color: #FFEFD5;
   animation: pulse 2s infinite;
 }
 
-.right-content {
+.right-content-muskan {
   flex: 1;
   padding: 2rem;
   background-color: #FFEFD5;
 }
 
-.content-section {
+.content-section-muskan {
   background-color: rgba(255, 239, 213, 0.9);
   padding: 2rem;
   border-radius: 10px;
@@ -89,8 +89,8 @@
   animation: slideIn 0.5s ease-in-out;
 }
 
-.title {
-  color: #5C4033;
+.title-muskan {
+  color: #FEBC1D;
   font-size: 2.5rem;
   font-family: 'Georgia', serif;
   margin-bottom: 1.5rem;
@@ -98,18 +98,18 @@
   position: relative;
 }
 
-.title::after {
+.title-muskan::after {
   content: '';
   position: absolute;
   bottom: -10px;
   left: 0;
   width: 60px;
   height: 3px;
-  background-color: #8B4513;
+  background-color: #fff;
   animation: expandWidth 0.5s ease-in-out;
 }
 
-.description {
+.description-muskan {
   color: #8B4513;
   font-size: 1.1rem;
   line-height: 1.6;
@@ -117,7 +117,7 @@
   font-family: 'Arial', sans-serif;
 }
 
-.book-now {
+.book-now-muskan {
   background-color: #8B4513;
   color: #FFEFD5;
   padding: 12px 28px;
@@ -130,19 +130,19 @@
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
-.book-now:hover {
+.book-now-muskan:hover {
   background-color: #6B3410;
   transform: translateY(-2px);
 }
 
-.info-boxes {
+.info-boxes-muskan {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   margin-top: 20px;
 }
 
-.info-box {
+.info-box-muskan {
   position: relative;
   height: 200px;
   border-radius: 10px;
@@ -154,7 +154,7 @@
   transition: transform 0.3s ease;
 }
 
-.content-wrapper {
+.content-wrapper-muskan {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -166,29 +166,29 @@
   transition: transform 0.5s ease-in-out;
 }
 
-.content-wrapper.content-active {
+.content-wrapper-muskan.content-active {
   transform: translateY(0);
   animation: fadeInUp 0.5s ease-in-out;
 }
 
-.icon {
+.icon-muskan {
   font-size: 24px;
   margin-bottom: 10px;
 }
 
-.info-box h3 {
+.info-box-muskan h3 {
   margin: 0;
   font-size: 18px;
   font-family: 'Georgia', serif;
 }
 
-.info-box p {
+.info-box-muskan p {
   margin: 5px 0 0;
   font-size: 14px;
   opacity: 0.9;
 }
 
-.info-box.active {
+.info-box-muskan.active {
   border: 2px solid #8B4513;
   transform: scale(1.05);
 }
@@ -251,19 +251,19 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .kitchen-container {
+  .kitchen-container-muskan {
     flex-direction: column;
   }
 
-  .info-boxes {
+  .info-boxes-muskan {
     grid-template-columns: 1fr;
   }
 
-  .content-section {
+  .content-section-muskan {
     padding: 1rem;
   }
 
-  .title {
+  .title-muskan {
     font-size: 2rem;
   }
 }

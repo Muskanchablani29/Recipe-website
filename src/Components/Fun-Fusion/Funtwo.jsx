@@ -25,9 +25,9 @@ const FunFusionWelcome = () => {
         >
           <defs>
             <linearGradient id="ribbonGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" style={{ stopColor: '#FEBC1D', stopOpacity: 0.9 }} />
-              <stop offset="50%" style={{ stopColor: '#FEBC1D', stopOpacity: 1 }} />
-              <stop offset="100%" style={{ stopColor: '#FEBC1D', stopOpacity: 0.9 }} />
+              <stop offset="0%" style={{ stopColor: '#F7931E', stopOpacity: 0.9 }} />
+              <stop offset="50%" style={{ stopColor: '#F7931E', stopOpacity: 1 }} />
+              <stop offset="100%" style={{ stopColor: '#F7931e', stopOpacity: 0.9 }} />
             </linearGradient>
             <path
               id="curve"

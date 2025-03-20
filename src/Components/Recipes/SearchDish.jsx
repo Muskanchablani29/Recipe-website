@@ -2,15 +2,17 @@ import React, { useState, useEffect } from "react";
 import VideoGrid from "./SearchRecipes/VideoGrid";
 import "./SearchDish.css";
 import { FiSearch } from "react-icons/fi";
-import { Sliders, XCircle } from "lucide-react";
+import { Sliders, XCircle, X } from "lucide-react";
 
-export default function SearchDish() {
+const SearchDish = () => {
   const [dishName, setDishName] = useState("");
   const [videos, setVideos] = useState([]);
   const [filteredVideos, setFilteredVideos] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [activeMeal, setActiveMeal] = useState("");
   const [showFilters, setShowFilters] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
   const [filters, setFilters] = useState({
     duration: "",
     rating: "",
@@ -19,9 +21,12 @@ export default function SearchDish() {
 
   const API_KEY = process.env.REACT_APP_YOUTUBE_API_KEY;
 
-  // Fetch Videos
+  // Fetch Videos with Loading and Error States
   const handleSearch = async (mealType = "") => {
     if (!dishName.trim()) return;
+
+    setLoading(true);
+    setError(null);
 
     try {
       let query = `${dishName} ${mealType} recipe`;
@@ -29,6 +34,11 @@ export default function SearchDish() {
       const response = await fetch(
         `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${query}&type=video&key=${API_KEY}&maxResults=10`
       );
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch videos');
+      }
+
       const data = await response.json();
 
       if (data.items?.length > 0) {
@@ -40,6 +50,9 @@ export default function SearchDish() {
       }
     } catch (error) {
       console.error("Error fetching videos:", error);
+      setError("Failed to load videos. Please try again later.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -61,23 +74,24 @@ export default function SearchDish() {
       filtered = filtered.filter((video) => {
         const duration = parseInt(video.snippet.title.match(/\d+/g)?.[0] || "0");
         if (filters.duration === "short" && duration <= 10) return true;
-        if (filters.duration === "medium" && duration > 10 && duration <= 30) return true;
+        if (filters.duration === "medium" && duration > 10 && duration <= 30)
+          return true;
         if (filters.duration === "long" && duration > 30) return true;
         return false;
       });
     }
 
-    // Filter by views (mock views here for demo purpose)
+    // Filter by views
     if (filters.views === "highest") {
-      filtered = filtered.slice().sort(() => Math.random() - 0.5); // Simulate highest views
+      filtered = filtered.slice().sort(() => Math.random() - 0.5);
     }
 
-    // Filter by rating (mock rating logic here)
+    // Filter by rating
     if (filters.rating === "highest") {
-      filtered = filtered.slice().reverse(); // Simulate rating filter
+      filtered = filtered.slice().reverse();
     }
 
-    setFilteredVideos(filtered.slice(0, 4)); // Limit to 3 or 4 after filtering
+    setFilteredVideos(filtered);
   };
 
   // Clear Filters
@@ -90,10 +104,24 @@ export default function SearchDish() {
     });
   };
 
-  // Handle Video Select to Show on Top
+  // Handle Video Select
   const handleVideoSelect = (video) => {
     setSelectedVideo(video);
+    // Scroll to top when video is selected
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  // Handle Close Video
+  const handleCloseVideo = () => {
+    setSelectedVideo(null);
+  };
+
+  // Effect to apply filters when they change
+  useEffect(() => {
+    if (Object.values(filters).some(filter => filter !== "")) {
+      applyFilters();
+    }
+  }, [filters]);
 
   return (
     <div className="search-container">
@@ -124,7 +152,7 @@ export default function SearchDish() {
         ))}
       </div>
 
-      {/* Filter Button */}
+      {/* Filter Controls */}
       <div className="filter-toggle">
         <button className="filter-btn" onClick={toggleFilters}>
           <Sliders size={20} /> {showFilters ? "Hide Filters" : "Show Filters"}
@@ -136,7 +164,7 @@ export default function SearchDish() {
         )}
       </div>
 
-      {/* Filters */}
+      {/* Filters Panel */}
       {showFilters && (
         <div className="filter-options">
           <select
@@ -171,9 +199,34 @@ export default function SearchDish() {
         </div>
       )}
 
-      {/* Selected Video Embed */}
+      {/* Loading State */}
+      {loading && (
+        <div className="loading-state">
+          <div className="loader"></div>
+          <p>Loading videos...</p>
+        </div>
+      )}
+
+      {/* Error State */}
+      {error && (
+        <div className="error-state">
+          <p>{error}</p>
+        </div>
+      )}
+
+      {/* Selected Video Display */}
       {selectedVideo && (
         <div className="selected-video-container">
+          <div className="video-header">
+            <h3 className="video-title">{selectedVideo.snippet.title}</h3>
+            <button 
+              className="close-video-btn"
+              onClick={handleCloseVideo}
+              aria-label="Close video"
+            >
+              <X size={24} />
+            </button>
+          </div>
           <iframe
             src={`https://www.youtube.com/embed/${selectedVideo.id.videoId}`}
             title={selectedVideo.snippet.title}
@@ -184,7 +237,21 @@ export default function SearchDish() {
       )}
 
       {/* Video Grid */}
-      <VideoGrid videos={filteredVideos} handleVideoSelect={handleVideoSelect} />
+      {!loading && !error && (
+        <VideoGrid 
+          videos={filteredVideos} 
+          handleVideoSelect={handleVideoSelect} 
+        />
+      )}
+
+      {/* No Results State */}
+      {!loading && !error && filteredVideos.length === 0 && dishName && (
+        <div className="no-results">
+          <p>No videos found for "{dishName}". Try a different search term.</p>
+        </div>
+      )}
     </div>
   );
-}
+};
+
+export default SearchDish;

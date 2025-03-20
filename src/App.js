@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"; // Fixed import
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useSelector } from "react-redux"; // Add this import
 import Navbar from "./Components/Navbar";
 import Home from "./Components/Home/Home";
 import About from "./Components/About/About";
@@ -18,6 +19,10 @@ import Footer from './Components/Footer/Footer'
 import "./App.css";
 
 function App() {
+  // Get authentication state from Redux store
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const user = useSelector((state) => state.auth.user);
+
   return (
     <Router>
       <div className="app-container">
@@ -37,13 +42,13 @@ function App() {
             <Route path="/spinner" element={<Spinner />} />
             <Route path="/hacks" element={<Hacks />} />
             <Route path="/shareas" element={<Shareas />} />
-
           </Routes>
         </main>
-        <SmartChef/>
-
-      </div>
-      <Footer/>
+        
+        {/* Only render SmartChef if user is logged in */}
+        {isLoggedIn && user && <SmartChef />}
+        </div>
+        <Footer/>
     </Router>
   );
 }

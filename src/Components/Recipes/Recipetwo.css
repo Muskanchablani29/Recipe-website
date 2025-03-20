@@ -4,18 +4,18 @@
 }
 
 /* Main Container */
-.container {
+.container-dish-select {
   text-align: center;
   padding: 30px;
   max-width: 1400px;
   margin: auto;
   background: #ffffff;
-  border-radius: 12px;
+  border-radius: 12px; 
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 /* Title */
-.title {
+.title-select {
   font-size: 28px;
   font-weight: bold;
   margin-bottom: 20px;
@@ -23,7 +23,7 @@
 }
 
 /* Search Bar */
-.search-bar {
+.search-bar-select {
   width: 100%;
   max-width: 600px;
   padding: 12px 18px;
@@ -35,7 +35,7 @@
 }
 
 /* Ingredient List */
-.ingredient-list {
+.ingredient-list-select-select {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -46,7 +46,7 @@
 }
 
 /* Ingredient Button */
-.ingredient-button {
+.ingredient-button-select {
   background-color: transparent;
   color: #5c4033;
   border: 2px solid #5c4033;
@@ -58,14 +58,14 @@
   font-weight: bold;
 }
 
-.ingredient-button.selected {
+.ingredient-button-select.selected {
   background-color: #d4a373;
   color: white;
 }
 
 /* Show More and Next Button */
-.show-more-button,
-.next-button {
+.show-more-button-select,
+.next-button-select {
   background-color: #9c6644;
   color: white;
   border: none;
@@ -77,18 +77,18 @@
   transition: background 0.3s ease-in-out;
 }
 
-.show-more-button:hover,
+.show-more-button-select:hover,
 .next-button:hover {
   background-color: #7f5539;
 }
 
-.next-button:disabled {
+.next-button-select:disabled {
   background-color: #ccc;
   cursor: not-allowed;
 }
 
 /* Dish List */
-.dish-list {
+.dish-list-select {
   margin-top: 30px;
   padding: 20px;
   background: #fff7ec;
@@ -96,7 +96,7 @@
 }
 
 /* Dish Title */
-.dish-title {
+.dish-title-select {
   font-size: 22px;
   font-weight: bold;
   color: #5c4033;
@@ -104,7 +104,7 @@
 }
 
 /* Dish Grid */
-.dish-grid {
+.dish-grid-select {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 15px;
@@ -113,7 +113,7 @@
 }
 
 /* Dish Card */
-.dish-card {
+.dish-card-select {
   background: #fff;
   border-radius: 12px;
   padding: 15px;
@@ -123,12 +123,12 @@
   transition: transform 0.3s ease-in-out;
 }
 
-.dish-card:hover {
+.dish-card-select:hover {
   transform: scale(1.05);
 }
 
 /* Dish Image */
-.dish-image {
+.dish-image-select {
   width: 100%;
   height: 140px;
   border-radius: 8px;
@@ -136,7 +136,7 @@
 }
 
 /* Dish Name */
-.dish-name {
+.dish-name-select {
   font-size: 16px;
   margin-top: 10px;
   font-weight: bold;
@@ -144,14 +144,14 @@
 }
 
 /* Dish Category */
-.dish-category {
+.dish-category-select {
   font-size: 14px;
   color: #7f5539;
   margin-top: 5px;
 }
 
 /* Video Section */
-.video-section {
+.video-section-select {
   margin-top: 30px;
   padding: 20px;
   background: #fff7ec;
@@ -160,7 +160,7 @@
 }
 
 /* Video Grid */
-.video-grid {
+.video-grid-select {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 20px;
@@ -169,19 +169,19 @@
 }
 
 /* Video Player */
-.video-player {
+.video-player-select {
   width: 100%;
   height: 240px;
   border-radius: 12px;
 }
 
 /* No Video Message */
-.no-video {
+.no-video-select {
   color: #b08968;
 }
 
 /* Filter Group - Button Container */
-.filter-group {
+.filter-group-select {
   margin-top: 20px;
   display: flex;
   justify-content: center;
@@ -190,7 +190,7 @@
 }
 
 /* Meal Category Buttons */
-.filter-button {
+.filter-button-select {
   background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
   color: #5c4033;
   border: 2px solid #9c6644;
@@ -205,7 +205,7 @@
 }
 
 /* Hover Effect */
-.filter-button:hover {
+.filter-button-select:hover {
   background: linear-gradient(135deg, #fcb69f 0%, #ffecd2 100%);
   color: #7f5539;
   border-color: #7f5539;
@@ -213,7 +213,7 @@
 }
 
 /* Active Button Style */
-.filter-button.active {
+.filter-button-select.active {
   background: linear-gradient(135deg, #9c6644, #7f5539);
   color: white;
   border-color: #5c4033;
@@ -222,31 +222,31 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .ingredient-list {
+  .ingredient-list-select {
     gap: 8px;
   }
 
-  .ingredient-button {
+  .ingredient-button-select {
     padding: 10px 14px;
     font-size: 14px;
   }
 
-  .next-button {
+  .next-button-select {
     font-size: 16px;
     padding: 12px 20px;
   }
 
-  .dish-grid {
+  .dish-grid-select {
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   }
 
-  .video-player {
+  .video-player-select {
     height: 200px;
   }
 }
 
 /* Recipe Section Styles */
-.recipe-section {
+.recipe-section-select {
   margin-top: 40px;
   padding: 20px;
   background: #fff;
@@ -254,21 +254,21 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.recipe-title {
+.recipe-title-select {
   text-align: center;
   color: #333;
   margin-bottom: 30px;
   font-size: 24px;
 }
 
-.recipe-videos {
+.recipe-videos-select {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 24px;
   padding: 20px 0;
 }
 
-.recipe-video-card {
+.recipe-video-card-select {
   background: #fff;
   border-radius: 12px;
   overflow: hidden;
@@ -276,11 +276,11 @@
   transition: transform 0.3s ease;
 }
 
-.recipe-video-card:hover {
+.recipe-video-card-select:hover {
   transform: translateY(-5px);
 }
 
-.video-container {
+.video-container-select {
   position: relative;
   padding-bottom: 56.25%; /* 16:9 aspect ratio */
   height: 0;
@@ -296,11 +296,11 @@
   border: none;
 }
 
-.video-info {
+.video-info-select {
   padding: 16px;
 }
 
-.video-title {
+.video-title-select {
   font-size: 16px;
   font-weight: 600;
   color: #333;
@@ -308,14 +308,14 @@
   line-height: 1.4;
 }
 
-.channel-name {
+.channel-name-select {
   font-size: 14px;
   color: #666;
   margin: 0;
 }
 
 /* Loading Styles */
-.loading-container {
+.loading-container-select {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -323,7 +323,7 @@
   padding: 40px;
 }
 
-.loading-spinner {
+.loading-spinner-select {
   width: 40px;
   height: 40px;
   border: 4px solid #f3f3f3;
@@ -338,7 +338,7 @@
   100% { transform: rotate(360deg); }
 }
 
-.no-recipes {
+.no-recipes-select {
   text-align: center;
   padding: 40px;
   color: #666;
@@ -346,19 +346,19 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .recipe-videos {
+  .recipe-videos-select {
     grid-template-columns: 1fr;
   }
 
-  .recipe-video-card {
+  .recipe-video-card-select {
     max-width: 100%;
   }
 
-  .video-title {
+  .video-title-select {
     font-size: 14px;
   }
 
-  .channel-name {
+  .channel-name-select {
     font-size: 12px;
   }
 }

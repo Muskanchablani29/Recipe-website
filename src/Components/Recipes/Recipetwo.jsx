@@ -225,7 +225,7 @@ const dishes = {
     { name: "Radish Soup", category: "Lunch" },
     { name: "Radish Curry", category: "Dinner" },
     { name: "Radish Stir Fry", category: "Dinner" },
-    { name: "Radish Pickle", category: "Snacks" },
+    { name: "Radish Pickle", category: "Snacks" }, 
     { name: "Radish Paratha", category: "Breakfast" },
   ],
   Beetroot: [
@@ -521,25 +521,25 @@ const IngredientDishSelector = () => {
     .slice(0, displayCount);
 
   return (
-    <div className="container full-screen">
-      <h1 className="title">Select Ingredients</h1>
+    <div className="container-dish-select full-screen">
+      <h1 className="title-select">Select Ingredients</h1>
 
       {/* Search Bar */}
       <input
         type="text"
-        className="search-bar"
+        className="search-bar-select"
         placeholder="Search for an ingredient..."
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
 
       {/* Ingredient List */}
-      <div className="ingredient-list">
+      <div className="ingredient-list-select">
         {filteredIngredients.map((ingredient) => (
           <button
             key={ingredient}
             onClick={() => toggleIngredient(ingredient)}
-            className={`ingredient-button ${
+            className={`ingredient-button-select ${
               selectedIngredients.includes(ingredient) ? "selected" : ""
             }`}
           >
@@ -549,14 +549,14 @@ const IngredientDishSelector = () => {
       </div>
 
       {displayCount < ingredients.length && (
-        <button className="show-more-button" onClick={handleShowMore}>
+        <button className="show-more-button-select" onClick={handleShowMore}>
           Show More
         </button>
       )}
 
       {/* Next Button */}
       <button
-        className="next-button"
+        className="next-button-select"
         onClick={handleNext}
         disabled={selectedIngredients.length === 0}
       >
@@ -564,15 +564,15 @@ const IngredientDishSelector = () => {
       </button>
 
       {showDishes && (
-        <div className="dish-list">
-          <h2 className="dish-title">Suggested Dishes:</h2>
+        <div className="dish-list-select">
+          <h2 className="dish-title-select">Suggested Dishes:</h2>
 
           {/* Meal Category Filter */}
-          <div className="filter-group">
+          <div className="filter-group-select">
             {categories.map((category) => (
               <button
                 key={category}
-                className={`filter-button ${
+                className={`filter-button-select ${
                   mealCategory === category ? "active" : ""
                 }`}
                 onClick={() => setMealCategory(category)}
@@ -583,24 +583,24 @@ const IngredientDishSelector = () => {
           </div>
 
           {/* Dish Grid */}
-          <div className="dish-grid full-screen">
+          <div className="dish-grid-select full-screen">
   {getDishes().map((dish, index) => (
     <div
       key={index}
-      className="dish-card"
+      className="dish-card-select"
       onClick={() => fetchVideos(dish)}
     >
       <img
         src={dish.imageUrl || `https://source.unsplash.com/300x200/?food`} // Fallback to a generic food image
         alt={dish.name}
-        className="dish-image"
+        className="dish-image-select"
         onError={(e) => {
           e.target.onerror = null; // Prevent infinite loop
           e.target.src = 'https://via.placeholder.com/300x200?text=Recipe+Image'; // Fallback image if main image fails
         }}
       />
-      <p className="dish-name">{dish.name}</p>
-      <p className="dish-category">{dish.category}</p>
+      <p className="dish-name-select">{dish.name}</p>
+      <p className="dish-category-select">{dish.category}</p>
     </div>
   ))}
 </div>
@@ -609,14 +609,14 @@ const IngredientDishSelector = () => {
 
       {/* Video Section */}
       {selectedDish && (
-        <div className="video-section">
-          <h2 className="video-title">Recipe Videos for {selectedDish.name}</h2>
-          <div className="video-grid">
+        <div className="video-section-select">
+          <h2 className="video-title-select">Recipe Videos for {selectedDish.name}</h2>
+          <div className="video-grid-select">
             {videoUrls.length > 0 ? (
               videoUrls.map((url, index) => (
                 <iframe
                   key={index}
-                  className="video-player"
+                  className="video-player-select"
                   src={url}
                   title={`${selectedDish.name} video ${index + 1}`}
                   frameBorder="0"
@@ -624,7 +624,7 @@ const IngredientDishSelector = () => {
                 ></iframe>
               ))
             ) : (
-              <p className="no-video">No videos found for this recipe.</p>
+              <p className="no-video-select">No videos found for this recipe.</p>
             )}
           </div>
         </div>

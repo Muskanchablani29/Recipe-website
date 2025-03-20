@@ -1,454 +1,589 @@
-
-/* Full Page Styling */
-.fun-zone-container {
+.funzone-container {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
-  width: 100vw;
-  background: linear-gradient(45deg, #ff8c00, #ff4500, #ff1493);
-  background-size: 400% 400%;
-  animation: gradientBG 10s ease infinite;
-  color: white;
+  justify-content: space-between;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 2rem;
+}
+
+.funzone-image-wrapper {
+  position: relative;
+  flex: 1;
+  min-width: 300px;
+}
+
+.funzone-main-image {
+  width: 100%;
+  height: auto;
+  max-width: 700px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.funzone-main-image:hover {
+  transform: scale(1.02);
+}
+
+.funzone-icon {
+  position: absolute;
+  width: 150px;
+  height: 200px;
+  object-fit: contain;
+}
+
+.funzone-dish {
+  bottom: 15%;
+  left: 15%;
+}
+
+.funzone-text {
+  flex: 1;
+  padding: 2rem;
+}
+
+.funzone-title {
+  font-size: 2.5rem;
+  color: #ff6b6b;
+  margin-bottom: 1.5rem;
   text-align: center;
 }
 
-/* Background Animation */
-@keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Title */
-.title-funzone {
-  font-size: 3em;
-  font-weight: bold;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-}
-
-/* Spin Wheel */
-.spin-wheel {
-  display: flex;
-  justify-content: center;
-  margin: 20px 0;
-}
-
-.wheel-image {
-  width: 280px;
-  border-radius: 50%;
-  transition: transform 3s ease-in-out;
-}
-
-/* Spinning Animation */
-.spinning {
-  transform: rotate(720deg);
-}
-
-/* Buttons */
-.fun-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 20px;
-}
-
-.fun-button,
-.spin-button-home {
-  background: linear-gradient(to right, #ffcc00, #ff5733);
-  color: white;
-  border: none;
-  padding: 12px 25px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 1.2em;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-.fun-button:hover,
-.spin-button-home:hover {
-  background: linear-gradient(to right, #ff5733, #ffcc00);
-  transform: scale(1.1);
-}
-
-/* Fun Tagline */
-.fun-tagline {
-  font-size: 1.4em;
-  font-style: italic;
-  margin-top: 20px;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
-}
-/* Confetti Container - Restricted to Fun Zone */
-.fun-zone-container {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden; /* Prevents confetti from affecting other pages */
-}
-
-/* Confetti Animation */
-.confetti-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-/* Confetti Squares */
-.confetti {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  opacity: 0.8;
-  animation: popper linear infinite;
-}
-
-/* Popper Animation */
-@keyframes popper {
-  0% { transform: translateY(-10vh) rotate(0); opacity: 1; }
-  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
-}
-/* General Container */
-.fun-zone-container {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  background: linear-gradient(45deg, #ff8c00, #ff4500, #ff1493);
-  background-size: 400% 400%;
-  animation: gradientBG 10s ease infinite;
-}
-
-
-
-/* Confetti Animation */
-.confetti {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  opacity: 0.8;
-  animation: popper linear infinite;
-}
-
-@keyframes popper {
-  0% { transform: translateY(-10vh) rotate(0); opacity: 1; }
-  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
-}
-
-/* Fireworks */
-.firework {
-  position: absolute;
-  background: radial-gradient(circle, yellow, orange, red);
-  border-radius: 50%;
-  opacity: 0.7;
-  animation: explode 1s linear infinite;
-}
-
-@keyframes explode {
-  0% { transform: scale(0); opacity: 1; }
-  100% { transform: scale(3); opacity: 0; }
-}
-
-/* Balloons */
-.balloon {
-  position: absolute;
-  width: 25px;
-  height: 35px;
-  border-radius: 50%;
-  animation: floatUp linear infinite;
-}
-
-@keyframes floatUp {
-  0% { transform: translateY(100vh); opacity: 1; }
-  100% { transform: translateY(-10vh); opacity: 0; }
-}
-/* Full Page Styling */
-.fun-zone-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  width: 100vw;
- 
-  background-size: 400% 400%;
-  animation: gradientBG 10s ease infinite;
-  color: white;
+.funzone-description {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #4a4a4a;
   text-align: center;
 }
 
-/* Background Animation */
-@keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+.funzone-description strong {
+  color: #ff8c42;
+  transition: color 0.3s ease;
 }
 
-/* Title */
-.title-funzone {
-  font-size: 3em;
-  font-weight: bold;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+.funzone-description strong:hover {
+  color: #ff6b6b;
 }
 
-/* Spin Wheel */
-.spin-wheel {
+/* Responsive Design */
+@media (max-width: 768px) {
+  .funzone-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .funzone-text {
+    order: 2;
+  }
+
+  .funzone-image-wrapper {
+    order: 1;
+    margin-bottom: 2rem;
+  }
+
+  .funzone-title {
+    font-size: 2rem;
+  }
+
+  .funzone-description {
+    font-size: 1rem;
+  }
+
+  .funzone-dish {
+    width: 100px;
+    height: 100px;
+  }
+}
+.funzone-container {
   display: flex;
-  justify-content: center;
-  margin: 20px 0;
-}
-
-.wheel-image {
-  width: 280px;
-  border-radius: 50%;
-  transition: transform 3s ease-in-out;
-}
-
-/* Spinning Animation */
-.spinning {
-  transform: rotate(720deg);
-}
-
-/* Buttons */
-.fun-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 20px;
-}
-
-.fun-button,
-.spin-button {
-  background: linear-gradient(to right, #ffcc00, #ff5733);
-  color: white;
-  border: none;
-  padding: 12px 25px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 1.2em;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-.fun-button:hover,
-.spin-button:hover {
-  background: linear-gradient(to right, #ff5733, #ffcc00);
-  transform: scale(1.1);
-}
-
-/* Fun Tagline */
-.fun-tagline {
-  font-size: 1.4em;
-  font-style: italic;
-  margin-top: 20px;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
-}
-/* Confetti Container - Restricted to Fun Zone */
-.fun-zone-container {
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 2rem;
+  background: linear-gradient(45deg, #fff5f5, #fff8f0, #f0f9ff);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
   position: relative;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden; /* Prevents confetti from affecting other pages */
+  overflow: hidden;
 }
 
-/* Confetti Animation */
-.confetti-container {
+/* Fun confetti background */
+.funzone-container::before {
+  content: '🎈';
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 10px;
+  left: 10px;
+  font-size: 24px;
+  animation: float 6s infinite;
+}
+
+.funzone-container::after {
+  content: '🎪';
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 24px;
+  animation: float 5s infinite;
+}
+
+.funzone-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(255, 107, 107, 0.1);
+}
+
+.funzone-image-wrapper {
+  position: relative;
+  flex: 1;
+  min-width: 300px;
+  perspective: 1000px;
+}
+
+.funzone-main-image {
   width: 100%;
-  height: 100%;
-  pointer-events: none;
+  height: auto;
+  max-width: 700px;
+  object-fit: contain;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
 }
 
-/* Confetti Squares */
-.confetti {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  opacity: 0.8;
-  animation: popper linear infinite;
+.funzone-main-image:hover {
+  transform: scale(1.05) rotate(2deg);
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.15));
 }
 
-/* Popper Animation */
-@keyframes popper {
-  0% { transform: translateY(-10vh) rotate(0); opacity: 1; }
-  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
-}
-/* General Container */
-.fun-zone-container {
+.funzone-title {
+  font-size: 2.5rem;
+  color: #ff6b6b;
+  margin-bottom: 1.5rem;
+  text-align: center;
   position: relative;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  background: linear-gradient(45deg, #ff8c00, #ff4500, #ff1493);
-  background-size: 400% 400%;
-  animation: gradientBG 10s ease infinite;
+  text-shadow: 2px 2px 4px rgba(255, 107, 107, 0.2);
+  animation: bounceIn 1s ease-out;
 }
 
-/* Background Animation */
-@keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Confetti Animation */
-.confetti {
+/* Rainbow border effect for title */
+.funzone-title::before {
+  content: '';
   position: absolute;
-  width: 10px;
-  height: 10px;
-  opacity: 0.8;
-  animation: popper linear infinite;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #ff6b6b, #ff8c42, #6bceff);
+  transition: width 0.3s ease;
+  border-radius: 2px;
 }
 
-@keyframes popper {
-  0% { transform: translateY(-10vh) rotate(0); opacity: 1; }
-  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+.funzone-title:hover::before {
+  width: 200px;
 }
 
-/* Fireworks */
-.firework {
+.funzone-description {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #4a4a4a;
+  text-align: center;
+  animation: fadeIn 1s ease-out;
+  padding: 20px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(5px);
+}
+
+.funzone-description strong {
+  color: #ff8c42;
+  transition: all 0.3s ease;
+  padding: 2px 8px;
+  position: relative;
+  display: inline-block;
+}
+
+.funzone-description strong:hover {
+  color: #ff6b6b;
+  transform: translateY(-2px) rotate(-2deg);
+  background: linear-gradient(120deg, rgba(255, 108, 107, 0.1) 0%, rgba(255, 140, 66, 0.1) 100%);
+  border-radius: 4px;
+  animation: wiggle 0.5s ease-in-out;
+}
+
+/* New animations */
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.1);
+  }
+  80% {
+    opacity: 1;
+    transform: scale(0.89);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(10deg);
+  }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+
+/* Fun hover effect for the dish */
+.funzone-dish {
+  bottom: 15%;
+  left: 15%;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
+}
+
+.funzone-dish:hover {
+  transform: rotate(360deg) scale(1.2);
+  cursor: pointer;
+}
+
+/* Add sparkles */
+@keyframes sparkle {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+.funzone-text::before,
+.funzone-text::after {
+  content: '✨';
   position: absolute;
-  background: radial-gradient(circle, yellow, orange, red);
-  border-radius: 50%;
-  opacity: 0.7;
-  animation: explode 1s linear infinite;
+  font-size: 20px;
+  animation: sparkle 2s infinite;
 }
 
-@keyframes explode {
-  0% { transform: scale(0); opacity: 1; }
-  100% { transform: scale(3); opacity: 0; }
+.funzone-text::before {
+  top: 0;
+  left: 10%;
 }
 
-/* Balloons */
-.balloon {
-  position: absolute;
-  width: 25px;
-  height: 35px;
-  border-radius: 50%;
-  animation: floatUp linear infinite;
+.funzone-text::after {
+  bottom: 0;
+  right: 10%;
 }
 
-@keyframes floatUp {
-  0% { transform: translateY(100vh); opacity: 1; }
-  100% { transform: translateY(-10vh); opacity: 0; }
+/* Responsive Design */
+@media (max-width: 768px) {
+  .funzone-container {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+  }
+
+  .funzone-text {
+    order: 2;
+  }
+
+  .funzone-image-wrapper {
+    order: 1;
+    margin-bottom: 2rem;
+  }
+
+  .funzone-title {
+    font-size: 2rem;
+  }
+
+  .funzone-description {
+    font-size: 1rem;
+  }
 }
-/* Enhanced Background Animations */
-.fun-zone-container {
+
+/* Dark mode support with fun colors */
+@media (prefers-color-scheme: dark) {
+  .funzone-container {
+    background: linear-gradient(45deg, #2a2a2a, #333344);
+  }
+
+  .funzone-description {
+    color: #e0e0e0;
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .funzone-title {
+    color: #ff8c42;
+  }
+}
+.funzone-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 2rem;
+  background: linear-gradient(45deg, #fff5f5, #fff8f0, #f0f9ff);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
- 
-  background-size: 400% 400%;
   animation: gradientBG 15s ease infinite;
 }
 
-/* Add overlay for depth */
-.fun-zone-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+/* Animated gradient background */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
+/* Floating food emojis background */
+.funzone-container::before {
+  content: '🍕';
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 24px;
+  animation: floatEmoji 6s ease-in-out infinite;
+}
+
+.funzone-container::after {
+  content: '🍔';
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 24px;
+  animation: floatEmoji 7s ease-in-out infinite;
+}
+
+/* Multiple food emojis */
+.funzone-container .emoji-1,
+.funzone-container .emoji-2,
+.funzone-container .emoji-3 {
+  position: absolute;
+  opacity: 0.5;
   pointer-events: none;
-  animation: overlay 10s ease infinite;
 }
 
-/* Floating Particles Background */
-.particle-background {
-  position: absolute;
-  top: 0;
-  left: 0;
+.funzone-container .emoji-1 { content: '🌮'; top: 40%; left: 10%; animation: floatEmoji 8s infinite; }
+.funzone-container .emoji-2 { content: '🍜'; top: 20%; right: 15%; animation: floatEmoji 9s infinite; }
+.funzone-container .emoji-3 { content: '🍱'; bottom: 30%; left: 50%; animation: floatEmoji 7s infinite; }
+
+.funzone-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(255, 107, 107, 0.1);
+}
+
+.funzone-image-wrapper {
+  position: relative;
+  flex: 1;
+  min-width: 300px;
+  perspective: 1000px;
+  animation: slideInRight 1s ease-out;
+}
+
+.funzone-main-image {
   width: 100%;
-  height: 100%;
+  height: auto;
+  max-width: 700px;
+  object-fit: contain;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
+  animation: pulseScale 2s infinite;
 }
 
-.particle {
-  position: absolute;
-  width: 3px;
-  height: 3px;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
-  pointer-events: none;
+.funzone-main-image:hover {
+  transform: scale(1.05) rotate(2deg);
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.15));
+  animation: wobble 1s ease-in-out;
 }
 
-/* Animated Light Beams */
-.light-beams {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  overflow: hidden;
+.funzone-title {
+  font-size: 2.5rem;
+  color: #ff6b6b;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  position: relative;
+  text-shadow: 2px 2px 4px rgba(255, 107, 107, 0.2);
+  animation: popIn 1s ease-out;
 }
 
-.beam {
-  position: absolute;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(45deg, 
-    rgba(255,255,255,0) 0%,
-    rgba(255,255,255,0.03) 50%,
-    rgba(255,255,255,0) 100%
-  );
-  animation: rotateLightBeam 20s linear infinite;
+/* Rainbow text effect */
+.funzone-title:hover {
+  animation: rainbowText 2s infinite;
 }
 
-/* Animated Bubbles */
-.bubble-container {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
+.funzone-description {
+  position: relative;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #4a4a4a;
+  text-align: center;
+  padding: 20px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(5px);
+  animation: slideInLeft 1s ease-out;
 }
 
-.bubble {
-  position: absolute;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
-  backdrop-filter: blur(1px);
-  animation: float-bubble 15s linear infinite;
+.funzone-description strong {
+  display: inline-block;
+  color: #ff8c42;
+  transition: all 0.3s ease;
+  padding: 2px 8px;
+  position: relative;
 }
 
-
-
-@keyframes overlay {
-  0%, 100% { opacity: 0.7; }
-  50% { opacity: 0.9; }
+.funzone-description strong:hover {
+  animation: rubberBand 1s infinite;
+  color: #ff6b6b;
 }
 
-
-@keyframes float-bubble {
-  0% {
-    transform: translateY(100%) translateX(-50%);
-    opacity: 0;
+/* New Animations */
+@keyframes floatEmoji {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
   }
   50% {
-    opacity: 0.5;
-  }
-  100% {
-    transform: translateY(-100%) translateX(50%);
-    opacity: 0;
+    transform: translateY(-20px) rotate(10deg);
   }
 }
 
-.fun-zone-container {
-  position: relative;
-  width: 100vw;
-  height: 120vh;
-  overflow: hidden;
-  background: url("../Revalimage/nightlight.webp") no-repeat center center/cover;
+@keyframes pulseScale {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
 
+@keyframes popIn {
+  0% { transform: scale(0); opacity: 0; }
+  80% { transform: scale(1.1); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes rubberBand {
+  0% { transform: scale(1); }
+  30% { transform: scaleX(1.25) scaleY(0.75); }
+  40% { transform: scaleX(0.75) scaleY(1.25); }
+  60% { transform: scaleX(1.15) scaleY(0.85); }
+  100% { transform: scale(1); }
+}
+
+@keyframes wobble {
+  0%, 100% { transform: translateX(0%); }
+  15% { transform: translateX(-25%) rotate(-5deg); }
+  30% { transform: translateX(20%) rotate(3deg); }
+  45% { transform: translateX(-15%) rotate(-3deg); }
+  60% { transform: translateX(10%) rotate(2deg); }
+  75% { transform: translateX(-5%) rotate(-1deg); }
+}
+
+@keyframes rainbowText {
+  0% { color: #ff6b6b; }
+  25% { color: #ff8c42; }
+  50% { color: #6bceff; }
+  75% { color: #82ff9e; }
+  100% { color: #ff6b6b; }
+}
+
+/* Sparkle effect */
+.sparkle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, #fff 10%, transparent 70%);
+  animation: sparkleMove 3s infinite;
+}
+
+@keyframes sparkleMove {
+  0% { transform: translate(0, 0) scale(0); opacity: 0; }
+  50% { transform: translate(100px, -100px) scale(1); opacity: 1; }
+  100% { transform: translate(200px, -200px) scale(0); opacity: 0; }
+}
+
+/* Hover effects for interactive elements */
+.interactive-element {
+  transition: all 0.3s ease;
+}
+
+.interactive-element:hover {
+  animation: bounce 0.5s ease infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Responsive animations */
+@media (max-width: 768px) {
+  .funzone-container {
+    animation: none;
+    background: linear-gradient(45deg, #fff5f5, #fff8f0);
+  }
+
+  .funzone-title {
+    font-size: 2rem;
+    animation: popIn 0.5s ease-out;
+  }
+
+  .funzone-description {
+    font-size: 1rem;
+    animation: fadeIn 0.5s ease-out;
+  }
+
+  .emoji-1, .emoji-2, .emoji-3 {
+    display: none;
+  }
+}
+
+/* Dark mode animations */
+@media (prefers-color-scheme: dark) {
+  .funzone-container {
+    background: linear-gradient(45deg, #2a2a2a, #333344);
+    animation: gradientBGDark 15s ease infinite;
+  }
+
+  @keyframes gradientBGDark {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  .funzone-description {
+    background: rgba(0, 0, 0, 0.3);
+    color: #e0e0e0;
+  }
 }

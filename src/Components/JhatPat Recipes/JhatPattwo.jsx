@@ -1,26 +1,26 @@
 import React, { useMemo, useCallback, useState, Suspense } from "react";
-import "./JhatpatTop.css";
-import salad from "./Salad.jpg";
-import nacho from "./Nachos.jpg";
-import chimchi from "./Kimchi.jpeg";
-import buddhabowl from "./Buddhabowl.jpeg";
-import choclatemousse from "./ChoclateMouse.jpg" ;
+import "./JhatPattwo.css";
+import salad from "./salad.jpg";
+import nacho from "./nacho.jpg";
+import chimchi from "./chimchi.jpg";
+import buddhabowl from "./buddhabowl.jpg";
+import choclatemousse from "./choclatemousse.jpg" ;
 import pasta from "./pasta.jpg";
-import mezze from "./mezze.jpg";
-import powersalad from "./PoweSalad.jpg";
+import Bhelpuri from "./Bhelpuri.jpg";
+import powersalad from "./powersalad.jpg";
 import spicy from "./spicy.jpg";
-import Tiramisu from "./Buddhabowl.jpeg";  
-import MushroomRisotto from "./Kimchi.jpeg";  
-import GreekChickenSouvlaki from "./Buddhabowl.jpeg";
-import AvocadoToastwithEggs from "./mezze.jpg";
-import HomemadeSushiRolls from "./Salad.jpg";
-import KetoCauliflowerRiceBowl from "./PoweSalad.jpg";
-import BruschettaPlatter from "./PoweSalad.jpg";
-import LemonCheesecake from "./Buddhabowl.jpeg";
-import MediterraneanCouscous from "./Kimchi.jpeg";
-import BeefStirFry from "./spicy.jpg";  
-import CapreseSalad from "./mezze.jpg";
-
+import Tiramisu from "./Tiramisu.jpg";  
+import MushroomRisotto from "./Mushroom Risotto.jpg";  
+import GreekChickenSouvlaki from "./Greek Chicken Souvlaki.jpg";
+import AvocadoToastwithEggs from "./Avocado Toast with Eggs.jpg";
+import HomemadeSushiRolls from "./Avocado Toast with Eggs.jpg";
+import KetoCauliflowerRiceBowl from "./Keto Cauliflower Rice Bowl.jpg";
+import vegetablesandwich from "./vegetablesandwich.jpeg";
+import LemonCheesecake from "./Lemon Cheesecake.jpg";
+import MediterraneanCouscous from "./Mediterranean Couscous.jpg";
+import BeefStirFry from "./Beef Stir-Fry.jpg";  
+import CapreseSalad from "./Bhelpuri.jpg";
+  
 
 const RECIPES = Object.freeze([
   {
@@ -73,10 +73,10 @@ const RECIPES = Object.freeze([
   },
   {
     id: 7,
-    title: "Mediterranean Mezze Platter",
-    image: mezze,
+    title: "Bhelpuri",
+    image: Bhelpuri,
     
-    category: "Appetizers",
+    category: "Snacks on the Go",
     
   },
   {
@@ -145,10 +145,10 @@ const RECIPES = Object.freeze([
   },
   {
     id: 16,
-    title: "Bruschetta Platter",
-    image: BruschettaPlatter,
+    title: "vegetable sandwich",
+    image: vegetablesandwich,
     
-    category: "Appetizers",
+    category: "Snacks on the Go",  
     
   },
   {
@@ -183,13 +183,14 @@ const RECIPES = Object.freeze([
     category: "Salads & Sides",
     
   }
+  
 ]);
 
 const CATEGORIES = Object.freeze([
   "All Types",
-  "Appetizers",
+  "Snacks on the Go",
   "Main Courses",
-  "Salads & Sides",
+  "salads & Sides", 
   "Vegetarian Delights",
   "International Flavors",
   "Desserts & Sweets",
@@ -199,7 +200,7 @@ const CATEGORIES = Object.freeze([
 
 const CategoryButton = React.memo(({ category, isActive, onClick }) => (
   <button 
-  className={'category-button' + (isActive ? ' active' : '')}
+    className={`category-button ${isActive ? 'active' : ''}`}
     onClick={onClick}
   >
     {category}
@@ -352,3 +353,4 @@ const JhatpatRecipes = () => {
 };
 
 export default React.memo(JhatpatRecipes);
+

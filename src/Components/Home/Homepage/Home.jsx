@@ -1,220 +1,115 @@
-import { motion } from "framer-motion";
-import React, { useEffect, useState } from "react";
-import './Home.css';
-import Chilli from "../ImageHome/Chilli.png";
-import Tomato from "../ImageHome/tomato.png";
-import Onion from "../ImageHome/Onion.webp";
-import Garlic from "../ImageHome/Garlic.webp";
-import Plate from "../ImageHome/Plate.webp";
-import Paneer from "../ImageHome/Paneer.png";
-import broccoli from "../ImageHome/broccoli.png";
-import Cucumber from "../ImageHome/Cucumber.webp";
-import Finalimage from "../ImageHome/Finalimage.png";
-import Finalimage2 from "../ImageHome/Finalimage2.webp";
-import Food1 from "../ImageHome/food1.jpg";
-import Food2 from "../ImageHome/food2.jpg";
-import { NavLink } from "react-router";
+// Home.jsx
+import React, { useState, useEffect } from "react";
+import "./Home.css";
+import Image1 from "../Image/Noodle.jpeg";
+import Image2 from "../Image/Panveg.png";
+import Image3 from "../Image/Pizza.jpeg";
+import Image4 from "../Image/salad.jpeg";
+import Image5 from "../Image/Sweet.jpeg";
+import { NavLink } from 'react-router-dom';
 
-const ingredients = [
-  { name: "Plate", src: Plate, direction: "top" },
-  { name: "Tomato", src: Tomato, direction: "right" },
-  { name: "Chili", src: Chilli, direction: "bottom" },
-  { name: "Onion", src: Onion, direction: "left" },
-  { name: "Garlic", src: Garlic, direction: "topRight" },
-  { name: "Paneer", src: Paneer, direction: "bottomLeft" },
-];
+const images = [Image1, Image2, Image3, Image4, Image5];
 
-const ingredients2 = [
-  { name: "Plate", src: Plate, direction: "top" },
-  { name: "Tomato", src: Tomato, direction: "right" },
-  { name: "broccoli", src: broccoli, direction: "bottom" },
-  { name: "Onion", src: Onion, direction: "left" },
-  { name: "Cucumber", src: Cucumber, direction: "topRight" },
-  { name: "Paneer", src: Paneer, direction: "bottomLeft" },
-];
-
-export default function Home() {
-  // Animation states
-  const [animationStep, setAnimationStep] = useState(0);
-  // 0: First ingredients
-  // 1: First final dish
-  // 2: Second ingredients
-  // 3: Second final dish
-
-  // Timing constants (in milliseconds)
-  const INGREDIENT_ANIMATION_TIME = ingredients.length * 500 + 2000; // Time for all ingredients to appear + buffer
-  const DISH_DISPLAY_TIME = 3000; // Time to display each final dish
+export default function Home() { 
+  const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    let timer;
-    
-    // Set up the next animation step based on the current step
-    if (animationStep === 0) {
-      // After first ingredients animation, show first dish
-      timer = setTimeout(() => {
-        setAnimationStep(1);
-      }, INGREDIENT_ANIMATION_TIME);
-    } 
-    else if (animationStep === 1) {
-      // After showing first dish, start second ingredients
-      timer = setTimeout(() => {
-        setAnimationStep(2);
-      }, DISH_DISPLAY_TIME);
-    }
-    else if (animationStep === 2) {
-      // After second ingredients animation, show second dish
-      timer = setTimeout(() => {
-        setAnimationStep(3);
-      }, INGREDIENT_ANIMATION_TIME);
-    }
-    else if (animationStep === 3) {
-      // After showing second dish, restart the cycle
-      timer = setTimeout(() => {
-        setAnimationStep(0);
-      }, DISH_DISPLAY_TIME);
-    }
-    
-    return () => clearTimeout(timer);
-  }, [animationStep]);
-
-  // Function to get starting position based on direction
-  const getDirectionalStartPosition = (direction) => {
-    const distance = 1000;
-    
-    switch(direction) {
-      case "top":
-        return { x: 0, y: -distance };
-      case "right":
-        return { x: distance, y: 0 };
-      case "bottom":
-        return { x: 0, y: distance };
-      case "left":
-        return { x: -distance, y: 0 };
-      case "topLeft":
-        return { x: -distance, y: -distance };
-      case "topRight":
-        return { x: distance, y: -distance };
-      case "bottomLeft":
-        return { x: -distance, y: distance };
-      case "bottomRight":
-        return { x: distance, y: distance };
-      default:
-        return { x: 0, y: -distance };
-    }
-  };
+    const interval = setInterval(() => {
+      setIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <div className="home-container">
-      {/* Left Section - Content */}
-      <div className="content-section">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <h1 className="heading">Discover Delicious Recipes</h1>
-          <p className="subheading">
-            Explore our collection of mouthwatering dishes from around the world
-          </p>
-          <NavLink to='/Recipe'><button className="cta-button">
-            Browse Recipes
-          </button></NavLink>
-        </motion.div>
+    <div className="home-container-lavina">
+      {/* Background Elements */}
+      <div className="background-effects">
+        <div className="gradient-circle circle1"></div>
+        <div className="gradient-circle circle2"></div>
+        <div className="gradient-circle circle3"></div>
       </div>
 
-      {/* Right Section - Animation */}
-      <div className="animation-section">
-        <div className="animation-container">
-          {/* First set of ingredients */}
-          {animationStep === 0 &&
-            ingredients.map((ingredient, index) => {
-              const startPos = getDirectionalStartPosition(ingredient.direction);
-              return (
-                <motion.img
-                  key={`${ingredient.name}-1-${animationStep}`}
-                  src={ingredient.src}
-                  alt={ingredient.name}
-                  initial={{ 
-                    x: startPos.x, 
-                    y: startPos.y, 
-                    opacity: 0,
-                    scale: 0.3
-                  }}
-                  animate={{ 
-                    x: 0, 
-                    y: 0, 
-                    opacity: 1, 
-                    rotate: 360,
-                    scale: 0.6
-                  }}
-                  transition={{ 
-                    duration: 2.5,
-                    delay: index * 0.5,
-                    ease: "easeOut"
-                  }}
-                  className="ingredient-image"
-                />
-              );
-            })}
-          
-          {/* First final dish */}
-          {animationStep === 1 && (
-            <motion.img
-              key={`final-dish-1-${animationStep}`}
-              src={Finalimage}
-              alt="Final Dish"
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 1 }}
-              className="final-dish-image"
-            />
-          )}
+      {/* Waves */}
+      <div className="waves">
+        <svg className="wave wave1" viewBox="0 0 1440 320" preserveAspectRatio="none">
+          <path d="M0,160 C320,300,420,240,720,200 C1020,160,1120,280,1440,250" fill="none" stroke="#ff6b00" strokeWidth="2" strokeOpacity="0.3"/>
+        </svg>
+        <svg className="wave wave2" viewBox="0 0 1440 320" preserveAspectRatio="none">
+          <path d="M0,200 C320,280,420,180,720,160 C1020,140,1120,240,1440,200" fill="none" stroke="#ff6b00" strokeWidth="2" strokeOpacity="0.2"/>
+        </svg>
+        <svg className="wave wave3" viewBox="0 0 1440 320" preserveAspectRatio="none">
+          <path d="M0,240 C320,220,420,120,720,140 C1020,160,1120,200,1440,180" fill="none" stroke="#ff6b00" strokeWidth="2" strokeOpacity="0.1"/>
+        </svg>
+      </div>
 
-          {/* Second set of ingredients */}
-          {animationStep === 2 &&
-            ingredients2.map((ingredient, index) => {
-              const startPos = getDirectionalStartPosition(ingredient.direction);
-              return (
-                <motion.img
-                  key={`${ingredient.name}-2-${animationStep}`}
-                  src={ingredient.src}
-                  alt={ingredient.name}
-                  initial={{ 
-                    x: startPos.x, 
-                    y: startPos.y, 
-                    opacity: 0,
-                    scale: 0.3
-                  }}
-                  animate={{ 
-                    x: 0, 
-                    y: 0, 
-                    opacity: 1, 
-                    rotate: 360,
-                    scale: 0.6
-                  }}
-                  transition={{ 
-                    duration: 2.5,
-                    delay: index * 0.5,
-                    ease: "easeOut"
-                  }}
-                  className="ingredient-image"
-                />
-              );
-            })}
-
-          {/* Second final dish */}
-          {animationStep === 3 && (
-            <motion.img
-              key={`final-dish-2-${animationStep}`}
-              src={Finalimage2}
-              alt="Final Dish 2"
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 1 }}
-              className="final-dish-image"
-            />
-          )}
+      {/* Content */}
+      <div className="text-section">
+        <div className="text-content">
+          <h3>Find Your Best Cooking Recipes</h3>
+          <h1>
+            Discover <span className="bold">Delicious</span> Recipes
+          </h1>
+          <p>
+            Explore a world of culinary delights with our handpicked collection of 
+            mouthwatering recipes from around the globe. Start your cooking journey today!
+          </p>
+          <div className="buttons">
+            <NavLink to="/Recipe"><button className="learn-more">
+              <span>Explore Recipes</span>
+              <i className="fas fa-arrow-right"></i>
+            </button></NavLink>
+            
+          </div>
+          <div className="stats">
+            <div className="stat-item">
+              <span className="stat-number">500+</span>
+              <span className="stat-label">Recipes</span>
+            </div>
+            <div className="stat-item">
+              <span className="stat-number">50k+</span>
+              <span className="stat-label">Users</span>
+            </div>
+            <div className="stat-item">
+              <span className="stat-number">100+</span>
+              <span className="stat-label">Chefs</span>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <div className="image-section">
+        <div className="image-wrapper">
+          <div className="circle-background"></div>
+          <div className="sparkles-container">
+            {[...Array(8)].map((_, i) => (
+              <div key={i} className={`sparkle sparkle${i + 1}`}></div>
+            ))}
+          </div>
+          <img 
+            src={images[index]} 
+            alt="Food" 
+            className="food-image"
+          />
+          <div className="floating-elements">
+            <div className="floating-card card1">
+              <i className="fas fa-star"></i>
+              <span>Best Rated Recipes</span>
+            </div>
+            <div className="floating-card card2">
+              <i className="fas fa-award"></i>
+              <span>Quality Video</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Decorative Elements */}
+      <div className="decorative-elements">
+        {[...Array(3)].map((_, i) => (
+          <svg key={i} className={`leaf leaf${i + 1}`} viewBox="0 0 24 24">
+            <path fill="#ff6b00" d="M17,8C8,10,5.9,16.17,3.82,21.34L5.71,22l1-2.3A4.49,4.49,0,0,0,8,20C19,20,22,3,22,3,21,5,14,5.25,9,6.25S2,11.5,2,13.5a6.23,6.23,0,0,0,1.75,3.75C8,8,17,8,17,8Z"/>
+          </svg>
+        ))}
       </div>
     </div>
   );

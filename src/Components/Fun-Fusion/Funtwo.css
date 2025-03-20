@@ -10,7 +10,7 @@
 }
 
 /* Left Section Styles */
-.text-section {
+.text-section-muskan {
   flex: 1;
   padding: 4rem 2rem;
   display: flex;
@@ -22,9 +22,9 @@
   animation: slideIn 0.8s ease-out forwards;
 }
 
-.tag {
+.tag-muskan {
   background: #f0e6dd;
-  color: #8B4513;
+  color:  #FEDE91;
   padding: 0.5rem 1rem;
   border-radius: 20px;
   display: inline-block;
@@ -37,18 +37,18 @@
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.tag:hover {
+.tag-muskan:hover {
   transform: translateY(-1px);
   box-shadow: 0 4px 8px rgba(139, 69, 19, 0.15);
 }
 
-.title {
-  font-size: 3.5rem;
+.title-fun-fusion-muskan {
+  font-size: 3rem;
   color: #2d2d2d;
   margin-bottom: 1.5rem;
   line-height: 1.2;
   font-weight: 700;
-  background: linear-gradient(45deg, #8B4513, #A0522D);
+  background: linear-gradient(45deg, #FEBC1D, #FFDF99);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);

@@ -19,7 +19,7 @@
 }
 
 .navbar {
-  background-color: var(--primary-brown);
+  background-color: #FEBC1D;
   height: calc(100vh - 20px);
   border-radius: 10px;
   transition: all 0.3s ease;

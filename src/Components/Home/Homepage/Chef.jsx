@@ -1,5 +1,6 @@
 import React from 'react';
 import animation from '../ImageHome/Ani.gif';
+import { NavLink } from 'react-router-dom';
 import './Chef.css';
 
 export default function ShareRecipe() {
@@ -22,9 +23,9 @@ export default function ShareRecipe() {
             <p className="subtitle-share text-lg">Inspire others with your culinary creations</p>
           </header>
           <div className="action-section">
-            <button className="primary-button bg-yellow-500 text-white py-2 px-4 rounded-lg hover:bg-yellow-600">
+            <NavLink to="/Shareas"><button className="primary-button bg-yellow-500 text-white py-2 px-4 rounded-lg hover:bg-yellow-600">
               Start Sharing
-            </button>
+            </button></NavLink>
             <p className="action-text mt-2 text-yellow-800">Join our cooking community today!</p>
           </div>
         </div>

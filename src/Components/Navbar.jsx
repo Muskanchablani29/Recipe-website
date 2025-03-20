@@ -1,20 +1,55 @@
 import { useState, useRef, useEffect } from "react";
+import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Home, Utensils, BookOpen, ShoppingCart, User, LogOut } from "lucide-react";
 import "./Navbar.css";
 import logo from "./Images/Logo-bg.png";
 
+const ROUTES = {
+  HOME: '/',
+  ABOUT: '/about',
+  CONTACT: '/contact',
+  FUN: '/fun',
+  PROFILE: '/profile'
+};
+
 const menuItems = [
-  { name: "Home", icon: <Home size={24} />, link: "/" },
-  { name: "About", icon: <Utensils size={24} />, link: "/about" },
-  { name: "Contact", icon: <BookOpen size={24} />, link: "/contact" },
-  { name: "Fun Fusion", icon: <ShoppingCart size={24} />, link: "/fun" },
+  { name: "Home", icon: <Home size={24} />, link: ROUTES.HOME },
+  { name: "About", icon: <Utensils size={24} />, link: ROUTES.ABOUT },
+  { name: "Contact", icon: <BookOpen size={24} />, link: ROUTES.CONTACT },
+  { name: "Fun Fusion", icon: <ShoppingCart size={24} />, link: ROUTES.FUN },
 ];
+
+const ProfileIcon = React.memo(({ user }) => {
+  if (!user || !user.name) {
+    return <User size={24} />;
+  }
+  return (
+    <div
+      style={{
+        width: "32px",
+        height: "32px",
+        backgroundColor: "#FAEBD7",
+        borderRadius: "50%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        color: "#8B4513",
+        fontWeight: "bold",
+        fontSize: "16px",
+        cursor: "pointer",
+      }}
+    >
+      {user.name.charAt(0).toUpperCase()}
+    </div>
+  );
+});
 
 export default function Navbar() {
   const [expanded, setExpanded] = useState(false);
   const [isScrolling, setIsScrolling] = useState(false);
   const [user, setUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   const [showProfileDropdown, setShowProfileDropdown] = useState(false);
   const menuRef = useRef(null);
   const location = useLocation();
@@ -22,6 +57,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const checkUser = () => {
+      setIsLoading(true);
       const userData = localStorage.getItem("user");
       console.log("Raw user data from localStorage:", userData); // Debugging
       if (userData) {
@@ -32,10 +68,12 @@ export default function Navbar() {
         } catch (error) {
           console.error("Error parsing user data:", error);
           localStorage.removeItem("user");
+          setUser(null);
         }
       } else {
         setUser(null);
       }
+      setIsLoading(false);
     };
 
     checkUser();
@@ -47,7 +85,7 @@ export default function Navbar() {
     localStorage.removeItem("user");
     setUser(null);
     setShowProfileDropdown(false);
-    navigate("/login");
+    navigate(ROUTES.PROFILE);
   };
 
   useEffect(() => {
@@ -84,30 +122,9 @@ export default function Navbar() {
 
   const isActive = (path) => location.pathname === path;
 
-  const ProfileIcon = ({ user }) => {
-    if (!user || !user.name) {
-      return <User size={24} />;
-    }
-    return (
-      <div
-        style={{
-          width: "32px",
-          height: "32px",
-          backgroundColor: "#FAEBD7",
-          borderRadius: "50%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          color: "#8B4513",
-          fontWeight: "bold",
-          fontSize: "16px",
-          cursor: "pointer",
-        }}
-      >
-        {user.name.charAt(0).toUpperCase()}
-      </div>
-    );
-  };
+  if (isLoading) {
+    return <div>Loading...</div>; // Or your custom loader component
+  }
 
   return (
     <div className="navbar-container">
@@ -119,7 +136,7 @@ export default function Navbar() {
         onMouseLeave={() => setExpanded(false)}
       >
         <div className="logo-container">
-          <Link to="/">
+          <Link to={ROUTES.HOME}>
             <img src={logo} alt="Logo" className="logo" />
           </Link>
         </div>
@@ -138,7 +155,7 @@ export default function Navbar() {
             ))}
             <li className="menu-item-container profile-container">
               <div
-                className={`menu-item ${isActive("/profile") ? "active" : ""}`}
+                className={`menu-item ${isActive(ROUTES.PROFILE) ? "active" : ""}`}
                 onClick={() => setShowProfileDropdown(!showProfileDropdown)}
               >
                 <span className="menu-icon">
@@ -150,7 +167,7 @@ export default function Navbar() {
               </div>
               {showProfileDropdown && (
                 <div className="profile-dropdown">
-                  <Link to="/profile" className="dropdown-item">
+                  <Link to={ROUTES.PROFILE} className="dropdown-item">
                     <User size={20} />
                     <span>Profile</span>
                   </Link>

@@ -59,7 +59,8 @@ const Profile = () => {
         return;
       }
 
-      const loggedInUser = { name: credentials.username, password: credentials.password };
+    const loggedInUser = { name: credentials.username, email: credentials.email, password: credentials.password };
+
       dispatch(login(loggedInUser)); // Dispatch user data to Redux
       localStorage.setItem("user", JSON.stringify(loggedInUser)); // Save user to localStorage
       navigate("/");

@@ -7,9 +7,9 @@ const FunFusionWelcome = () => {
   return (
     <div className="fun-fusion-container">
       {/* Left Section */}
-      <div className="text-section">
-        <span className="tag">Quick & Delicious</span>
-        <h1 className="title">Welcome to the Fun and Fusion Zone!</h1>
+      <div className="text-section-muskan">
+        <span className="tag-muskan">Quick & Delicious</span>
+        <h1 className="title-fun-fusion-muskan">Welcome to the Fun and Fusion Zone!</h1>
         <p className="description">
         Step into a world where flavors collide and creativity knows no bounds. This is your go-to space for exploring the unexpected and embracing the joy of cooking. Whether you're a culinary adventurer or just looking to spice up your routine, we've got something special for everyone!
         </p>
@@ -25,9 +25,9 @@ const FunFusionWelcome = () => {
         >
           <defs>
             <linearGradient id="ribbonGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" style={{ stopColor: '#8B4513', stopOpacity: 0.9 }} />
-              <stop offset="50%" style={{ stopColor: '#A0522D', stopOpacity: 1 }} />
-              <stop offset="100%" style={{ stopColor: '#8B4513', stopOpacity: 0.9 }} />
+              <stop offset="0%" style={{ stopColor: '#FEBC1D', stopOpacity: 0.9 }} />
+              <stop offset="50%" style={{ stopColor: '#FEBC1D', stopOpacity: 1 }} />
+              <stop offset="100%" style={{ stopColor: '#FEBC1D', stopOpacity: 0.9 }} />
             </linearGradient>
             <path
               id="curve"

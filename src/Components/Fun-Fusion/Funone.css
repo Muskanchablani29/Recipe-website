@@ -9,6 +9,9 @@
   background: none;
 }
 
+.khelo-khao-title{
+  color: #FEBC1D;
+}
 .khelo-khao-content {
   max-width: 1000px;
   width: 100%;
@@ -28,11 +31,11 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: center;
   width: 320px;
-  color: #FEBC1D;
+  color: Black;
   font-family: 'Poppins', sans-serif;
   position: relative;
   border: 3px solid #FFD577;
-  background: #FFDF99;
+  background:  #FEDE91;
   cursor: pointer;
 }
 
@@ -44,14 +47,14 @@
 .khelo-khao-icon {
   font-size: 3.5rem;
   margin-bottom: 15px;
-  color: #FEBC1D;
+  color: #000;
 }
 
 .khelo-khao-name {
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 10px;
-  color: #FEBC1D;
+  color: #000;
 }
 
 .khelo-khao-description {

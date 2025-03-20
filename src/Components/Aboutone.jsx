@@ -1,5 +1,5 @@
 // Aboutone.jsx
-import React, { memo } from "react";CD
+import React, { memo } from "react";
 import "./About.css";
 
 const images = [

@@ -6,7 +6,7 @@ import chimchi from "./chimchi.jpg";
 import buddhabowl from "./buddhabowl.jpg";
 import choclatemousse from "./choclatemousse.jpg" ;
 import pasta from "./pasta.jpg";
-import mezze from "./mezze.jpg";
+import Bhelpuri from "./Bhelpuri.jpg";
 import powersalad from "./powersalad.jpg";
 import spicy from "./spicy.jpg";
 import Tiramisu from "./Tiramisu.jpg";  
@@ -15,11 +15,13 @@ import GreekChickenSouvlaki from "./Greek Chicken Souvlaki.jpg";
 import AvocadoToastwithEggs from "./Avocado Toast with Eggs.jpg";
 import HomemadeSushiRolls from "./Homemade Sushi Rolls.jpg";
 import KetoCauliflowerRiceBowl from "./Keto Cauliflower Rice Bowl.jpg";
-import BruschettaPlatter from "./Bruschetta Platter.jpg";
+import vegetablesandwich from "./vegetablesandwich.jpeg";
 import LemonCheesecake from "./Lemon Cheesecake.jpg";
 import MediterraneanCouscous from "./Mediterranean Couscous.jpg";
 import BeefStirFry from "./Beef Stir-Fry.jpg";  
 import CapreseSalad from "./Caprese Salad.jpg";
+  
+
 
 
 const RECIPES = Object.freeze([
@@ -73,10 +75,10 @@ const RECIPES = Object.freeze([
   },
   {
     id: 7,
-    title: "Mediterranean Mezze Platter",
-    image: mezze,
+    title: "Bhelpuri",
+    image: Bhelpuri,
     
-    category: "Appetizers",
+    category: "Snacks on the Go",
     
   },
   {
@@ -145,10 +147,10 @@ const RECIPES = Object.freeze([
   },
   {
     id: 16,
-    title: "Bruschetta Platter",
-    image: BruschettaPlatter,
+    title: "vegetable sandwich",
+    image: vegetablesandwich,
     
-    category: "Appetizers",
+    category: "Snacks on the Go",  
     
   },
   {
@@ -183,14 +185,15 @@ const RECIPES = Object.freeze([
     category: "Salads & Sides",
     
   }
+  
 ]);
 
 const CATEGORIES = Object.freeze([
   "All Types",
-  "Snacks on The Go",
+  "Snacks on the Go",
   "Main Courses",
-  "With out Fire",
-  "Kids Favorite",
+  "salads & Sides", 
+  "Vegetarian Delights",
   "International Flavors",
   "Desserts & Sweets",
   "Healthy Eats",

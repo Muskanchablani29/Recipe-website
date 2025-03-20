@@ -10,6 +10,10 @@ import PaneerTikka from './Recipestwo/Paneertikka.jpeg';
 import PalakPaneer from './Recipestwo/PalakPaneer.jpeg';
 import PaneerBhurji from './Recipestwo/PaneerBhurji.jpeg';
 import TomatoChutney from './Recipestwo/TomatoChutney.jpeg';
+import MushroomRisotto from '../JhatPat Recipes/Mushroom Risotto.jpg';
+import StuffedMushroom from './Recipestwo/';
+import MushroomSoup from './Recipestwo/MushroomSoup.jpeg';
+import MushroomCurry from './Recipestwo/MushroomCurry.jpeg';'
 
 const ingredients = [
   "Tomato", "Paneer", "Mushroom", "Egg", "Spinach", "Carrot", "Potato",
@@ -37,7 +41,7 @@ const dishes = {
     { name: "Paneer Sandwich", category: "Snacks", imageUrl: PaneerTikka},
   ],
   Mushroom: [
-    { name: "Mushroom Risotto", category: "Dinner" },
+    { name: "Mushroom Risotto", category: "Dinner",imageUrl: MushroomRisotto },
     { name: "Stuffed Mushrooms", category: "Snacks" },
     { name: "Mushroom Soup", category: "Lunch" },
     { name: "Mushroom Curry", category: "Dinner" },

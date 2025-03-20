@@ -12,9 +12,9 @@ import Jhatpat from './Components/Jhatpat/JhatPat';
 
 
  import ReviewModal  from './Components/Mealinfotwo'; 
-import Kirti from './Components/Kirti.jsx';
+// import Kirti from './Components/Kirti.jsx';
 
-
+// import Footer from '.`/footer/Footer.css';
 
 
 
@@ -25,18 +25,18 @@ export default function App() {
   
   return (
     <>
-     <About/>  
+     {/* <About/>   */}
     {/* <States/> */}
     {/* <Mainpage/> */}
     {/* <Mealcards/>   */}
     {/* <Mealinfo/> */}
    {/* <extra/> */}
-    <ReviewModal/>
-    {/* <Jhatpat/>   */}
+    +
+    <Jhatpat/>  
    
     
 
-   
+   {/* <Footer/> */}
   
     </>
    

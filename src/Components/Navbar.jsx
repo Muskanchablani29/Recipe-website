@@ -1,7 +1,16 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useMemo } from "react";
 import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Home, Utensils, BookOpen, ShoppingCart, User, LogOut } from "lucide-react";
+import { 
+  Home,
+  ChefHat,
+  Phone,
+  Sparkles,
+  User,
+  LogOut,
+} from "lucide-react";
+import { useSelector, useDispatch } from "react-redux";
+import { logout, deleteAccount } from "../Reducers/authReducers";
 import "./Navbar.css";
 import logo from "./Images/Logo-bg.png";
 
@@ -15,9 +24,9 @@ const ROUTES = {
 
 const menuItems = [
   { name: "Home", icon: <Home size={24} />, link: ROUTES.HOME },
-  { name: "About", icon: <Utensils size={24} />, link: ROUTES.ABOUT },
-  { name: "Contact", icon: <BookOpen size={24} />, link: ROUTES.CONTACT },
-  { name: "Fun Fusion", icon: <ShoppingCart size={24} />, link: ROUTES.FUN },
+  { name: "About", icon: <ChefHat size={24} />, link: ROUTES.ABOUT },
+  { name: "Contact", icon: <Phone size={24} />, link: ROUTES.CONTACT },
+  { name: "Fun Fusion", icon: <Sparkles size={24} />, link: ROUTES.FUN },
 ];
 
 const ProfileIcon = React.memo(({ user }) => {
@@ -45,48 +54,66 @@ const ProfileIcon = React.memo(({ user }) => {
   );
 });
 
+const ProfileSection = React.memo(({ 
+  user, 
+  isLoggedIn, 
+  expanded, 
+  showMenu, 
+  setShowMenu, 
+  handleLogout, 
+  handleDeleteAccount 
+}) => {
+  if (!isLoggedIn || !user) {
+    return (
+      <Link to="/profile" className="profile-link">
+        <User size={24} />
+        {expanded && <span>Profile</span>}
+      </Link>
+    );
+  }
+
+  return (
+    <div className="user-menu">
+      <button 
+        className="username-button" 
+        onClick={() => setShowMenu(!showMenu)}
+      >
+        <ProfileIcon user={user} />
+        {expanded && user.username && <span className="username-text">{user.username}</span>}
+      </button>
+      {showMenu && (
+        <div className="user-dropdown">
+          <Link 
+            to="/profile" 
+            className="profile-option"
+            onClick={() => setShowMenu(false)}
+          >
+            <User size={16} />
+            My Profile
+          </Link>
+          <button className="logout-button" onClick={handleLogout}>
+            <LogOut size={16} />
+            Logout
+          </button>
+          <button className="delete-account-button" onClick={handleDeleteAccount}>
+            Delete Account
+          </button>
+        </div>
+      )}
+    </div>
+  );
+});
+
 export default function Navbar() {
   const [expanded, setExpanded] = useState(false);
   const [isScrolling, setIsScrolling] = useState(false);
-  const [user, setUser] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [showProfileDropdown, setShowProfileDropdown] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
   const menuRef = useRef(null);
   const location = useLocation();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const checkUser = () => {
-      setIsLoading(true);
-      const userData = localStorage.getItem("user");
-      console.log("Raw user data from localStorage:", userData); // Debugging
-      if (userData) {
-        try {
-          const parsedUser = JSON.parse(userData);
-          console.log("Parsed user object:", parsedUser); // Debugging
-          setUser(parsedUser);
-        } catch (error) {
-          console.error("Error parsing user data:", error);
-          localStorage.removeItem("user");
-          setUser(null);
-        }
-      } else {
-        setUser(null);
-      }
-      setIsLoading(false);
-    };
-
-    checkUser();
-    window.addEventListener("storage", checkUser);
-    return () => window.removeEventListener("storage", checkUser);
-  }, []);
-
-  const handleLogout = () => {
-    localStorage.removeItem("user");
-    setUser(null);
-    setShowProfileDropdown(false);
-    navigate(ROUTES.PROFILE);
-  };
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth.user);
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
   useEffect(() => {
     const handleScroll = (e) => {
@@ -108,23 +135,33 @@ export default function Navbar() {
     };
   }, []);
 
-  // Close dropdown when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
-        setShowProfileDropdown(false);
-      }
-    };
+  const handleLogout = () => {
+    dispatch(logout());
+    setShowMenu(false);
+    navigate(ROUTES.PROFILE);
+  };
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  const handleDeleteAccount = () => {
+    if (window.confirm("Are you sure you want to delete your account permanently? This action cannot be undone.")) {
+      dispatch(deleteAccount());
+      setShowMenu(false);
+      navigate(ROUTES.PROFILE);
+    }
+  };
 
   const isActive = (path) => location.pathname === path;
 
-  if (isLoading) {
-    return <div>Loading...</div>; // Or your custom loader component
-  }
+  const memoizedMenuItems = useMemo(() => menuItems.map((item, index) => (
+    <li key={index} className="menu-item-container">
+      <Link
+        to={item.link}
+        className={`menu-item ${isActive(item.link) ? "active" : ""}`}
+      >
+        <span className="menu-icon">{item.icon}</span>
+        {expanded && <span className="menu-label">{item.name}</span>}
+      </Link>
+    </li>
+  )), [expanded, location.pathname]);
 
   return (
     <div className="navbar-container">
@@ -142,41 +179,19 @@ export default function Navbar() {
         </div>
         <div className="menu-wrapper" ref={menuRef}>
           <ul className="menu-list">
-            {menuItems.map((item, index) => (
-              <li key={index} className="menu-item-container">
-                <Link
-                  to={item.link}
-                  className={`menu-item ${isActive(item.link) ? "active" : ""}`}
-                >
-                  <span className="menu-icon">{item.icon}</span>
-                  <span className="menu-label">{item.name}</span>
-                </Link>
-              </li>
-            ))}
-            <li className="menu-item-container profile-container">
-              <div
-                className={`menu-item ${isActive(ROUTES.PROFILE) ? "active" : ""}`}
-                onClick={() => setShowProfileDropdown(!showProfileDropdown)}
-              >
-                <span className="menu-icon">
-                  <ProfileIcon user={user} />
-                </span>
-                <span className="menu-label">
-                  {user && user.name ? user.name.split(" ")[0] : "Profile"}
-                </span>
+            {memoizedMenuItems}
+            <li className="profile-container">
+              <div className="drawer-profile">
+                <ProfileSection 
+                  user={user}
+                  isLoggedIn={isLoggedIn}
+                  expanded={expanded}
+                  showMenu={showMenu}
+                  setShowMenu={setShowMenu}
+                  handleLogout={handleLogout}
+                  handleDeleteAccount={handleDeleteAccount}
+                />
               </div>
-              {showProfileDropdown && (
-                <div className="profile-dropdown">
-                  <Link to={ROUTES.PROFILE} className="dropdown-item">
-                    <User size={20} />
-                    <span>Profile</span>
-                  </Link>
-                  <button onClick={handleLogout} className="dropdown-item">
-                    <LogOut size={20} />
-                    <span>Logout</span>
-                  </button>
-                </div>
-              )}
             </li>
           </ul>
         </div>

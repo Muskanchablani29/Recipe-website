@@ -11,15 +11,15 @@
 .navbar-container {
   position: fixed;
   left: 0;
-  top: 0;
+  top: 0; 
   height: 100vh;
   z-index: 1000;
-  background-color: var(--cream-color);
+  background-color: #f5b356;
   padding: 10px;
 }
 
 .navbar {
-  background-color: #FEBC1D;
+  background-color: #BB7C23;
   height: calc(100vh - 20px);
   border-radius: 10px;
   transition: all 0.3s ease;
@@ -45,15 +45,34 @@
   align-items: center;
   padding: 20px 10px;
   margin-bottom: 20px;
+  transition: transform 0.3s ease;
 }
 
 .logo {
-  max-width: 280px;
+  max-width: 90px;
   transition: max-width 0.3s ease;
 }
 
+.username-text {
+  margin-left: 8px;
+  color: #333;
+}
+
+.user-dropdown .profile-option,
+.user-dropdown .logout-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.profile-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .navbar.expanded .logo {
-  max-width: 100px;
+  max-width: 280px;
 }
 
 /* Menu section */
@@ -90,7 +109,7 @@
   display: flex;
   align-items: center;
   gap: 15px;
-  color: var(--text-color); /* Updated to use text color variable */
+  color: #fff; /* Updated to use text color variable */
   text-decoration: none;
   padding: 12px;
   border-radius: 8px;
@@ -101,12 +120,13 @@
 }
 
 .menu-item:hover {
-  background-color: var(--secondary-brown);
+  background-color: #fff;
   transform: translateX(5px);
+  color: #000;
 }
 
 .menu-icon {
-  color: var(--text-color); /* Updated icon color */
+  color: #fff; /* Updated icon color */
   font-size: 20px;
   min-width: 24px;
   height: 24px;
@@ -118,7 +138,7 @@
 
 .menu-item:hover .menu-icon {
   transform: scale(1.2);
-  color: var(--cream-color);
+  color: #fff;
 }
 
 .menu-label {
@@ -134,106 +154,12 @@
 }
 
 .menu-item.active {
-  background-color: var(--secondary-brown);
+  background-color: #fff;
   color: var(--text-color);
 }
 
 .menu-item.active .menu-icon {
   color: var(--text-color);
-}
-
-/* Profile section */
-.profile-container {
-  margin-top: auto !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 10px !important;
-}
-
-.profile-menu {
-  cursor: pointer;
-}
-
-.profile-icon {
-  width: 32px;
-  height: 32px;
-  background-color: var(--text-color);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--primary-brown);
-  font-weight: bold;
-  font-size: 16px;
-  transition: all 0.3s ease;
-}
-
-.menu-item:hover .profile-icon {
-  transform: scale(1.1);
-  background-color: white;
-}
-
-/* Dropdown Menu */
-.profile-dropdown {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background-color: var(--text-color);
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 8px;
-  min-width: 180px;
-  z-index: 1000;
-  margin-top: 8px;
-  animation: slideIn 0.3s ease-out;
-}
-
-/* Dropdown Animation */
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.dropdown-item {
-  display: block;
-  width: 100%;
-  padding: 10px 15px;
-  border: none;
-  background: none;
-  text-align: left;
-  color: var(--primary-brown);
-  font-size: 14px;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: all 0.3s ease;
-  text-decoration: none;
-}
-
-.dropdown-item:hover {
-  background-color: var(--cream-color);
-  color: var(--primary-brown);
-}
-
-.dropdown-item.delete {
-  color: var(--danger-color);
-}
-
-.dropdown-item.delete:hover {
-  background-color: var(--danger-color);
-  color: white;
-}
-
-.menu-wrapper::-webkit-scrollbar {
-  width: 5px;
-}
-
-.menu-wrapper::-webkit-scrollbar-track {
-  background: transparent;
 }
 
 .menu-wrapper::-webkit-scrollbar-thumb {
@@ -250,6 +176,160 @@
 
 .navbar.expanded ~ .content-container {
   margin-left: 270px;
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+.drawer-profile {
+  margin-top: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.profile-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  font-size: 1.5rem;
+  gap: 10px;
+  transition: color var(--transition-standard);
+}
+
+.profile-link:hover {
+  color: var(--primary-color);
+}
+
+/* User Menu Dropdown */
+.user-menu {
+  position: relative;
+  width: 100%;
+}
+
+.username-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.4rem;
+  padding: 10px;
+  transition: color var(--transition-standard);
+  width: 100%;
+  justify-content: center;
+}
+
+.username-button:hover {
+  color: var(--primary-color);
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.profile-icon {
+  font-size: 1.2rem;
+  display: inline-block;
+}
+
+/* Dropdown Menu */
+.user-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  box-shadow: var(--shadow-standard);
+  border-radius: 8px;
+  padding: 10px;
+  width: 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 1200;
+  margin-top: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+}
+
+.profile-option,
+.logout-button,
+.delete-account-button {
+  padding: 12px 16px;
+  text-align: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  color: #333;
+  text-decoration: none;
+  font-size: 0.9rem;
+  border-radius: 5px;
+}
+
+.profile-option {
+  color: var(--primary-color);
+}
+
+.profile-option:hover {
+  background-color: var(--hover-bg);
+}
+
+/* Logout Button */
+.logout-button {
+  color: red;
+}
+
+.logout-button:hover {
+  background: #ffe5e5;
+  color: darkred;
+}
+
+/* Delete Account Button */
+.delete-account-button {
+  background: red;
+  color: white;
+  font-weight: bold;
+}
+
+.delete-account-button:hover {
+  background: darkred;
+}
+
+/* Add a small triangle/arrow pointing down to the dropdown */
+.user-dropdown::after {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 8px;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.9) transparent transparent transparent;
+}
+
+/* Show only profile icon when navbar is collapsed */
+.navbar.collapsed .profile-link {
+  display: none;
+}
+
+.navbar.collapsed .profile-icon {
+  display: inline-block;
+}
+
+/* Show profile text and username when navbar is expanded */
+.navbar.expanded .profile-link {
+  display: flex;
+}
+
+.navbar.expanded .profile-icon {
+  display: none;
 }
 
 /* Responsive adjustments */

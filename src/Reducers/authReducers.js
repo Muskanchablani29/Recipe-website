@@ -48,8 +48,7 @@ const authReducer = (state = initialState, action) => {
 
     case AUTH_ACTIONS.LOGIN: {
       const { email, password } = action.payload;
-      const storedUser = loadUserFromStorage(); // Load user data from localStorage
-
+      const storedUser = loadUserFromStorage();
       
       if (storedUser && storedUser.user === email && storedUser.password === password) {
         return { 

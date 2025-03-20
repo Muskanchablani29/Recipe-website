@@ -1,7 +1,7 @@
 import React, { useState, useRef, useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { signup, login } from "../Reducers/authReducers";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import { signup, login } from '../../Reducers/authReducers';
 import "./Profile.css";
 import culinaryLogo from "../Images/logo.png";
 import image1 from "../Fun-Fusion/Jhatpat-recipes/image1.png";
@@ -19,8 +19,8 @@ const Profile = () => {
     password: "",
   });
 
-  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const formRef = useRef(null);
   const user = useSelector((state) => state.auth.user);
 
@@ -38,10 +38,8 @@ const Profile = () => {
       return;
     }
 
-    const newUser = { name: username, email, password };
-    dispatch(signup(newUser)); // Dispatch user data to Redux
-    localStorage.setItem("user", JSON.stringify(newUser)); // Save user to localStorage
-    alert("Signup successful! Please login.");
+    dispatch(signup({ username, email, password }));
+    alert('Signup successful! Please log in.');
 
     setUsername("");
     setEmail("");
@@ -50,23 +48,23 @@ const Profile = () => {
   };
 
   // Handle Login
-  const handleLogin = useCallback(
-    (e) => {
-      e.preventDefault();
+  const handleLogin = useCallback((e) => {
+    e.preventDefault();
+    
+    if (!user) {
+      alert('No user found. Please sign up first.');
+      return;
+    }
 
-      if (!credentials.username || !credentials.password) {
-        alert("Please fill in all fields");
-        return;
-      }
-
-    const loggedInUser = { name: credentials.username, email: credentials.email, password: credentials.password };
-
-      dispatch(login(loggedInUser)); // Dispatch user data to Redux
-      localStorage.setItem("user", JSON.stringify(loggedInUser)); // Save user to localStorage
-      navigate("/");
-    },
-    [credentials, dispatch, navigate]
-  );
+    const { username, password } = credentials;
+    if (username === user.username && password === user.password) {
+      dispatch(login({ username, password }));
+      alert('Login successful!');
+      navigate('/');
+    } else {
+      alert('Invalid credentials');
+    }
+  }, [credentials, user, dispatch, navigate]);
 
   // Toggle between Login and Signup modes
   const toggleMode = useCallback(() => {

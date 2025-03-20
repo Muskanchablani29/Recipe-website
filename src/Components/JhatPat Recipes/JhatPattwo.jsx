@@ -1,6 +1,6 @@
 import React, { useMemo, useCallback, useState, Suspense } from "react";
 import "./JhatPattwo.css";
-import salad from "./salad.jpg";
+import salad from "./Salad.jpg";
 import nacho from "./nacho.jpg";
 import chimchi from "./chimchi.jpg";
 import buddhabowl from "./buddhabowl.jpg";

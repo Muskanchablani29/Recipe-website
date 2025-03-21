@@ -12,7 +12,7 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import { logout, deleteAccount } from "../Reducers/authReducers";
 import "./Navbar.css";
-import logo from "./Images/Logo-bg.png";
+import logo from "./Images/Logo-bg copy.png";
 
 const ROUTES = {
   HOME: '/',

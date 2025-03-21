@@ -111,7 +111,7 @@ export default function ShareRecipe() {
     } catch (err) {
       setError("Failed to submit recipe. Please try again.");
     }
-  };
+  }; 
 
   return (
     <div className="heading-container-lavi">

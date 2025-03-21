@@ -346,14 +346,14 @@
     color: #007bff;
   }
   /* Main Container and Layout */
-.heading-container {
+.heading-container-lavi {
     text-align: center;
     padding: 40px 20px;
     margin-bottom: 30px;
     background: linear-gradient(to right, #f8f9fa, #ffffff, #f8f9fa);
   }
   
-  .main-heading {
+  .main-heading-lavi {
     font-size: 2.5rem;
     color: #2c3e50;
     margin-bottom: 15px;
@@ -363,7 +363,7 @@
     font-family: 'Playfair Display', serif;
   }
   
-  .sub-heading {
+  .sub-heading-lavi {
     font-size: 1.1rem;
     color: #666;
     margin-bottom: 25px;
@@ -374,7 +374,7 @@
     margin-right: auto;
   }
   
-  .heading-decoration {
+  .heading-decoration-lavi {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -382,13 +382,13 @@
     margin-bottom: 20px;
   }
   
-  .decoration-line {
+  .decoration-line-lavi {
     height: 2px;
     width: 60px;
     background: linear-gradient(to right, transparent, #007bff, transparent);
   }
   
-  .decoration-icon {
+  .decoration-icon-lavi {
     font-size: 24px;
     animation: bounce 2s infinite;
   }

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { signup, login } from '../../Reducers/authReducers';
 import "./Profile.css";
-import culinaryLogo from "../Images/logo.png";
+import culinaryLogo from "../Images/Logo-bg.png";
 import image1 from "../Fun-Fusion/Jhatpat-recipes/image1.png";
 import image2 from "../Fun-Fusion/Jhatpat-recipes/image2.png";
 import image3 from "../Fun-Fusion/Jhatpat-recipes/image3.png";
@@ -69,6 +69,10 @@ const Profile = () => {
   // Toggle between Login and Signup modes
   const toggleMode = useCallback(() => {
     setIsSignUpMode((prevMode) => !prevMode);
+    setUsername("");
+    setEmail("");
+    setPassword("");
+    setCredentials({ username: "", password: "" });
   }, []);
 
   // Handle Input Change
@@ -96,7 +100,6 @@ const Profile = () => {
             <form onSubmit={handleLogin} autoComplete="off" className="sign-in-form">
               <div className="logo">
                 <img src={culinaryLogo} alt="Logo" />
-                <h3>Recipe Book</h3>
               </div>
 
               <div className="heading">
@@ -152,7 +155,6 @@ const Profile = () => {
             <form onSubmit={handleSignup} autoComplete="off" className="sign-up-form">
               <div className="logo">
                 <img src={culinaryLogo} alt="Logo" />
-                <h3>Recipe Book</h3>
               </div>
 
               <div className="heading">

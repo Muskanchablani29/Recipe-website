@@ -17,16 +17,16 @@ import image6 from './Jhatpat-recipes/image6.png'
 import image7 from './Jhatpat-recipes/image7.png'
 import image8 from './Jhatpat-recipes/image8.png'
 import image9 from './Jhatpat-recipes/image5.png'
-import image10 from './Jhatpat-recipes/image1.png'
+import image10 from '../Recipes/Recipestwo/garlic bread.jpg'
 import { NavLink } from "react-router";
 
 const allRecipes = [
-  { image: image1, title: "Chocolate Cookies", desc: "Crispy outside, gooey inside, perfect for dessert!" },
-  { image: image2, title: "Chicken Burger", desc: "Juicy grilled chicken with tangy sauce in a soft bun." },
-  { image: image3, title: "Sushi Balls", desc: "Quick sushi bites with fresh flavors and crisp texture." },
-  { image: image4, title: "Salmon Sandwich", desc: "Fresh salmon with creamy spread in a toasted bun." },
-  { image: image5, title: "Cheesy Pizza", desc: "Crispy homemade pizza topped with gooey cheese." },
-  { image: image6, title: "Paneer Tikka", desc: "Smoky grilled paneer with Indian spices." },
+  { image: image1, title: "BhelPuri", desc: "Spicy and crunchy snack made with potatoes, chickpeas, and spices." },
+  { image: image2, title: "Sandwich", desc: "Grilled Bread with Stuffed Vegies"},
+  { image: image3, title: "Burger", desc: "Bread Bun with Stuffed Vegetables inside it" },
+  { image: image4, title: "Kurkure Chaat", desc: "Cripsy Kurkure with Spices and Chaat Masala" },
+  { image: image5, title: "Bread Rolls", desc: "Bread rolls with stuffed Vegies" },
+  { image: image6, title: "Monaco Bites", desc: "Monaco Biscuit with Having Spices and Vegetable on Top of it" },
   { image: image7, title: "Fruit Parfait", desc: "Layered yogurt, fresh fruits, and crunchy granola." },
   { image: image8, title: "Pasta Primavera", desc: "Creamy Italian pasta loaded with fresh veggies." },
   { image: image9, title: "Veggie Wrap", desc: "Soft tortilla filled with fresh veggies and dressing." },

@@ -15,7 +15,8 @@ import Cooking from "./Components/Fun-Fusion/CookingChallenge/Cooking";
 import Spinner from './Components/Fun-Fusion/DotSpinner/Spinnergame';
 import Shareas from "./Components/Home/Homepage/Shareas";
 import Hacks from './Components/KitchenHacks/Kitchenhacks';
-import Footer from './Components/Footer/Footer'
+import Footer from './Components/Footer/Footer';
+// import Open from './Components/Openreveal/Open'
 import "./App.css";
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
       <div className="app-container">
         <Navbar />
         <main className="main-content">
+          {/* <Open/> */}
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />

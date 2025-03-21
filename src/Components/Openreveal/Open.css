@@ -1,0 +1,9 @@
+.canvas-container {
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(#f1f1f1, #ccc);
+  }
+  
+  canvas {
+    display: block;
+  }

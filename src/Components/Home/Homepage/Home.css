@@ -63,7 +63,7 @@
 }
 
 /* Text Section */
-.text-section {
+.text-section-home {
   flex: 1;
   max-width: 40%;
   position: relative;
@@ -71,12 +71,12 @@
   animation: fadeInLeft 1s ease-out;
 }
 
-.text-content {
+.text-content-home {
   position: relative;
   z-index: 2;
 }
 
-.text-section h3 {
+.text-section-home h3 {
   font-size: 1.5rem;
   color: var(--primary-color);
   margin-bottom: 0.5rem;
@@ -146,6 +146,7 @@
   align-items: center;
   gap: 0.75rem;
   padding: 0.875rem 1.5rem;
+  text-decoration: underline  var(--primary-color);
   border: none;
   font-size: 1rem;
   cursor: pointer;
@@ -378,16 +379,16 @@
     text-align: center;
   }
 
-  .text-section {
+  .text-section-home {
     max-width: 100%;
     margin-bottom: 3rem;
   }
 
-  .text-section h1 {
+  .text-section-home h1 {
     font-size: 3rem;
   }
 
-  .text-section p {
+  .text-section-home p {
     margin: 1rem auto;
   }
 
@@ -410,11 +411,11 @@
 }
 
 @media (max-width: 480px) {
-  .text-section h1 {
+  .text-section-home h1 {
     font-size: 2.5rem;
   }
 
-  .text-section h3 {
+  .text-section-home h3 {
     font-size: 1.2rem;
   }
 
@@ -453,12 +454,12 @@
     background: linear-gradient(to bottom, #1a1a1a, #2a2a2a);
   }
 
-  .text-section h1 {
+  .text-section-home h1 {
     background: linear-gradient(45deg, var(--white), var(--primary-color));
     -webkit-background-clip: text;
   }
 
-  .text-section p {
+  .text-section-home p {
     color: #ccc;
   }
 

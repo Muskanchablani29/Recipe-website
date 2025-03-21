@@ -43,11 +43,11 @@ export default function Home() {
       </div>
 
       {/* Content */}
-      <div className="text-section">
-        <div className="text-content">
+      <div className="text-section-home">
+        <div className="text-content-home">
           <h3>Find Your Best Cooking Recipes</h3>
           <h1>
-            Discover <span className="bold">Delicious</span> Recipes
+            Discover <span className="bold-home">Delicious</span> Recipes
           </h1>
           <p>
             Explore a world of culinary delights with our handpicked collection of 

@@ -11,9 +11,85 @@ import PalakPaneer from './Recipestwo/PalakPaneer.jpeg';
 import PaneerBhurji from './Recipestwo/PaneerBhurji.jpeg';
 import TomatoChutney from './Recipestwo/TomatoChutney.jpeg';
 import MushroomRisotto from '../JhatPat Recipes/Mushroom Risotto.jpg';
-import StuffedMushroom from './Recipestwo/';
-import MushroomSoup from './Recipestwo/MushroomSoup.jpeg';
-import MushroomCurry from './Recipestwo/MushroomCurry.jpeg';'
+import StuffedMushroom from './Recipestwo/Stuffed-Mushrooms.jpg';
+import MushroomSoup from './Recipestwo/mushroom soup.jpg';
+import MushroomCurry from './Recipestwo/mushroom curry.jpg';
+import MushroomPizza from './Recipestwo/mushroom pizaa.jpg';
+import MushroomStirFry from './Recipestwo/mushroom stir fry.jpg';
+import ScrambledEggs from './Recipestwo/scrambled eggs.jpg';
+import EggCurry from './Recipestwo/egg curry.jpg';
+import EggSalad from './Recipestwo/Drevilled eggs.jpg';
+import Omelette from './Recipestwo/omlette.jpg';
+import Devilledeggs from './Recipestwo/Drevilled eggs.jpg';
+import EggFriedrice from './Recipestwo/egg fried rice.jpg';
+import SpinachSmoothie from './Recipestwo/spinch smothee.jpg';
+import PalakPaneer2 from './Recipestwo/PalakPaneer.jpeg';
+import SpinachSalad from './Recipestwo/spinch salad.jpg'
+import SpinachDal from './Recipestwo/spinch dal.jpg'
+import SpinachPakora from './Recipestwo/spinch pakora.jpg'
+import SpinachParatha from './Recipestwo/spinch paratha.jpg';
+import CarrotSoup from './Recipestwo/carrot soup.jpg';
+import CarrotSalad from './Recipestwo/carrot salad.jpg';
+import Carrotcake from './Recipestwo/carrot cake.jpg';
+import CarrotJuice from './Recipestwo/carrot juice.jpg';
+import CarrotStirFry from './Recipestwo/cabage pakora.jpg';
+import CarrotHalwa from './Recipestwo/carrot halwa.jpg';
+import MashedPatato from './Recipestwo/potato salad.jpg';
+import FrenchFries from './Recipestwo/Frenchfries.jpeg';
+import BakedPatato from './Recipestwo/BakedPatato.png';
+import PatatoSoup from './Recipestwo/PatatoSoup.jpeg';
+import PotatoCurry from './Recipestwo/PatatoCurry.jpeg';
+import GarlicBread from './Recipestwo/garlic bread.jpg';
+import GarlicChicken from './Recipestwo/garlic chicken.jpg'
+import GarlicSoup from './Recipestwo/GarlicSoup.jpeg';
+import GarlicButterShrimp from './Recipestwo/garlic butter.jpg';
+import GarlicNoodles from './Recipestwo/garlic nodles.jpg';
+import GarlicRoastedPotatoes from './Recipestwo/garlic roasted potatoes.jpg';
+import OnionRings from './Recipestwo/onion salad.jpg';
+import OnionSoup from './Recipestwo/onion salad.jpg';
+import OnionBhaji from './Recipestwo/onion bhaji.jpg';
+import CaramelizedOnions from './Recipestwo/caramalized onions.jpg';
+import OnionPizza from './Recipestwo/onion pizza.jpg';
+import OnionSalad from './Recipestwo/onion salad.jpg';
+import PeaSoup from './Recipestwo/pea soup.jpg';
+import PeaSalad from './Recipestwo/pea salad.jpg';
+import PeaCurry from './Recipestwo/PEA CURRY.jpg';
+import PeaPizza from './Recipestwo/pea salad.jpg';
+import PeaPulao from './Recipestwo/pea pulao.jpg';
+import PeaandMintSoup from './Recipestwo/pea mint soup.jpg';
+import CornSalad from './Recipestwo/corn salad.jpg';
+import CornTikki from './Recipestwo/corn tikki.jpg';
+import CreamyCornSoup from './Recipestwo/creamy corn soup.jpg';
+import CornCurry from './Recipestwo/corn curry.jpg';
+import CornPizza from './Recipestwo/corn pizza.jpg';
+import CornChat from './Recipestwo/corn pizza.jpg';
+import ChessePizza from './Recipestwo/onion pizza.jpg';
+import ChesseSandwich from './Recipestwo/cheese sandwich.jpg';
+import ChesseOmlette from './Recipestwo/cheese omlate.jpg';
+import ChessePasta from './Recipestwo/cheese pasta.jpg';
+import ChesseNachos from './Recipestwo/cheese nachos.jpg';
+import ChesseFondue from './Recipestwo/cheesde foundo.jpg';
+import CaeserSalad from './Recipestwo/caesar salad.jpg';
+import LettuceWrap from './Recipestwo/lattuce wrap.jpg';
+import LettuceSalad from './Recipestwo/lattuce salas.jpg';
+import LettuceSoup from './Recipestwo/lattuce soup.jpg';
+import LettuceTacos from './Recipestwo/lattuce tacos.jpg';
+import LattuceSandwich from './Recipestwo/lattuce sandwich.jpg';
+import cabbage1 from './Recipestwo/cabage soup.jpg';
+import cabbage2 from './Recipestwo/cabage salad.jpg';
+import cabbage3 from './Recipestwo/cabage rolls.jpg';
+import cabbage4 from './Recipestwo/cabage curry.jpg';
+import cabbage5 from './Recipestwo/cabage curry.jpg';
+import cabbage6 from './Recipestwo/cabage pakora.jpg';
+import CucumberSalad from './Recipestwo/cucumber salad.jpg';
+import CucumberSoup from './Recipestwo/cucumber juice.jpg';
+import CucumberSandwich from './Recipestwo/cucumber sandwih.jpeg';
+import CucumberRaita from './Recipestwo/cucumber raita.jpg';
+import CucumberJuice from './Recipestwo/cucumber juice.jpg';
+import CucumberRolls from './Recipestwo/cucumber rools (1).jpg';
+
+
+
 
 const ingredients = [
   "Tomato", "Paneer", "Mushroom", "Egg", "Spinach", "Carrot", "Potato",
@@ -42,107 +118,107 @@ const dishes = {
   ],
   Mushroom: [
     { name: "Mushroom Risotto", category: "Dinner",imageUrl: MushroomRisotto },
-    { name: "Stuffed Mushrooms", category: "Snacks" },
-    { name: "Mushroom Soup", category: "Lunch" },
-    { name: "Mushroom Curry", category: "Dinner" },
-    { name: "Mushroom Pizza", category: "Snacks" },
-    { name: "Mushroom Stir Fry", category: "Lunch" },
+    { name: "Stuffed Mushrooms", category: "Snacks",imageUrl: StuffedMushroom },
+    { name: "Mushroom Soup", category: "Lunch", imageUrl: MushroomSoup },
+    { name: "Mushroom Curry", category: "Dinner", imageUrl: MushroomCurry },
+    { name: "Mushroom Pizza", category: "Snacks", imageUrl: MushroomPizza },
+    { name: "Mushroom Stir Fry", category: "Lunch", imageUrl: MushroomStirFry },
   ],
   Egg: [
-    { name: "Scrambled Eggs", category: "Breakfast" },
-    { name: "Egg Curry", category: "Dinner" },
-    { name: "Egg Salad", category: "Lunch" },
-    { name: "Omelette", category: "Breakfast" },
-    { name: "Deviled Eggs", category: "Snacks" },
-    { name: "Egg Fried Rice", category: "Lunch" },
+    { name: "Scrambled Eggs", category: "Breakfast", imageUrl: ScrambledEggs },
+    { name: "Egg Curry", category: "Dinner", imageUrl: EggCurry },
+    { name: "Egg Salad", category: "Lunch", imageUrl: EggSalad },
+    { name: "Omelette", category: "Breakfast", imageUrl: Omelette },
+    { name: "Deviled Eggs", category: "Snacks", imageUrl: Devilledeggs },
+    { name: "Egg Fried Rice", category: "Lunch", imageUrl: EggFriedrice },
   ],
   Spinach: [
-    { name: "Spinach Smoothie", category: "Drinks" },
-    { name: "Palak Paneer", category: "Lunch" },
-    { name: "Spinach Salad", category: "Snacks" },
-    { name: "Spinach Dal", category: "Dinner" },
-    { name: "Spinach Pakora", category: "Snacks" },
-    { name: "Spinach Paratha", category: "Breakfast" },
+    { name: "Spinach Smoothie", category: "Drinks",imageUrl: SpinachSmoothie },
+    { name: "Palak Paneer", category: "Lunch", imageUrl: PalakPaneer2 },
+    { name: "Spinach Salad", category: "Snacks", imageUrl: SpinachSalad },
+    { name: "Spinach Dal", category: "Dinner", imageUrl: SpinachDal },
+    { name: "Spinach Pakora", category: "Snacks", imageUrl: SpinachPakora },
+    { name: "Spinach Paratha", category: "Breakfast", imageUrl: SpinachParatha },
   ],
   Carrot: [
-    { name: "Carrot Soup", category: "Lunch" },
-    { name: "Carrot Salad", category: "Snacks" },
-    { name: "Carrot Cake", category: "Dessert" },
-    { name: "Carrot Juice", category: "Drinks" },
-    { name: "Carrot Stir Fry", category: "Dinner" },
-    { name: "Carrot Halwa", category: "Dessert" },
+    { name: "Carrot Soup", category: "Lunch", imageUrl: CarrotSoup },
+    { name: "Carrot Salad", category: "Snacks", imageUrl: CarrotSalad },
+    { name: "Carrot Cake", category: "Dessert", imageUrl: Carrotcake },
+    { name: "Carrot Juice", category: "Drinks", imageUrl: CarrotJuice },
+    { name: "Carrot Stir Fry", category: "Dinner", imageUrl: CarrotStirFry },
+    { name: "Carrot Halwa", category: "Dessert" ,imageUrl: CarrotHalwa },
   ],
   Potato: [
-    { name: "Mashed Potatoes", category: "Dinner" },
-    { name: "Potato Salad", category: "Lunch" },
-    { name: "French Fries", category: "Snacks" },
-    { name: "Baked Potato", category: "Dinner" },
-    { name: "Potato Soup", category: "Lunch" },
-    { name: "Potato Curry", category: "Dinner" },
+    { name: "Mashed Potatoes", category: "Dinner", imageUrl: MashedPatato },
+    { name: "Potato Salad", category: "Lunch", imageUrl: PatatoSoup },
+    { name: "French Fries", category: "Snacks", imageUrl: FrenchFries },
+    { name: "Baked Potato", category: "Dinner", imageUrl: BakedPatato },
+    { name: "Potato Soup", category: "Lunch", imageUrl: PatatoSoup },
+    { name: "Potato Curry", category: "Dinner", imageUrl: PotatoCurry },
   ],
   Garlic: [
-    { name: "Garlic Bread", category: "Snacks" },
-    { name: "Garlic Chicken", category: "Dinner" },
-    { name: "Garlic Soup", category: "Lunch" },
-    { name: "Garlic Butter Shrimp", category: "Dinner" },
-    { name: "Garlic Noodles", category: "Lunch" },
-    { name: "Garlic Roasted Potatoes", category: "Dinner" },
+    { name: "Garlic Bread", category: "Snacks",imageUrl: GarlicBread },
+    { name: "Garlic Chicken", category: "Dinner", imageUrl: GarlicChicken },
+    { name: "Garlic Soup", category: "Lunch", imageUrl: GarlicSoup },
+    { name: "Garlic Butter Shrimp", category: "Dinner", imageUrl: GarlicButterShrimp },
+    { name: "Garlic Noodles", category: "Lunch", imageUrl: GarlicNoodles },
+    { name: "Garlic Roasted Potatoes", category: "Dinner", imageUrl: GarlicRoastedPotatoes },
   ],
   Onion: [
-    { name: "Onion Rings", category: "Snacks" },
-    { name: "French Onion Soup", category: "Lunch" },
-    { name: "Onion Bhaji", category: "Snacks" },
-    { name: "Caramelized Onions", category: "Dinner" },
-    { name: "Onion Salad", category: "Lunch" },
-    { name: "Onion Pizza", category: "Dinner" },
+    { name: "Onion Rings", category: "Snacks", imageUrl: OnionRings },
+    { name: "French Onion Soup", category: "Lunch", imageUrl: OnionSoup },
+    { name: "Onion Bhaji", category: "Snacks", imageUrl: OnionBhaji },
+    { name: "Caramelized Onions", category: "Dinner", imageUrl: CaramelizedOnions },
+    { name: "Onion Salad", category: "Lunch", imageUrl: OnionSalad },
+    { name: "Onion Pizza", category: "Dinner", imageUrl: OnionPizza },
   ],
   Peas: [
-    { name: "Pea Soup", category: "Lunch" },
-    { name: "Pea Salad", category: "Snacks" },
-    { name: "Pea Curry", category: "Dinner" },
-    { name: "Pea Risotto", category: "Dinner" },
-    { name: "Pea Pulao", category: "Lunch" },
-    { name: "Pea and Mint Soup", category: "Lunch" },
+    { name: "Pea Soup", category: "Lunch",imageUrl: PeaSoup },
+    { name: "Pea Salad", category: "Snacks",imageUrl: PeaSalad },
+    { name: "Pea Curry", category: "Dinner", imageUrl: PeaCurry },
+    { name: "Pea Risotto", category: "Lunch", imageUrl: PeaPizza },
+    { name: "Pea Pulao", category: "Lunch", imageUrl: PeaPulao },
+    { name: "Pea and Mint Soup", category: "Lunch",imageUrl: PeaandMintSoup },
   ],
   Corn: [
-    { name: "Corn Salad", category: "Snacks" },
-    { name: "Corn Tikki", category: "Snacks" },
-    { name: "Creamy Corn Soup", category: "Lunch" },
-    { name: "Corn Curry", category: "Dinner" },
-    { name: "Corn Pizza", category: "Snacks" },
-    { name: "Corn Chat", category: "Snacks" },
+    { name: "Corn Salad", category: "Snacks",imageUrl: CornSalad },
+    { name: "Corn Tikki", category: "Snacks",imageUrl: CornTikki },
+    { name: "Creamy Corn Soup", category: "Lunch", imageUrl: CreamyCornSoup },
+    { name: "Corn Curry", category: "Dinner", imageUrl: CornCurry },
+    { name: "Corn Pizza", category: "Snacks", imageUrl: CornPizza },
+    { name: "Corn Chat", category: "Snacks", imageUrl: CornChat },
   ],
   Cheese: [
-    { name: "Cheese Pizza", category: "Dinner" },
-    { name: "Cheese Sandwich", category: "Snacks" },
-    { name: "Cheese Omelette", category: "Breakfast" },
-    { name: "Cheese Pasta", category: "Lunch" },
-    { name: "Cheese Nachos", category: "Snacks" },
-    { name: "Cheese Fondue", category: "Dinner" },
+    { name: "Cheese Pizza", category: "Dinner", imageUrl: ChessePizza },
+    { name: "Cheese Sandwich", category: "Snacks", imageUrl: ChesseSandwich },
+    { name: "Cheese Omelette", category: "Breakfast", imageUrl: ChesseOmlette },
+    { name: "Cheese Pasta", category: "Lunch", imageUrl: ChessePasta },
+    { name: "Cheese Nachos", category: "Snacks" , imageUrl: ChesseNachos },
+    { name: "Cheese Fondue", category: "Dinner", imageUrl: ChesseFondue },
   ],
   Lettuce: [
-    { name: "Caesar Salad", category: "Lunch" },
-    { name: "Lettuce Wraps", category: "Snacks" },
-    { name: "Lettuce Soup", category: "Lunch" },
-    { name: "Lettuce Sandwich", category: "Snacks" },
-    { name: "Lettuce Salad", category: "Lunch" },
-    { name: "Lettuce Tacos", category: "Dinner" },
+    { name: "Caesar Salad", category: "Lunch", imageUrl: LettuceSalad },
+    { name: "Lettuce Wraps", category: "Snacks", imageUrl: LettuceWrap },
+    { name: "Lettuce Soup", category: "Lunch", imageUrl: LettuceSoup },
+    { name: "Lettuce Sandwich", category: "Snacks", imageUrl: LattuceSandwich },
+    { name: "Lettuce Salad", category: "Lunch", imageUrl: LettuceSalad },
+    { name: "Lettuce Tacos", category: "Dinner", imageUrl: LettuceTacos },
   ],
   Cabbage: [
-    { name: "Cabbage Soup", category: "Lunch" },
-    { name: "Cabbage Salad", category: "Snacks" },
-    { name: "Cabbage Rolls", category: "Dinner" },
-    { name: "Cabbage Stir Fry", category: "Dinner" },
-    { name: "Cabbage Curry", category: "Dinner" },
-    { name: "Cabbage Pakora", category: "Snacks" },
+    { name: "Cabbage Soup", category: "Lunch" ,imageUrl: cabbage1 },
+    { name: "Cabbage Salad", category: "Snacks", imageUrl: cabbage2 },
+    { name: "Cabbage Rolls", category: "Dinner", imageUrl: cabbage3 },
+    { name: "Cabbage Stir Fry", category: "Dinner", imageUrl: cabbage4 },
+    { name: "Cabbage Curry", category: "Dinner" , imageUrl: cabbage5 },
+    { name: "Cabbage Pakora", category: "Snacks", imageUrl: cabbage6 },
   ],
   Cucumber: [
-    { name: "Cucumber Salad", category: "Snacks" },
-    { name: "Cucumber Sandwich", category: "Snacks" },
-    { name: "Cucumber Soup", category: "Lunch" },
-    { name: "Cucumber Raita", category: "Lunch" },
-    { name: "Cucumber Juice", category: "Drinks" },
-    { name: "Cucumber Rolls", category: "Snacks" },
+    { name: "Cucumber Salad", category: "Snacks" , imageUrl: CucumberSalad },
+    { name: "Cucumber Sandwich", category: "Snacks", imageUrl: CucumberSandwich },
+    { name: "Cucumber Soup", category: "Lunch", imageUrl: CucumberSoup },
+    { name: "Cucumber Raita", category: "Lunch", imageUrl: CucumberRaita },
+    { name: "Cucumber Juice", category: "Drinks", imageUrl: CucumberJuice },
+    { name: "Cucumber Rolls", category: "Snacks", imageUrl: CucumberRolls },
   ],
   Pumpkin: [
     { name: "Pumpkin Soup", category: "Lunch" },

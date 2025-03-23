@@ -5,7 +5,9 @@ import RecipeDisplay from './RecipeDisplay';
 import CategorySelection from './CategorySelection';
 import DishSelection from './DishSelection';
 import Message from './Message';
-import chef from '../Chef/robotChef.gif'
+import chef from '../Chef/robotChef.gif';
+import activeChef from '../../Chef/ActiveChef.gif'; // Add your active robot gif/image
+
 
 // Website features information
 const websiteFeatures = {
@@ -162,6 +164,10 @@ const SmartChef = () => {
   const [selectedFeature, setSelectedFeature] = useState(null);
   const messagesEndRef = useRef(null);
   const [showNotification, setShowNotification] = useState(false);
+  const [hasInteracted, setHasInteracted] = useState(false);
+  const [wasOpen, setWasOpen] = useState(false);
+  const [isRobotAnimating, setIsRobotAnimating] = useState(false);
+  
 
   const scrollToBottom = useCallback(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -556,11 +562,25 @@ const showNextStep = useCallback((recipe, selectedDish) => {
 
   // Toggle chat window
   const toggleChat = useCallback(() => {
-    setIsOpen(prev => !prev);
+    setIsOpen(prev => {
+      // If we're closing the chat
+      if (prev) {
+        setWasOpen(true);
+        setHasInteracted(false);
+        // Start exit animation for robot
+        setIsRobotAnimating(false);
+      } else {
+        // Start entry animation for robot
+        setIsRobotAnimating(true);
+      }
+      return !prev;
+    });
+    
     if (!messages.length) {
       showInitialMessages();
     }
   }, [messages.length, showInitialMessages]);
+  
 
   // Scroll to bottom effect
   useEffect(() => {
@@ -569,11 +589,47 @@ const showNextStep = useCallback((recipe, selectedDish) => {
     }
   }, [isOpen, messages, scrollToBottom]);
 
+ // Update the useEffect for notifications
+useEffect(() => {
+  let notificationInterval;
+  
+  // Show notifications if chat is not open and either:
+  // 1. User hasn't interacted yet (initial state)
+  // 2. Chat was previously opened and closed (wasOpen is true)
+  if (!isOpen && (!hasInteracted || wasOpen)) {
+    // Initial delay before first notification
+    const initialDelay = setTimeout(() => {
+      setShowNotification(true);
+      
+      // Hide first notification after 4 seconds
+      setTimeout(() => {
+        setShowNotification(false);
+      }, 4000);
+
+      // Start interval for subsequent notifications
+      notificationInterval = setInterval(() => {
+        if (!isOpen) {
+          setShowNotification(true);
+          
+          // Hide notification after 4 seconds
+          setTimeout(() => {
+            setShowNotification(false);
+          }, 4000);
+        }
+      }, 5000);
+    }, wasOpen ? 6000 : 3000); // Shorter delay if chat was previously opened
+
+    return () => {
+      clearTimeout(initialDelay);
+      clearInterval(notificationInterval);
+    };
+  }
+}, [isOpen, hasInteracted, wasOpen]);
   return (
     <div className="smart-chef-container">
       {isOpen && (
         <div className="chat-window">
-          <div className="chat-header">
+          <div className="chat-header-smart">
             <h3>Smart Chef Assistant</h3>
             <button 
               className="close-button" 
@@ -596,15 +652,39 @@ const showNextStep = useCallback((recipe, selectedDish) => {
         </div>
       )}
       <button 
-        className="smart-chef-button" 
+        className={`smart-chef-button ${isOpen ? 'active' : ''}`}
         onClick={toggleChat} 
         aria-label="Toggle chat"
       >
-        <span className="chef-icon" role="img" aria-label="Chef icon">
-          <img src={chef} alt="" />
+        <span 
+          className={`chef-icon ${isRobotAnimating ? 'animate' : ''}`} 
+          role="img" 
+          aria-label="Chef icon"
+        >
+          <img 
+            src={isRobotAnimating ? activeChef : chef} 
+            alt="" 
+            className={`robot-image ${isRobotAnimating ? 'active' : ''}`}
+          />
         </span>
         {!isOpen && <span className="button-text"></span>}
       </button>
+      
+      {!isOpen && showNotification && (
+        <div className="notification">
+          <p>
+            <span style={{ fontWeight: 'bold' }}>Smart Chef</span>
+            <br />
+            <span className="typing-dots">
+              {wasOpen 
+                ? "Need more cooking assistance? I'm here to help!"
+                : "How can I help you with your cooking today?"
+              }
+            </span>
+          </p>
+        </div>
+      )}
+
     </div>
   );
 };

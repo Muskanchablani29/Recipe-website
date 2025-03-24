@@ -98,11 +98,12 @@
   height: 100px;
   /* border-radius: 50%; */
   background: transparent;
-  /* border: none; */
+  border: none;
   /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); */
   cursor: pointer;
   /* transition: all 0.3s ease; */
   overflow: hidden;
+  outline: none;
   z-index: 1000;
 }
 
@@ -656,8 +657,8 @@
 }
 .notification {
   position: fixed;
-  bottom: 30px;
-  right: 170px;
+  bottom: 35px;
+  right: 120px;
   background-color: white;
   padding: 15px;
   border-radius: 15px;

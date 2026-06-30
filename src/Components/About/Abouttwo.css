@@ -115,6 +115,22 @@
   color: #666;
 }
 
+.testimonial-stars-kirti {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+.star-filled {
+  color: #f59e0b;
+}
+
+.star-empty {
+  color: #d1d5db;
+}
+
 .active .testimonial-name-kirti {
   color: #007bff;
 }

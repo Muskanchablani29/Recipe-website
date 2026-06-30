@@ -158,6 +158,33 @@
     }
   }
   
+  .review-login-notice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 2rem 1rem;
+    background-color: #fff7ed;
+    border: 1px dashed #f97316;
+    border-radius: 0.5rem;
+    text-align: center;
+  }
+  
+  .review-login-notice span {
+    font-size: 2rem;
+  }
+  
+  .review-login-notice p {
+    font-size: 0.95rem;
+    color: #6b7280;
+    margin: 0;
+  }
+  
+  .review-login-notice strong {
+    color: #f97316;
+  }
+  
   @media (max-width: 640px) {
     .review-container {
       margin: 1rem;

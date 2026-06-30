@@ -1,4 +1,4 @@
-import React, { memo, useState, useEffect, useMemo } from "react";
+import React, { memo, useState, useEffect, useRef, useMemo } from "react";
 import { useSelector } from "react-redux";
 import "./Abouttwo.css";
 import girl1 from "./GirlsImages/girl1.jpg";
@@ -7,8 +7,6 @@ import girl3 from "./GirlsImages/girl3.jpg";
 import girl4 from "./GirlsImages/girl4.jpg";
 import girl5 from "./GirlsImages/girl5.jpg";
 import girl6 from "./GirlsImages/girl6.jpg";
-
-const DEFAULT_AVATAR = "https://ui-avatars.com/api/?background=f97316&color=fff&size=80&bold=true";
 
 const staticTestimonials = [
   {
@@ -71,7 +69,9 @@ const StarRating = memo(({ rating }) => {
 const TestimonialCard = memo(({ testimonial, isActive }) => {
   const avatarUrl = testimonial.image
     ? testimonial.image
-    : `https://ui-avatars.com/api/?name=${encodeURIComponent(testimonial.name)}&background=f97316&color=fff&size=80&bold=true`;
+    : `https://ui-avatars.com/api/?name=${encodeURIComponent(
+        testimonial.name
+      )}&background=f97316&color=fff&size=80&bold=true`;
 
   return (
     <div className={`testimonial-card-kirti ${isActive ? "active" : ""}`}>
@@ -89,9 +89,7 @@ const TestimonialCard = memo(({ testimonial, isActive }) => {
 });
 
 const Testimonials = memo(() => {
-  const [currentIndex, setCurrentIndex] = useState(0);
   const slidesToShow = 3;
-
   const userReviews = useSelector((state) => state.reviews.reviews);
 
   const allTestimonials = useMemo(
@@ -99,25 +97,71 @@ const Testimonials = memo(() => {
     [userReviews]
   );
 
-  const extendedTestimonials = useMemo(
-    () => [...allTestimonials, ...allTestimonials, ...allTestimonials],
-    [allTestimonials]
-  );
+  // Build: [clone of last N] + [real items] + [clone of first N]
+  // We clone slidesToShow items on each side so the loop seam is always off-screen
+  const slides = useMemo(() => {
+    const total = allTestimonials.length;
+    if (total === 0) return [];
+    const cloneCount = slidesToShow;
+    const leadingClones = allTestimonials.slice(total - cloneCount).map((t, i) => ({
+      ...t,
+      _key: `lead-${i}`,
+    }));
+    const trailingClones = allTestimonials.slice(0, cloneCount).map((t, i) => ({
+      ...t,
+      _key: `trail-${i}`,
+    }));
+    return [...leadingClones, ...allTestimonials, ...trailingClones];
+  }, [allTestimonials]);
 
+  // Start at the first real item (index = cloneCount inside `slides`)
+  const cloneCount = slidesToShow;
+  const [currentIndex, setCurrentIndex] = useState(cloneCount);
+  const [isTransitioning, setIsTransitioning] = useState(true);
+  const timerRef = useRef(null);
+
+  const totalSlides = allTestimonials.length;
+
+  // Whenever allTestimonials changes (new review added), reset to first real slide
   useEffect(() => {
-    if (allTestimonials.length === 0) return;
-    const slideTimer = setInterval(() => {
-      setCurrentIndex((prev) =>
-        prev >= allTestimonials.length - 1 ? 0 : prev + 1
-      );
+    setIsTransitioning(false);
+    setCurrentIndex(cloneCount);
+  }, [totalSlides, cloneCount]);
+
+  // Re-enable transition after a silent reset
+  useEffect(() => {
+    if (!isTransitioning) {
+      const raf = requestAnimationFrame(() => {
+        requestAnimationFrame(() => setIsTransitioning(true));
+      });
+      return () => cancelAnimationFrame(raf);
+    }
+  }, [isTransitioning]);
+
+  // Auto-advance every 3 seconds
+  useEffect(() => {
+    if (totalSlides === 0) return;
+    timerRef.current = setInterval(() => {
+      setCurrentIndex((prev) => prev + 1);
     }, 3000);
-    return () => clearInterval(slideTimer);
-  }, [allTestimonials.length]);
+    return () => clearInterval(timerRef.current);
+  }, [totalSlides]);
 
-  // Reset index when reviews change to avoid out-of-bound slides
-  useEffect(() => {
-    setCurrentIndex(0);
-  }, [userReviews.length]);
+  // After transition ends, silently jump if we've entered the clone zone
+  const handleTransitionEnd = () => {
+    // Entered trailing clones → jump back to real start
+    if (currentIndex >= cloneCount + totalSlides) {
+      setIsTransitioning(false);
+      setCurrentIndex(cloneCount);
+    }
+    // Entered leading clones → jump to real end
+    if (currentIndex < cloneCount) {
+      setIsTransitioning(false);
+      setCurrentIndex(cloneCount + totalSlides - 1);
+    }
+  };
+
+  const slideWidthPercent = 100 / slidesToShow;
 
   return (
     <div className="testimonials-container-kirti">
@@ -128,24 +172,27 @@ const Testimonials = memo(() => {
         <div
           className="testimonials-slides-container-kirti"
           style={{
-            transform: `translateX(${-currentIndex * (100 / slidesToShow)}%)`,
-            transition: "transform 0.5s ease-in-out",
+            transform: `translateX(${-currentIndex * slideWidthPercent}%)`,
+            transition: isTransitioning ? "transform 0.5s ease-in-out" : "none",
           }}
+          onTransitionEnd={handleTransitionEnd}
         >
-          {extendedTestimonials.map((testimonial, index) => (
-            <div
-              key={`${testimonial.id}-${index}`}
-              className="testimonials-slide-kirti"
-            >
-              <TestimonialCard
-                testimonial={testimonial}
-                isActive={
-                  index % allTestimonials.length >= currentIndex &&
-                  index % allTestimonials.length < currentIndex + slidesToShow
-                }
-              />
-            </div>
-          ))}
+          {slides.map((testimonial, index) => {
+            // Determine if this slide maps to an "active" real position
+            const realIndex = (index - cloneCount + totalSlides * 10) % totalSlides;
+            const isActive =
+              realIndex >= (currentIndex - cloneCount) % totalSlides &&
+              realIndex < ((currentIndex - cloneCount) % totalSlides) + slidesToShow;
+
+            return (
+              <div
+                key={testimonial._key || `${testimonial.id}-${index}`}
+                className="testimonials-slide-kirti"
+              >
+                <TestimonialCard testimonial={testimonial} isActive={isActive} />
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

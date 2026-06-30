@@ -40,7 +40,7 @@ const ReviewForm = memo(() => {
 
     const newReview = {
       id: Date.now(),
-      name: user?.name || user?.user || "Anonymous",
+      name: user?.username || user?.name || "Anonymous",
       role: "Verified User",
       text: review.trim(),
       rating,
